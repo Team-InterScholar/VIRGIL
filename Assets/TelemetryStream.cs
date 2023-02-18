@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TelemetryStream : MonoBehaviour
 {
-    Vector3 currentPosition;
-    Vector3 originalPosition;
-
+    private Vector3 currentPosition;
+    private Vector3 initialPosition;
+    private float currentAngleY;
+    private float initialAngleY;
     void Start()
     {
         
@@ -18,9 +19,28 @@ public class TelemetryStream : MonoBehaviour
         
     }
 
-    public Vector3 getOriginalPosition()
+    public float getInitialAngleY()
     {
-        return originalPosition;
+        return initialAngleY;
+    }
+
+    public float getCurrentAngleY()
+    {
+        return currentAngleY;
+    }
+
+    public void updateCurrentAngleY(float incomingAngleY)
+    {
+        currentAngleY = incomingAngleY;
+    }
+
+    public void updateInitialAngleY(float incomingAngleY)
+    {
+        initialAngleY = incomingAngleY;
+    }
+    public Vector3 getInitialPosition()
+    {
+        return initialPosition;
     }
 
     public Vector3 getCurrentPosition()
@@ -28,12 +48,12 @@ public class TelemetryStream : MonoBehaviour
         return currentPosition;
     }
 
-    public void UpdateCurrentPosition(Vector3 incomingPosition)
+    public void updateCurrentPosition(Vector3 incomingPosition)
     {
         currentPosition = incomingPosition;
     }
-    public void UpdateOriginalPosition(Vector3 incomingPosition)
+    public void updateInitialPosition(Vector3 incomingPosition)
     {
-        originalPosition = incomingPosition;
+        initialPosition = incomingPosition;
     }
 }
