@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        
     }
     void Update()
     {
@@ -25,4 +24,5 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
     }
+
 }
