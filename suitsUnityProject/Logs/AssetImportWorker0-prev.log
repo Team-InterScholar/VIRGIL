@@ -1,0 +1,777 @@
+Using pre-set license
+Built from '2021.3/release' branch; Version is '2021.3.12f1 (8af3c3e441b1) revision 9106371'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22621) 64bit Core' Language: 'en' Physical Memory: 16225 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.3.12f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/gonza/VIRGIL/SUITS
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+58271
+Successfully changed project path to: C:/Users/gonza/VIRGIL/SUITS
+C:/Users/gonza/VIRGIL/SUITS
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 230.94 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.12f1 (8af3c3e441b1)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.12f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/gonza/VIRGIL/SUITS/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3070 (ID=0x2488)
+    Vendor:   NVIDIA
+    VRAM:     8032 MB
+    Driver:   31.0.15.2756
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.12f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.12f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.12f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56124
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.12f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.12f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
+Registered in 0.003336 seconds.
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 77.08 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.452 seconds
+Domain Reload Profiling:
+	ReloadAssembly (452ms)
+		BeginReloadAssembly (47ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (0ms)
+		EndReloadAssembly (339ms)
+			LoadAssemblies (46ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (62ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (16ms)
+			SetupLoadedEditorAssemblies (227ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (77ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (104ms)
+				ProcessInitializeOnLoadMethodAttributes (37ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.007353 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\gonza\VIRGIL\SUITS\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\gonza\VIRGIL\SUITS\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 118.92 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+[XR] [MROpenXR][Info   ][16:50:29.425704][tid:69f8] MeshProvider_RegisterLifecycleProvider
+[XR] [MROpenXR][Info   ][16:50:29.425745][tid:69f8] InputProvider_RegisterLifecycleProvider
+[XR] Error loading subsystem: Display (1) (header mismatch?)
+[XR] [MROpenXR][Info   ][16:50:29.427708][tid:69f8] OnPluginStarted UnityVersion=2021.3.12f1 OpenXRPluginVersion=1.6.0 MROpenXRPluginVersion=1.7.0.0 PartA_PrivTags=33554432
+Mono: successfully reloaded assembly
+- Completed reload, in  1.844 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1845ms)
+		BeginReloadAssembly (119ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (20ms)
+		EndReloadAssembly (1594ms)
+			LoadAssemblies (121ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (343ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (96ms)
+			SetupLoadedEditorAssemblies (972ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (119ms)
+				BeforeProcessingInitializeOnLoad (154ms)
+				ProcessInitializeOnLoadAttributes (608ms)
+				ProcessInitializeOnLoadMethodAttributes (77ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 1.12 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5730 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 54 unused Assets / (116.4 KB). Loaded Objects now: 6200.
+Memory consumption went from 196.0 MB to 195.9 MB.
+Total: 4.661400 ms (FindLiveObjects: 0.751300 ms CreateObjectMapping: 0.296100 ms MarkObjects: 3.474800 ms  DeleteObjects: 0.138000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 8020.950714 seconds.
+  path: Assets/UIcontrol.cs
+  artifactKey: Guid(cd5710204be3ff6418c4fe787f39d922) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UIcontrol.cs using Guid(cd5710204be3ff6418c4fe787f39d922) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd6b619b44f9cf19d41b3b7194f43d9f') in 0.023428 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.011573 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\gonza\VIRGIL\SUITS\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\gonza\VIRGIL\SUITS\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.20 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.396 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1396ms)
+		BeginReloadAssembly (167ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (46ms)
+		EndReloadAssembly (1122ms)
+			LoadAssemblies (131ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (333ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (52ms)
+			SetupLoadedEditorAssemblies (549ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (15ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (106ms)
+				ProcessInitializeOnLoadAttributes (392ms)
+				ProcessInitializeOnLoadMethodAttributes (31ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 3.34 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5680 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 44 unused Assets / (81.6 KB). Loaded Objects now: 6204.
+Memory consumption went from 192.8 MB to 192.7 MB.
+Total: 2.547600 ms (FindLiveObjects: 0.224100 ms CreateObjectMapping: 0.140000 ms MarkObjects: 2.109700 ms  DeleteObjects: 0.073100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1508.710994 seconds.
+  path: Assets/UIcontrol.cs
+  artifactKey: Guid(cd5710204be3ff6418c4fe787f39d922) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UIcontrol.cs using Guid(cd5710204be3ff6418c4fe787f39d922) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57795f2dc841cf326724e583f3eb8d18') in 0.006708 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 177.973303 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/BoundsControl/Scenes/BoundsControlConfigs/CoffeeCupTranslateHandlesConfiguration.asset
+  artifactKey: Guid(fe5a4765d0bf1eb4080d8383440eb2fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/BoundsControl/Scenes/BoundsControlConfigs/CoffeeCupTranslateHandlesConfiguration.asset using Guid(fe5a4765d0bf1eb4080d8383440eb2fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9dc1200e039343ca2a4ae38c96583a15') in 0.034474 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.621834 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/General/Prefabs/EyeTrackingDemos SceneDescriptionPanel.prefab
+  artifactKey: Guid(427730042d0a7ac41b1d81947f081754) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/General/Prefabs/EyeTrackingDemos SceneDescriptionPanel.prefab using Guid(427730042d0a7ac41b1d81947f081754) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07f5eceec50c7cc1226a40341b0528ff') in 0.167822 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.109722 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/ManipulationHandler/Scripts
+  artifactKey: Guid(3db9fd4a85c8adc488799daf7aacdf8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/ManipulationHandler/Scripts using Guid(3db9fd4a85c8adc488799daf7aacdf8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a972da20bf82e4e3bc9f40487a0bcc41') in 0.005057 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.652965 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/ManipulationHandler/Scripts/ChangeManipulation.cs
+  artifactKey: Guid(4fc9d60754a48fd45ac88fbe3069b4d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/ManipulationHandler/Scripts/ChangeManipulation.cs using Guid(4fc9d60754a48fd45ac88fbe3069b4d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9875fb25b2ae43c4c30b55517e64a7e0') in 0.003816 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 16.249935 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Audio/Scripts
+  artifactKey: Guid(fcde404a8fc03234090d7c26d9368e32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Audio/Scripts using Guid(fcde404a8fc03234090d7c26d9368e32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6eb890b8d2bcfbc1233fb6d058bfd98') in 0.001880 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.801124 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - Elastic/Scripts
+  artifactKey: Guid(8a33f7a1a74c3624c97b373e9e27e8d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - Elastic/Scripts using Guid(8a33f7a1a74c3624c97b373e9e27e8d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae8a97b678c408c373ef92de9b741886') in 0.001439 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.709626 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/Slider/Scripts
+  artifactKey: Guid(fd82b7769f295784fbf157c9b9fa3e11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/Slider/Scripts using Guid(fd82b7769f295784fbf157c9b9fa3e11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb4db2eb344cee9f2469e43c560224dd') in 0.001515 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.550633 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/ProgressIndicator/Scripts
+  artifactKey: Guid(542913a3c1839d249b5bdca538622005) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/ProgressIndicator/Scripts using Guid(542913a3c1839d249b5bdca538622005) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d60d6d28fa7eca774407a8b9e6eb3a0') in 0.002748 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.568361 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/ObjectManipulator/Scripts
+  artifactKey: Guid(fbe5c79ec2ea7aa4a9d145c95274f213) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/ObjectManipulator/Scripts using Guid(fbe5c79ec2ea7aa4a9d145c95274f213) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '065ad267d6a0d7fb202afb9c5a1e68ae') in 0.001653 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.654799 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/Interactables/Scripts
+  artifactKey: Guid(48763110db2106140b1896b7cbf0013c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/Interactables/Scripts using Guid(48763110db2106140b1896b7cbf0013c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3140b6f39453b70024adcafe477d43b') in 0.003621 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.901935 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/Dialog/Scripts
+  artifactKey: Guid(e11956baf696a8440bd3c3ab7c899e15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/Dialog/Scripts using Guid(e11956baf696a8440bd3c3ab7c899e15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d93af59513e2f1a1e78e25d1f759762') in 0.001796 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.679017 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/Collections/Scripts
+  artifactKey: Guid(b936cfcdfca2ddc418f68c728b05f698) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/Collections/Scripts using Guid(b936cfcdfca2ddc418f68c728b05f698) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5ad1159ecef595cbf5a6338e3f6eae6') in 0.001481 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.670946 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/BoundsControl/Scripts
+  artifactKey: Guid(a4700d184c1f0a243bb27f09aef93e24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/BoundsControl/Scripts using Guid(a4700d184c1f0a243bb27f09aef93e24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '880d86667ee5864f09a35205737acb97') in 0.001674 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.522025 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/BoundingBox/Scripts
+  artifactKey: Guid(5f28cc47fc2db974fb354b414c149d78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/BoundingBox/Scripts using Guid(5f28cc47fc2db974fb354b414c149d78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a0be17e1efc665d05d6082912cc4974') in 0.002791 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.726622 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/General/Scripts
+  artifactKey: Guid(2fc35055cce04224faf4f032d0372fb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/General/Scripts using Guid(2fc35055cce04224faf4f032d0372fb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6a3c7796a1d2ea3b19de86e66a3e4f5') in 0.001691 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.641230 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Gltf/Scripts
+  artifactKey: Guid(8126ef6c14cd6a64b8cad1b0eb3dd9cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Gltf/Scripts using Guid(8126ef6c14cd6a64b8cad1b0eb3dd9cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71da554e2663927fbc20ba12007a8c98') in 0.001488 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.520311 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - PulseShader/Scripts
+  artifactKey: Guid(345b8807641f4544489300303d179dac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - PulseShader/Scripts using Guid(345b8807641f4544489300303d179dac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b64a3631fffa262a029026374d40b170') in 0.002853 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.094314 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - ReadingMode/Scripts
+  artifactKey: Guid(b3082fe8f7ace4049b9bb2bdbe5b7259) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - ReadingMode/Scripts using Guid(b3082fe8f7ace4049b9bb2bdbe5b7259) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8bba06994510a52610a7fb615b901ff') in 0.001538 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.671336 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - ScrollingObjectCollection/Scripts
+  artifactKey: Guid(4adb4ac47e55e144e9d269cb520e0ad4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - ScrollingObjectCollection/Scripts using Guid(4adb4ac47e55e144e9d269cb520e0ad4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '255c4bc3cc4149f1bd303dfdfd4eba37') in 0.002779 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.602853 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Solvers/Scripts
+  artifactKey: Guid(f773731e26a57e243b391a0f6a6cb025) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Solvers/Scripts using Guid(f773731e26a57e243b391a0f6a6cb025) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '187662980713df85affeb00a063cf7e7') in 0.001597 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.723966 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - SpatialAwareness/Scripts
+  artifactKey: Guid(3e4a644f9e269de46b7d538733e4e534) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - SpatialAwareness/Scripts using Guid(3e4a644f9e269de46b7d538733e4e534) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35e444a3a69f2471c4c5a1e16960c90e') in 0.002903 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.615964 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - StandardShader/Scripts
+  artifactKey: Guid(c7bc57de8a1542639e3182c3f14b45fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - StandardShader/Scripts using Guid(c7bc57de8a1542639e3182c3f14b45fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a55d085e1ba16dbccc6ec936d66ab7e9') in 0.001774 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.546634 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Utilities/InspectorFields/Scripts
+  artifactKey: Guid(252193e3c0ce07d469e54ec5f0693509) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Utilities/InspectorFields/Scripts using Guid(252193e3c0ce07d469e54ec5f0693509) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27e647e6a11a76407bd58916db385310') in 0.001396 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.493211 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Utilities/Scripts
+  artifactKey: Guid(ed9155c63b541184f93858f13a055352) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Utilities/Scripts using Guid(ed9155c63b541184f93858f13a055352) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4fc6d584c38343828891a21841c896a2') in 0.001468 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.656691 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoVisualizer/Scripts
+  artifactKey: Guid(b1f6fde373ea2dd4db1686b0f6bb5797) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoVisualizer/Scripts using Guid(b1f6fde373ea2dd4db1686b0f6bb5797) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3b3d385237c37f4605e224cc9710c05') in 0.002641 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.461744 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetSelections/Scripts
+  artifactKey: Guid(9337d46674d718e48955b2b91327c776) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetSelections/Scripts using Guid(9337d46674d718e48955b2b91327c776) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33b16b2534edd957ddaa81837aaa8d38') in 0.003403 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.478955 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Scripts
+  artifactKey: Guid(be969b3a9cdb72143b7d306f4f76be16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Scripts using Guid(be969b3a9cdb72143b7d306f4f76be16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d69d732c9c36bda50776c198a476a31') in 0.003198 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.455011 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoScrollPanZoom/Scripts
+  artifactKey: Guid(c88e272a619ad4449b39534b0912aff1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoScrollPanZoom/Scripts using Guid(c88e272a619ad4449b39534b0912aff1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1969fb3966719e9031a3a9d0073e0019') in 0.002025 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.568948 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoBasicSetup/Scripts
+  artifactKey: Guid(d64d667b1311592479f863d5caa12c0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoBasicSetup/Scripts using Guid(d64d667b1311592479f863d5caa12c0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd782e01d3017bcb46045952afe7ac6c4') in 0.001818 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.448860 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Boundary/Scripts
+  artifactKey: Guid(e75d2899f125438cb16d76f90a99d03f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Boundary/Scripts using Guid(e75d2899f125438cb16d76f90a99d03f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e5937dad7e324e26d8640cd2a4eb345') in 0.001557 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.213356 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoBasicSetup/Scripts/FollowEyeGazeGazeProvider.cs
+  artifactKey: Guid(d28a62c7a69a49546a4740215e90d289) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoBasicSetup/Scripts/FollowEyeGazeGazeProvider.cs using Guid(d28a62c7a69a49546a4740215e90d289) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '241b4e919796ed593ca4d6102553ca14') in 0.005772 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.686987 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoBasicSetup/Scripts/ColorTap.cs
+  artifactKey: Guid(855d3e1019018ec47b435cc812e1fbf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoBasicSetup/Scripts/ColorTap.cs using Guid(855d3e1019018ec47b435cc812e1fbf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a49b1fcf9409f0c4fb4f65937d10709') in 0.005136 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 12.902776 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Gltf/Models/Avocado/glTF/AvocadoCustomAttr.gltf
+  artifactKey: Guid(fea29429b97dbb14b97820f56c74060a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Gltf/Models/Avocado/glTF/AvocadoCustomAttr.gltf using Guid(fea29429b97dbb14b97820f56c74060a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c68f2a28a5b1684858d3a682de7d5dc3') in 0.179420 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenu_AppButton_Backplate_Yellow.mat
+  artifactKey: Guid(bde14142822798a4bb84445f490c6b99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenu_AppButton_Backplate_Yellow.mat using Guid(bde14142822798a4bb84445f490c6b99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18f3af4a4e67e911b43d97b8e4aa8ba0') in 0.061338 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/ButtonBox_BodyFace_mat.mat
+  artifactKey: Guid(e7d28a0975ff4514ca98304c59eca8c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/ButtonBox_BodyFace_mat.mat using Guid(e7d28a0975ff4514ca98304c59eca8c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd78b0f95557baa9d42f442a6771efb1b') in 0.069075 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenuIcon_3x1.mat
+  artifactKey: Guid(5c96e89a2be098b4daa2f326b845abe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenuIcon_3x1.mat using Guid(5c96e89a2be098b4daa2f326b845abe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e404c348eb5bc989931740dcc6d71a4') in 0.020112 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Packages/com.microsoft.mixedreality.toolkit.foundation/SDK/Features/UX/Materials/HandJoint.mat
+  artifactKey: Guid(ebb63c2ee13723441a43c91c9dad413b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.microsoft.mixedreality.toolkit.foundation/SDK/Features/UX/Materials/HandJoint.mat using Guid(ebb63c2ee13723441a43c91c9dad413b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5fff63c0066e7981dd35c67cfa3aaca') in 0.055850 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenuIcon_3x1_Circles.mat
+  artifactKey: Guid(69c05afc3438a35418a58af01704459a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenuIcon_3x1_Circles.mat using Guid(69c05afc3438a35418a58af01704459a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fdc88c6c61c9b1e4177593feb4b4baa7') in 0.021850 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - ColorPicker/Materials/ColorPickerGradientMaterial.mat
+  artifactKey: Guid(7e8562d13e45e544ca995af33b328a65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - ColorPicker/Materials/ColorPickerGradientMaterial.mat using Guid(7e8562d13e45e544ca995af33b328a65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae3485c4bf1405177ffdc1dc54add9ab') in 0.055091 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenu_ToggleDialog_Backplate.mat
+  artifactKey: Guid(d651560065342e7428323566471461f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenu_ToggleDialog_Backplate.mat using Guid(d651560065342e7428323566471461f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b56aba49a1e5e930f68551b3bb4a2674') in 0.059847 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Gltf/Models/Cube/GLB/cube-with-custom-attr.glb
+  artifactKey: Guid(f0bb9fb635c69be4e8526b0fb6b48f39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Gltf/Models/Cube/GLB/cube-with-custom-attr.glb using Guid(f0bb9fb635c69be4e8526b0fb6b48f39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82a06148573af5b746b8533b0f1d60f2') in 0.026954 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenu_Backplate_Circle.mat
+  artifactKey: Guid(e5b19f436fa946c4cb83869ff5c08dd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenu_Backplate_Circle.mat using Guid(e5b19f436fa946c4cb83869ff5c08dd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08472c5faf47f499cdef951204f4d0b8') in 0.014273 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.483527 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Models/Circle.fbx
+  artifactKey: Guid(979fb0c21a0dd1047824f2ce933e4f26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Models/Circle.fbx using Guid(979fb0c21a0dd1047824f2ce933e4f26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a61321f8aefea0e63a2d22c19f3a89e4') in 0.030477 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Models/CompressableCylinderVisuals.fbx
+  artifactKey: Guid(5210fb7962c4a0c418e7939db6ef7f51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Models/CompressableCylinderVisuals.fbx using Guid(5210fb7962c4a0c418e7939db6ef7f51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1dc6b248ea8e7cf174dfb627a891b75') in 0.032340 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.739143 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/Interactables/Prefabs/balloon.prefab
+  artifactKey: Guid(0ceaaf28e492a284fbf57901d04075ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - UX/Interactables/Prefabs/balloon.prefab using Guid(0ceaaf28e492a284fbf57901d04075ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c35c378cbc1ffdb2f76468f8e33e3144') in 0.049957 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - ColorPicker/Prefabs/ColorPickerPrefab.prefab
+  artifactKey: Guid(e96124284fc8b4c478ce38f89e1e0ef3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - ColorPicker/Prefabs/ColorPickerPrefab.prefab using Guid(e96124284fc8b4c478ce38f89e1e0ef3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5243858fb6edadb4b59d4ff32b9b8330') in 0.520947 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Packages/com.microsoft.mixedreality.toolkit.examples/Common/Prefabs/HandMenu_Large_AutoWorldLock_On_HandDrop.prefab
+  artifactKey: Guid(2b76ccb8a4504484e939444d20d98d95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.microsoft.mixedreality.toolkit.examples/Common/Prefabs/HandMenu_Large_AutoWorldLock_On_HandDrop.prefab using Guid(2b76ccb8a4504484e939444d20d98d95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2dfea738f6a83a2a5b666273e428a97e') in 0.091766 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Prefabs/EyeTrackingDemoSliderHorizontal.prefab
+  artifactKey: Guid(71b8b2acb3a8f344abf91c2b102b0d74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Prefabs/EyeTrackingDemoSliderHorizontal.prefab using Guid(71b8b2acb3a8f344abf91c2b102b0d74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '483ba86d7a095f0847ff9df19ac6c4f4') in 0.191799 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Packages/com.microsoft.mixedreality.toolkit.foundation/SDK/Features/UX/Prefabs/Hands/HandJointSphere.prefab
+  artifactKey: Guid(b37dde41a983d664c8a09a91313733e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.microsoft.mixedreality.toolkit.foundation/SDK/Features/UX/Prefabs/Hands/HandJointSphere.prefab using Guid(b37dde41a983d664c8a09a91313733e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba40ba194df3ea48cd1409b6a6cbb83f') in 0.018632 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/General/Prefabs/EyeTrackingDemos ManagerComponents.prefab
+  artifactKey: Guid(fda837e43ea42874b8a9941a5968b1d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/General/Prefabs/EyeTrackingDemos ManagerComponents.prefab using Guid(fda837e43ea42874b8a9941a5968b1d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6bb2850257d03cfb28d59d1b1822d9a') in 0.647988 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.006961 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\gonza\VIRGIL\SUITS\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\gonza\VIRGIL\SUITS\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.12 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.950 seconds
+Domain Reload Profiling:
+	ReloadAssembly (951ms)
+		BeginReloadAssembly (113ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (42ms)
+		EndReloadAssembly (772ms)
+			LoadAssemblies (74ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (225ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (374ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (13ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (76ms)
+				ProcessInitializeOnLoadAttributes (245ms)
+				ProcessInitializeOnLoadMethodAttributes (33ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 4.83 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5680 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 48 unused Assets / (83.5 KB). Loaded Objects now: 6266.
+Memory consumption went from 198.5 MB to 198.5 MB.
+Total: 3.771000 ms (FindLiveObjects: 0.256400 ms CreateObjectMapping: 0.155300 ms MarkObjects: 3.248100 ms  DeleteObjects: 0.110400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 160.942824 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenuIcon_3x4.mat
+  artifactKey: Guid(e3876a0ad619a9d4e9ed117f8b21d830) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenuIcon_3x4.mat using Guid(e3876a0ad619a9d4e9ed117f8b21d830) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b16001246b3faaf3f5c2af80f4879c73') in 0.090391 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetSelections/Materials/mat_Bucky.mat
+  artifactKey: Guid(1d228f8f2f35c534db02501de980867f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetSelections/Materials/mat_Bucky.mat using Guid(1d228f8f2f35c534db02501de980867f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01acf0e26209f102d8ebf775f9e04371') in 0.014846 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat
+  artifactKey: Guid(79459efec17a4d00a321bdcc27bbc385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat using Guid(79459efec17a4d00a321bdcc27bbc385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03a3b049f21826ee9f74a486314d497a') in 0.056928 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetSelections/Materials/mat_notification_box_5x1.mat
+  artifactKey: Guid(7aae483986b236848bb7fdfd39f6dcb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetSelections/Materials/mat_notification_box_5x1.mat using Guid(7aae483986b236848bb7fdfd39f6dcb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e5ec69ac6e0479e7d37310ad8089dba') in 0.010383 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - ScrollingObjectCollection/Materials/HolographicBackPlateNoBorder_Light_Blue.mat
+  artifactKey: Guid(c0e93915e1830654bbe2550ab932521a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - ScrollingObjectCollection/Materials/HolographicBackPlateNoBorder_Light_Blue.mat using Guid(c0e93915e1830654bbe2550ab932521a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '433e3329739b5085d10d6c6294ed6a57') in 0.045187 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_destination_yellow.mat
+  artifactKey: Guid(bb52edcbcd922ff4a9fb372e0feea9f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_destination_yellow.mat using Guid(bb52edcbcd922ff4a9fb372e0feea9f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15e74bb649acde70ef31359b8ea32812') in 0.015105 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/General/Materials/mat_dwellfeedback_border1.mat
+  artifactKey: Guid(236aeed5f8a4aca448fbdc326c31b463) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/General/Materials/mat_dwellfeedback_border1.mat using Guid(236aeed5f8a4aca448fbdc326c31b463) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae070b3d3452918a561ac37044dde5de') in 0.045751 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Input/Scenes/InputData/InputRaysFloor.mat
+  artifactKey: Guid(5ad51b8ac2de33043aa6ff081b1d1617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Input/Scenes/InputData/InputRaysFloor.mat using Guid(5ad51b8ac2de33043aa6ff081b1d1617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a43952eead81ba992f80ef1b697327f') in 0.064512 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoVisualizer/Materials/mat_icon_StopRecording.mat
+  artifactKey: Guid(b64a871da270e564b880912e0bd13af2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoVisualizer/Materials/mat_icon_StopRecording.mat using Guid(b64a871da270e564b880912e0bd13af2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9ce5dadbdbbc238ceeb2151531f9610') in 0.055763 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/General/Materials/mat_speechFeedback.mat
+  artifactKey: Guid(206cb90184f0d6142a22be1d6a0ca423) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/General/Materials/mat_speechFeedback.mat using Guid(206cb90184f0d6142a22be1d6a0ca423) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b3323f1d3fba5c0c096123bf33067e7') in 0.010690 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetSelections/Materials/mat_mrtk_boxtile.mat
+  artifactKey: Guid(cd35c4686ea94d34aad221c809f9eedb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetSelections/Materials/mat_mrtk_boxtile.mat using Guid(cd35c4686ea94d34aad221c809f9eedb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f98bf080dba505bcbe6a402237309e9c') in 0.022254 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
+  artifactKey: Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset using Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e2f4ec9ea0a9577d83b88fe1cee6149') in 0.038895 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoScrollPanZoom/Materials/mat_SlateFrame.mat
+  artifactKey: Guid(bac739e2e76617440995bf17ccb956a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoScrollPanZoom/Materials/mat_SlateFrame.mat using Guid(bac739e2e76617440995bf17ccb956a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea20aa333789d472c14f4f00c163650c') in 0.048326 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_destination_purple.mat
+  artifactKey: Guid(6777deb19f1a46c4f984173fb416441d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_destination_purple.mat using Guid(6777deb19f1a46c4f984173fb416441d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef00b2633b8e300a2c0b121c5f7e45af') in 0.015317 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_target_blue.mat
+  artifactKey: Guid(1c64b61b7b4be364388b9a68c13ffa43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_target_blue.mat using Guid(1c64b61b7b4be364388b9a68c13ffa43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b8cc25731c66f031e2f9ca187fff780') in 0.079141 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoVisualizer/Materials/mat_SlateFrame.mat
+  artifactKey: Guid(a1e5ee4073921ea46bf905f161b85cb0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoVisualizer/Materials/mat_SlateFrame.mat using Guid(a1e5ee4073921ea46bf905f161b85cb0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '857183479d7146258a0c9e1a1276ed9a') in 0.006023 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_sliderbar_markers.mat
+  artifactKey: Guid(da77f2e15faa31a4991b967fe99736af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_sliderbar_markers.mat using Guid(da77f2e15faa31a4991b967fe99736af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a17f9e88707ebb8263eab06fc5fbf456') in 0.010106 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_sliderknob.mat
+  artifactKey: Guid(7159abf2cff69ed45a1611036ff502c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_sliderknob.mat using Guid(7159abf2cff69ed45a1611036ff502c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9de248f29e15fb85934e7473fe2ff9f9') in 0.010696 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenuIcon_4x1.mat
+  artifactKey: Guid(9ff2d24666a1b6448a4816e92be49297) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenuIcon_4x1.mat using Guid(9ff2d24666a1b6448a4816e92be49297) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5dc2e30a1684d6ffcdecdc20ad177ba9') in 0.019310 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoVisualizer/Materials/mat_icon_PauseReplay.mat
+  artifactKey: Guid(5827ffebbe7432b4ca4446f36bc72632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoVisualizer/Materials/mat_icon_PauseReplay.mat using Guid(5827ffebbe7432b4ca4446f36bc72632) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abe6a8769ebc7c5cc23e3b742ef17d7d') in 0.020508 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_start_location.mat
+  artifactKey: Guid(738428e7590afe14ab1e14c74a88d10d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_start_location.mat using Guid(738428e7590afe14ab1e14c74a88d10d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1336795515063080296ef5a5e45995ff') in 0.014622 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_target_purple.mat
+  artifactKey: Guid(0229bab55e45fe34e80e5cdfec5d2135) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_target_purple.mat using Guid(0229bab55e45fe34e80e5cdfec5d2135) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d1bfcc14cdffcff7ce6c082547b988d') in 0.015100 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/General/Materials/mat_dwellfeedback_border2.mat
+  artifactKey: Guid(21676be9f95b1944ba2fd39a8b8ab496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/General/Materials/mat_dwellfeedback_border2.mat using Guid(21676be9f95b1944ba2fd39a8b8ab496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bef8a7cd44bd1a6e155ae338d3f71d30') in 0.014264 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoVisualizer/Materials/mat_hololens2_02.mat
+  artifactKey: Guid(8cd4f9d5635986e41888819ed22286f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoVisualizer/Materials/mat_hololens2_02.mat using Guid(8cd4f9d5635986e41888819ed22286f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f2359a71b97f3ebcbf829274ba8f5e4') in 0.020663 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_destination_blue.mat
+  artifactKey: Guid(fd8df92ac53acaf4a9c3d142c6f90530) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_destination_blue.mat using Guid(fd8df92ac53acaf4a9c3d142c6f90530) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcd3aa4c936f86f4ab5459881cefd2f8') in 0.045898 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_sliderbar.mat
+  artifactKey: Guid(44b45fde681a5e44083cff10e0b3cd92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetPositioning/Materials/mat_sliderbar.mat using Guid(44b45fde681a5e44083cff10e0b3cd92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '804d85a30a534655767cbcd6bfe578d9') in 0.008899 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoScrollPanZoom/Materials/mat_PanAndZoom_text.mat
+  artifactKey: Guid(f6b68db0c211a3647a1a1fc294ef9082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoScrollPanZoom/Materials/mat_PanAndZoom_text.mat using Guid(f6b68db0c211a3647a1a1fc294ef9082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b06298b638c6c61f707af208297e9258') in 0.032436 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenuIcon_3x6.mat
+  artifactKey: Guid(6362701088f18d145badc467367785e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenuIcon_3x6.mat using Guid(6362701088f18d145badc467367785e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0fa0c1c3a572e713e67bc7614c84e06') in 0.016787 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenuIcon_Placeholder.mat
+  artifactKey: Guid(4d003936b535e82449c586474be12937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Experimental - HandMenuLayout/Materials/HandMenuIcon_Placeholder.mat using Guid(4d003936b535e82449c586474be12937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87c07fb9fe1294e7da3dd60e68f15672') in 0.019820 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetSelections/Materials/mat_rotationSphere.mat
+  artifactKey: Guid(8b2504c39481f0042b2c8bf5acbbef5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - EyeTracking/DemoTargetSelections/Materials/mat_rotationSphere.mat using Guid(8b2504c39481f0042b2c8bf5acbbef5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e3703bc86504254b0a9f64763a1db7a') in 0.030158 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
