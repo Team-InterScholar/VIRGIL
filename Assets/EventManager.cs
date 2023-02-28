@@ -8,25 +8,61 @@ public class EventManager : MonoBehaviour
     public static event Action CalibrationEvent1;
     public static event Action CalibrationEvent2;
 
-    bool passedCal1 = false;
 
+    private void Start()
+    {
+        print("Welcome to VIRGIL! To begin, let's make sure the VISIONkit is working");
+        StartCoroutine(doCalibration());
+    }
     private void Update()
     {
-        if(Input.GetMouseButtonDown(1))
+
+    }
+
+    private IEnumerator doCalibration()
+    {
+        bool passedCal1 = false;
+
+
+        yield return new WaitForSeconds(3);
+        print("Starting Calibration");
+        yield return new WaitForSeconds(3);
+        print("Please right click to continue ");
+        while(Input.GetMouseButtonDown(1) != true)
         {
-            if (passedCal1 == false)
+            Input.GetMouseButtonDown(1);
+            yield return null;
+        }
+
+        if (CalibrationEvent1 != null)
+        {
+            CalibrationEvent1();
+            bool sentinel = false;
+            while( sentinel == false)
             {
-                passedCal1 = true;
-                if (CalibrationEvent1 != null)
-                    CalibrationEvent1();
+                sentinel = FindObjectOfType<Calibration>().getBool1();
+                yield return null;
             }
-            else
+            passedCal1 = true;
+        }
+        yield return new WaitForSeconds(3);
+        if (passedCal1 == true)
+        {
+            if(CalibrationEvent2 != null)
             {
-                if (CalibrationEvent2 != null)
-                    CalibrationEvent2();
+                CalibrationEvent2();
+                bool sentinel = false;
+                while (sentinel == false)
+                {
+                    sentinel = FindObjectOfType<Calibration>().getBool2();
+                    yield return null;
+                }
             }
         }
+        yield return new WaitForSeconds(3);
+        print("Calibration completed!");
     }
+
 
 
 }

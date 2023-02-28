@@ -32,6 +32,8 @@ public class Calibration : MonoBehaviour
     Vector3 currentPosition;
     float initialAngleY;
     float currentAngleY;
+    bool sentinel1;
+    bool sentinel2;
     void Start()
     {
         // Add the Instruction functions as events in 
@@ -44,13 +46,14 @@ public class Calibration : MonoBehaviour
     // the screen and then execute data verification.
     private void Instruction1()
     {
-        StartCoroutine(showInstructions1());
+        sentinel1 = false;
+        Debug.Log("Please move 1 meter forward");
         StartCoroutine(calibration1());
     }
 
     private void Instruction2()
     {
-        StartCoroutine(showInstructions2());
+        Debug.Log("Please look 90 degrees to your right");
         StartCoroutine(calibration2());
     }
 
@@ -65,10 +68,19 @@ public class Calibration : MonoBehaviour
             currentPosition.x = FindObjectOfType<TelemetryStream>().getCurrentPosition().x;
             yield return null;
         }
+        sentinel1 = true;
         Debug.Log("One meter walked. Thank you!");
-        yield return new WaitForSeconds(3);
-        Debug.Log("Please right click for further instructions!");
     }
+
+    public bool getBool1()
+    {
+        return sentinel1;
+    }
+    public bool getBool2()
+    {
+        return sentinel2;
+    }
+
 
     IEnumerator calibration2()
     {
@@ -77,24 +89,11 @@ public class Calibration : MonoBehaviour
         currentAngleY = FindObjectOfType<TelemetryStream>().getCurrentAngleY();
         while (currentAngleY < goalAngle)
         {
+            currentAngleY = FindObjectOfType<TelemetryStream>().getCurrentAngleY();
             yield return null;
         }
+        sentinel2 = true;
         Debug.Log("Looked 90 degrees to the right. Thank you!");
   
-    }
-
-    IEnumerator showInstructions1()
-    {
-        Debug.Log("Starting Calibration!");
-        yield return new WaitForSeconds(3);
-        Debug.Log("Welcome to VIRGIL! To begin, let's calibrate the VISIONkit!");
-        yield return new WaitForSeconds(5);
-        Debug.Log("Please move 1 meter forward");
-    }
-
-    IEnumerator showInstructions2()
-    {
-        yield return new WaitForSeconds(3);
-        Debug.Log("Please look 90 degrees to your right");
     }
 }
