@@ -8,16 +8,7 @@ public class TelemetryStream : MonoBehaviour
     private Vector3 initialPosition;
     private float currentAngleY;
     private float initialAngleY;
-    void Start()
-    {
-        
-    }
 
-
-    void Update()
-    {
-        
-    }
 
     public float getInitialAngleY()
     {

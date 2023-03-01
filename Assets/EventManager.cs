@@ -7,16 +7,35 @@ public class EventManager : MonoBehaviour
 {
     public static event Action CalibrationEvent1;
     public static event Action CalibrationEvent2;
+    public static event Action EVAEvent;
 
 
     private void Start()
     {
-        print("Welcome to VIRGIL! To begin, let's make sure the VISIONkit is working");
-        StartCoroutine(doCalibration());
+        //print("Welcome to VIRGIL! To begin, let's make sure the VISIONkit is working");
+        //StartCoroutine(doCalibration());
+        StartCoroutine(doEVACard());
     }
     private void Update()
     {
 
+    }
+
+    private IEnumerator doEVACard()
+    {
+        while(true)
+        {
+            while (Input.GetMouseButtonDown(1) != true)
+            {
+
+                yield return null;
+            }
+            if (EVAEvent != null)
+            {
+                EVAEvent();
+            }
+            yield return null;
+        }
     }
 
     private IEnumerator doCalibration()
