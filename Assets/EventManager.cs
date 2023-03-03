@@ -14,18 +14,38 @@ public class EventManager : MonoBehaviour
     {
         //print("Welcome to VIRGIL! To begin, let's make sure the VISIONkit is working");
         //StartCoroutine(doCalibration());
+        StartCoroutine(lockCursor());
         StartCoroutine(doEVACard());
     }
     private void Update()
     {
+    }
 
+    private IEnumerator lockCursor()
+    {
+        while (true)
+        {
+            if (Input.GetKeyUp(KeyCode.Mouse1))
+            {
+                Cursor.visible = !Cursor.visible;
+                if (Cursor.lockState == CursorLockMode.Locked)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                }
+                else
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
+            }
+            yield return null;
+        }
     }
 
     private IEnumerator doEVACard()
     {
         while(true)
         {
-            while (Input.GetMouseButtonDown(1) != true)
+            while (Input.GetKeyUp("space") != true)
             {
 
                 yield return null;

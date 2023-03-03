@@ -17,10 +17,6 @@ public class Card_EVA : MonoBehaviour
 
     private void Update()
     {
-        if (isCardOpen == true)
-        {
-            print("EVA CARD is open");
-        }
     }
 
 
@@ -37,5 +33,13 @@ public class Card_EVA : MonoBehaviour
     void Test()
     {
         isCardOpen = !isCardOpen;
+        if(isCardOpen == true)
+        {
+            print("EVA Card is Open");
+        }
+        else
+        {
+            print("EVA Card is closed");
+        }
     }
 }
