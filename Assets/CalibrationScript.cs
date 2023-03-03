@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TestScript : MonoBehaviour
+public class CalibrationScript : MonoBehaviour
 {
     public TextMeshProUGUI myLabel;
     private int number;
