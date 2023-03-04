@@ -440,8 +440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myLabel: {fileID: 1381677440}
-  canvas: {fileID: 0}
-  button: {fileID: 0}
+  button: {fileID: 1259249618331101560, guid: 6241de324744e564d9ea95eb3e765c4e, type: 3}
+  canvas: {fileID: 1494366068}
 --- !u!114 &380261749
 MonoBehaviour:
   m_ObjectHideFlags: 0
