@@ -6,7 +6,7 @@
         "hash": "42f661a9fb5b",
         "mtime": 1674335727991,
         "size": 55195848,
-        "localPath": "C:\\Users\\gonza\\VIRGILtest\\SUITS\\Packages\\MixedReality\\com.microsoft.mixedreality.toolkit.examples-2.8.3.tgz"
+        "localPath": "C:\\Users\\gonza\\VirgilAR\\VIRGIL\\suitsUnityProject\\Packages\\MixedReality\\com.microsoft.mixedreality.toolkit.examples-2.8.3.tgz"
       }
     },
     "com.microsoft.mixedreality.toolkit.extensions": {
@@ -14,7 +14,7 @@
         "hash": "84fe3e76e9b7",
         "mtime": 1674335723245,
         "size": 1131406,
-        "localPath": "C:\\Users\\gonza\\VIRGILtest\\SUITS\\Packages\\MixedReality\\com.microsoft.mixedreality.toolkit.extensions-2.8.3.tgz"
+        "localPath": "C:\\Users\\gonza\\VirgilAR\\VIRGIL\\suitsUnityProject\\Packages\\MixedReality\\com.microsoft.mixedreality.toolkit.extensions-2.8.3.tgz"
       }
     },
     "com.microsoft.mixedreality.toolkit.foundation": {
@@ -22,7 +22,7 @@
         "hash": "f2323a9b7aec",
         "mtime": 1674335725513,
         "size": 11691469,
-        "localPath": "C:\\Users\\gonza\\VIRGILtest\\SUITS\\Packages\\MixedReality\\com.microsoft.mixedreality.toolkit.foundation-2.8.3.tgz"
+        "localPath": "C:\\Users\\gonza\\VirgilAR\\VIRGIL\\suitsUnityProject\\Packages\\MixedReality\\com.microsoft.mixedreality.toolkit.foundation-2.8.3.tgz"
       }
     },
     "com.microsoft.mixedreality.toolkit.standardassets": {
@@ -30,7 +30,7 @@
         "hash": "aab256284dc6",
         "mtime": 1674335723352,
         "size": 5328617,
-        "localPath": "C:\\Users\\gonza\\VIRGILtest\\SUITS\\Packages\\MixedReality\\com.microsoft.mixedreality.toolkit.standardassets-2.8.3.tgz"
+        "localPath": "C:\\Users\\gonza\\VirgilAR\\VIRGIL\\suitsUnityProject\\Packages\\MixedReality\\com.microsoft.mixedreality.toolkit.standardassets-2.8.3.tgz"
       }
     },
     "com.microsoft.mixedreality.openxr": {
@@ -38,7 +38,7 @@
         "hash": "9a2b5b85553b",
         "mtime": 1674336788320,
         "size": 12029211,
-        "localPath": "C:\\Users\\gonza\\VIRGILtest\\SUITS\\Packages\\MixedReality\\com.microsoft.mixedreality.openxr-1.7.0.tgz"
+        "localPath": "C:\\Users\\gonza\\VirgilAR\\VIRGIL\\suitsUnityProject\\Packages\\MixedReality\\com.microsoft.mixedreality.openxr-1.7.0.tgz"
       }
     }
   }

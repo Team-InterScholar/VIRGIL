@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class ButtonBehaviour : MonoBehaviour
 {
-    int n;
+    public GameObject card;
+
     public void OnButtonPress() 
     {
-        n++;
-        Debug.Log("Button clicked " + n + " times.");
+        if (card.activeInHierarchy == true)
+            card.SetActive(false);
+        else
+            card.SetActive(true);
+
     }
 }
