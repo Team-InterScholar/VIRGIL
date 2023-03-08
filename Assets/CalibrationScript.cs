@@ -21,20 +21,21 @@ using UnityEngine;
  * may be replaced with Isaac's 
  * display.
  * 
- * 
- * 
+ * Script will be applied to a button
+ * object and reference a Text(TMP)
+ * object. 
  * 
 /*                               */
 /**********************************/
 public class CalibrationScript : MonoBehaviour
 {
-    public TextMeshProUGUI myLabel;
+    public TextMeshProUGUI myLabel; // Where I am putting program output
 
-    Vector3 initialPosition;
-    Vector3 currentPosition;
-    float initialAngleY;
-    float currentAngleY;
-    bool sentinel1;
+    Vector3 initialPosition; // ---------- 
+    Vector3 currentPosition; //  These 4 variables rely on my telemetry stream object
+    float initialAngleY;     //  They will need to be replaced
+    float currentAngleY;     // ----------  
+    bool sentinel1; 
     bool sentinel2;
     // Start is called before the first frame update
     void Start()
