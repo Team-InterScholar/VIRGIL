@@ -43,6 +43,27 @@ public class PlayerController : MonoBehaviour
         //  Hide and lock the mouse cursor
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        StartCoroutine(lockCursor());
+    }
+
+    private IEnumerator lockCursor()
+    {
+        while (true)
+        {
+            if (Input.GetKeyUp(KeyCode.Mouse1))
+            {
+                Cursor.visible = !Cursor.visible;
+                if (Cursor.lockState == CursorLockMode.Locked)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                }
+                else
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
+            }
+            yield return null;
+        }
     }
 
 
