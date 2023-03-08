@@ -2,11 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+/**********************************/
+/*       Calibration Script
+ * ********************************
+ * This script will ask the User to
+ * do two actions:
+ *   1. Walk 1 meter in the x 
+ *   direction.
+ *   
+ *   2. Look 90 degrees to 
+ *   the right.
+ *   
+ * The script will then retrieve 
+ * data from the telemetry stream
+ * to verify that VISION is working.
+ * 
+ * Any line with "myLabel.GetComponent<TextMeshProUGUI>().text " 
+ * may be replaced with Isaac's 
+ * display.
+ * 
+ * 
+ * 
+ * 
+/*                               */
+/**********************************/
 public class CalibrationScript : MonoBehaviour
 {
     public TextMeshProUGUI myLabel;
-    private int number;
 
     Vector3 initialPosition;
     Vector3 currentPosition;
@@ -32,7 +54,6 @@ public class CalibrationScript : MonoBehaviour
 
     private IEnumerator doCalibration()
     {
-        bool passedCal1 = false;
 
         myLabel.GetComponent<TextMeshProUGUI>().text = "Starting Calibration...";
         yield return new WaitForSeconds(3);
@@ -53,6 +74,7 @@ public class CalibrationScript : MonoBehaviour
 
         yield return new WaitForSeconds(3);
         myLabel.GetComponent<TextMeshProUGUI>().text = "Calibration completed!";
+        
     }
 
 

@@ -6,6 +6,7 @@ using UnityEngine;
 public class EVAScript : MonoBehaviour
 {
     public TextMeshProUGUI myLabel;
+    public GameObject EVAButton;
     public GameObject button;
     public GameObject canvas;
     private GameObject MissionObjectives;
@@ -15,6 +16,7 @@ public class EVAScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         myLabel.GetComponent<TextMeshProUGUI>().text = "";
 
         MissionObjectives = Instantiate(button) as GameObject;
@@ -34,8 +36,12 @@ public class EVAScript : MonoBehaviour
         SpectrometerData.transform.Translate(0.5f, -0.3f, 0.0f);
         SpectrometerData.GetComponentInChildren<TextMeshProUGUI>().text = "Spectrometer Data";
         SpectrometerData.SetActive(false);
+        
+    }
 
-
+    public void enableEVACARD()
+    {
+        EVAButton.SetActive(true);
     }
 
     public void ButtonPressed()
