@@ -31,6 +31,8 @@ public class CalibrationScript : MonoBehaviour
 {
     public TextMeshProUGUI myLabel; // Where I am putting program output
 
+    public GameObject calibrationButton;
+    public GameObject calibrationCanvas;
     Vector3 initialPosition; // ---------- 
     Vector3 currentPosition; //  These 4 variables rely on my telemetry stream object
     float initialAngleY;     //  They will need to be replaced
@@ -75,7 +77,12 @@ public class CalibrationScript : MonoBehaviour
 
         yield return new WaitForSeconds(3);
         myLabel.GetComponent<TextMeshProUGUI>().text = "Calibration completed!";
-        
+
+        yield return new WaitForSeconds(3);
+
+        calibrationButton.SetActive(false);
+        calibrationCanvas.SetActive(false);
+
     }
 
 
