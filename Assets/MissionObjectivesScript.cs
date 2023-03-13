@@ -8,19 +8,22 @@ using TMPro;
 
 public class MissionObjectivesScript : MonoBehaviour
 {
-    public GameObject importedButton;
     public TextMeshProUGUI EVALabel;
-    private Button button;
+    public GameObject EVALabel2;
+    //private Button button;
     private Dictionary<string, bool> missionObjectives;
+    public bool isShowing;
     // Start is called before the first frame update
     void Start()
     {
-        importedButton = FindObjectOfType<EVAScript>().giveMission();
-        print("TEST");
-        EVALabel = FindObjectOfType<EVAScript>().giveLabel();
-        button = importedButton.GetComponent<Button>();
+        isShowing = false;
 
-        button.onClick.AddListener(ButtonPressed);
+        //importedButton = FindObjectOfType<EVAScript>().giveMission();
+        //print("TEST");
+        //EVALabel = FindObjectOfType<EVAScript>().giveLabel();
+        //button = importedButton.GetComponent<Button>();
+
+        //button.onClick.AddListener(ButtonPressed);
         missionObjectives = new Dictionary<string, bool>();
         missionObjectives.Add("Calibration", false);
         missionObjectives.Add("Egress", false);
@@ -33,6 +36,10 @@ public class MissionObjectivesScript : MonoBehaviour
 
     public void ButtonPressed()
     {
+        isShowing = !isShowing;
+
+        EVALabel2.SetActive(isShowing);
+        
         EVALabel.GetComponent<TextMeshProUGUI>().text = "" +
             "Calibration: " + missionObjectives["Calibration"] + "\n" +
             "Egress: " + missionObjectives["Egress"] + "\n" +

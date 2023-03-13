@@ -9,9 +9,10 @@ public class EVAScript : MonoBehaviour
     public GameObject EVAButton;
     public GameObject button;
     public GameObject canvas;
-    private GameObject MissionObjectives;
-    private GameObject UIAStatus;
-    private GameObject SpectrometerData;
+
+    public GameObject MissionObjectivesButton;
+    public GameObject UIAStatusButton;
+    public GameObject SpectrometerDataButton;
 
     private Dictionary<string, bool> missionObjectives;
 
@@ -23,27 +24,9 @@ public class EVAScript : MonoBehaviour
         
         myLabel.GetComponent<TextMeshProUGUI>().text = "";
 
-        MissionObjectives = Instantiate(button) as GameObject;
-        MissionObjectives.transform.SetParent(canvas.transform, false);
-        MissionObjectives.transform.Translate(0.5f,0.1f, 0.0f);
-        MissionObjectives.GetComponentInChildren<TextMeshProUGUI>().text = "Mission Objectives";
-        MissionObjectives.AddComponent<MissionObjectivesScript>();
-        MissionObjectives.SetActive(false);
-
-
-
-        UIAStatus = Instantiate(button) as GameObject;
-        UIAStatus.transform.SetParent(canvas.transform, false);
-        UIAStatus.transform.Translate(0.5f, -0.1f, 0.0f);
-        UIAStatus.GetComponentInChildren<TextMeshProUGUI>().text = "UIA Status";
-        UIAStatus.SetActive(false);
-
-        SpectrometerData = Instantiate(button) as GameObject;
-        SpectrometerData.transform.SetParent(canvas.transform, false);
-        SpectrometerData.transform.Translate(0.5f, -0.3f, 0.0f);
-        SpectrometerData.GetComponentInChildren<TextMeshProUGUI>().text = "Spectrometer Data";
-        SpectrometerData.SetActive(false);
-
+        MissionObjectivesButton.SetActive(false);
+        UIAStatusButton.SetActive(false);
+        SpectrometerDataButton.SetActive(false);
 
 
     }
@@ -53,10 +36,6 @@ public class EVAScript : MonoBehaviour
     
     }
 
-    public GameObject giveMission()
-    {
-        return MissionObjectives;
-    }
 
     public TextMeshProUGUI giveLabel()
     {
@@ -72,9 +51,9 @@ public class EVAScript : MonoBehaviour
     {
         print(isShowing);
         isShowing = !isShowing;
-        MissionObjectives.SetActive(isShowing);
-        UIAStatus.SetActive(isShowing);
-        SpectrometerData.SetActive(isShowing);
+        MissionObjectivesButton.SetActive(isShowing);
+        UIAStatusButton.SetActive(isShowing);
+        SpectrometerDataButton.SetActive(isShowing);
         myLabel.enabled = isShowing;
 
     }
