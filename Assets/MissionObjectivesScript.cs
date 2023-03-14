@@ -9,21 +9,32 @@ using TMPro;
 public class MissionObjectivesScript : MonoBehaviour
 {
     public TextMeshProUGUI EVALabel;
-    public GameObject EVALabel2;
-    //private Button button;
+    public GameObject EVALabelGO;
     private Dictionary<string, bool> missionObjectives;
     public bool isShowing;
-    // Start is called before the first frame update
+
+    public GameObject CalibrationStatusGO;
+    public GameObject EgressStatusGO;
+    public GameObject SiteNavigationStatusGO;
+    public GameObject GeologicalScanningStatusGO;
+    public GameObject ROVERStatusGO;
+    public GameObject ReturnNavigationStatusGO;
+
+
+
     void Start()
     {
         isShowing = false;
 
-        //importedButton = FindObjectOfType<EVAScript>().giveMission();
-        //print("TEST");
-        //EVALabel = FindObjectOfType<EVAScript>().giveLabel();
-        //button = importedButton.GetComponent<Button>();
+        CalibrationStatusGO.transform.SetParent(transform);
 
-        //button.onClick.AddListener(ButtonPressed);
+        CalibrationStatusGO.SetActive(isShowing);
+        EgressStatusGO.SetActive(isShowing);
+        SiteNavigationStatusGO.SetActive(isShowing);
+        GeologicalScanningStatusGO.SetActive(isShowing);
+        ROVERStatusGO.SetActive(isShowing);
+        ReturnNavigationStatusGO.SetActive(isShowing);
+
         missionObjectives = new Dictionary<string, bool>();
         missionObjectives.Add("Calibration", false);
         missionObjectives.Add("Egress", false);
@@ -38,17 +49,15 @@ public class MissionObjectivesScript : MonoBehaviour
     {
         isShowing = !isShowing;
 
-        EVALabel2.SetActive(isShowing);
-        
-        EVALabel.GetComponent<TextMeshProUGUI>().text = "" +
-            "Calibration: " + missionObjectives["Calibration"] + "\n" +
-            "Egress: " + missionObjectives["Egress"] + "\n" +
-            "Site Navigation: " + missionObjectives["Site Navigation"] + "\n" +
-            "Geological Scanning: " + missionObjectives["Geological Scanning"] + "\n" +
-            "ROVER: " + missionObjectives["ROVER"] + "\n" +
-            "Return Navigation: " + missionObjectives["Return Navigation"] + "\n";
+        EVALabelGO.SetActive(isShowing);
+       
+        CalibrationStatusGO.SetActive(isShowing);
+        EgressStatusGO.SetActive(isShowing);
+        SiteNavigationStatusGO.SetActive(isShowing);
+        GeologicalScanningStatusGO.SetActive(isShowing);
+        ROVERStatusGO.SetActive(isShowing);
+        ReturnNavigationStatusGO.SetActive(isShowing);
 
-        print("test");
     }
 
 

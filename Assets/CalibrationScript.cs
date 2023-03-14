@@ -44,6 +44,8 @@ public class CalibrationScript : MonoBehaviour
     {
         myLabel.GetComponent<TextMeshProUGUI>().text = "Welcome to VIRGIL! To begin, " +
             "please press the button to start Calibration";
+        calibrationButton.SetActive(false);
+        calibrationCanvas.SetActive(false); 
     }
 
     public void ButtonPressed()
