@@ -52,6 +52,7 @@ public class ConnScript : MonoBehaviour
             if (telemMsg.GPS.Count > 0)
             {
                 gpsMsgBox.text = "GPS Msg: " + JsonUtility.ToJson(telemMsg.GPS[0], prettyPrint: true);
+                print(telemMsg.EVA[0].time);
             }
             else
             {
