@@ -46,9 +46,20 @@ public class MissionObjectivesObjectScript : MonoBehaviour
         FindObjectOfType<MissionObjectivesDataHolder>().toggleStatus(buttonGO, colorBool);
     }
 
-    private GameObject giveStatus()
+    private GameObject getObject()
     {
         return buttonGO;
     }
 
+    public void setColor(GameObject statusGameObject,  bool dataHolderBool)
+    {
+        if (dataHolderBool == true)
+        {
+            statusGameObject.GetComponent<Image>().color = Color.green;
+        }
+        else
+        {
+            statusGameObject.GetComponent<Image>().color = Color.red;
+        }
+    }
 }

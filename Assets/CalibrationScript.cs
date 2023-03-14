@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.XR.MagicLeap;
 /**********************************/
 /*       Calibration Script
  * ********************************
@@ -31,6 +33,7 @@ public class CalibrationScript : MonoBehaviour
 {
     public TextMeshProUGUI myLabel; // Where I am putting program output
 
+    public GameObject missionObjectCalibration; // so that i can change bools under the mission objectives element
     public GameObject calibrationButton;
     public GameObject calibrationCanvas;
     Vector3 initialPosition; // ---------- 
@@ -44,8 +47,8 @@ public class CalibrationScript : MonoBehaviour
     {
         myLabel.GetComponent<TextMeshProUGUI>().text = "Welcome to VIRGIL! To begin, " +
             "please press the button to start Calibration";
-        calibrationButton.SetActive(false);
-        calibrationCanvas.SetActive(false); 
+        //calibrationButton.SetActive(false);
+        //calibrationCanvas.SetActive(false); 
     }
 
     public void ButtonPressed()
@@ -61,14 +64,14 @@ public class CalibrationScript : MonoBehaviour
     {
 
         myLabel.GetComponent<TextMeshProUGUI>().text = "Starting Calibration...";
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         Instruction1();
         while(sentinel1 == false)
         {
             sentinel1 = getBool1();
             yield return null;
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         Instruction2();
         while (sentinel2 == false)
         {
@@ -77,11 +80,12 @@ public class CalibrationScript : MonoBehaviour
         }
 
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         myLabel.GetComponent<TextMeshProUGUI>().text = "Calibration completed!";
+        FindObjectOfType<MissionObjectivesDataHolder>().toggleStatus(missionObjectCalibration, true);
+        yield return new WaitForSeconds(2);
 
-        yield return new WaitForSeconds(3);
-
+        
         calibrationButton.SetActive(false);
         calibrationCanvas.SetActive(false);
 

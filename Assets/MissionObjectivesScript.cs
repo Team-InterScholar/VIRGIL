@@ -5,12 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem.Composites;
 using TMPro;
+using UnityEngine.XR.MagicLeap;
+using System.Xml;
+using System;
 
 public class MissionObjectivesScript : MonoBehaviour
 {
     public TextMeshProUGUI EVALabel;
     public GameObject EVALabelGO;
-    private Dictionary<string, bool> missionObjectives;
     public bool isShowing;
 
     public GameObject CalibrationStatusGO;
@@ -20,13 +22,21 @@ public class MissionObjectivesScript : MonoBehaviour
     public GameObject ROVERStatusGO;
     public GameObject ReturnNavigationStatusGO;
 
+    GameObject[] missionObjectsArr;
+
 
 
     void Start()
     {
-        isShowing = false;
+        missionObjectsArr = new GameObject[6];
+        missionObjectsArr[0] = CalibrationStatusGO;
+        missionObjectsArr[1] = EgressStatusGO;
+        missionObjectsArr[2] = SiteNavigationStatusGO;
+        missionObjectsArr[3] = GeologicalScanningStatusGO;
+        missionObjectsArr[4] = ROVERStatusGO;
+        missionObjectsArr[5] = ReturnNavigationStatusGO;
 
-        CalibrationStatusGO.transform.SetParent(transform);
+        isShowing = false;
 
         CalibrationStatusGO.SetActive(isShowing);
         EgressStatusGO.SetActive(isShowing);
@@ -35,13 +45,7 @@ public class MissionObjectivesScript : MonoBehaviour
         ROVERStatusGO.SetActive(isShowing);
         ReturnNavigationStatusGO.SetActive(isShowing);
 
-        missionObjectives = new Dictionary<string, bool>();
-        missionObjectives.Add("Calibration", false);
-        missionObjectives.Add("Egress", false);
-        missionObjectives.Add("Site Navigation", false);
-        missionObjectives.Add("Geological Scanning", false);
-        missionObjectives.Add("ROVER", false);
-        missionObjectives.Add("Return Navigation", false);
+
 
     }
 
@@ -58,7 +62,15 @@ public class MissionObjectivesScript : MonoBehaviour
         ROVERStatusGO.SetActive(isShowing);
         ReturnNavigationStatusGO.SetActive(isShowing);
 
+        foreach (KeyValuePair<GameObject, bool> item in FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives())
+        {
+            if (item.Value == true) {
+                item.Key.GetComponent<Image>().color = Color.green;
+            } else
+            {
+                item.Key.GetComponent<Image>().color = Color.red;
+            }
+        }
     }
-
 
 }

@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MissionObjectivesDataHolder : MonoBehaviour
 {
-    private Dictionary<GameObject, bool> missionObjectives;
+    public Dictionary<GameObject, bool> missionObjectives;
 
     public GameObject CalibrationStatusGO;
     public GameObject EgressStatusGO;
@@ -38,10 +39,18 @@ public class MissionObjectivesDataHolder : MonoBehaviour
     public void toggleStatus(GameObject missionObject, bool newStatus)
     {
         missionObjectives[missionObject] = newStatus;
-        
+
+
         foreach (KeyValuePair<GameObject, bool> item in missionObjectives)
         {
             print(item.Key + " " + item.Value);
         }
     }
+
+    public Dictionary<GameObject, bool> GetMissionObjectives()
+    {
+        return missionObjectives;
+    }
 }
+
+
