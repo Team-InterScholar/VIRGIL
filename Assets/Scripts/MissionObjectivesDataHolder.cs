@@ -41,10 +41,10 @@ public class MissionObjectivesDataHolder : MonoBehaviour
         missionObjectives[missionObject] = newStatus;
 
 
-        foreach (KeyValuePair<GameObject, bool> item in missionObjectives)
-        {
-            print(item.Key + " " + item.Value);
-        }
+        //foreach (KeyValuePair<GameObject, bool> item in missionObjectives)
+        //{
+        //    print(item.Key + " " + item.Value);
+        //}
     }
 
     public Dictionary<GameObject, bool> GetMissionObjectives()

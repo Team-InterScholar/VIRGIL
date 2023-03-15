@@ -10,6 +10,7 @@ public class MissionObjectivesObjectScript : MonoBehaviour
     public TextMeshProUGUI labelInstructions;
     private GameObject confirmObject;
     private bool colorBool;
+    private bool retrievedMOObjects;
     public GameObject CalibrationStatusGO;
     public GameObject EgressStatusGO;
     public GameObject SiteNavigationStatusGO;
@@ -32,23 +33,25 @@ public class MissionObjectivesObjectScript : MonoBehaviour
 
     public void ConfirmButton()
     {
-        if (confirmObject != null)
+        if (confirmObject == null)
         {
-            colorBool = !colorBool;
-            if (colorBool == true)
-            {
-                confirmObject.GetComponent<Image>().color = Color.green;
-            }
-            else
-            {
-                confirmObject.GetComponent<Image>().color = Color.red;
-            }
-            FindObjectOfType<MissionObjectivesDataHolder>().toggleStatus(confirmObject, colorBool);
-            confirmObject = null;
+            labelInstructions.GetComponent<TextMeshProUGUI>().text = "There is nothing selected";
         }
         else
         {
-            labelInstructions.GetComponent<TextMeshProUGUI>().text = "There is nothing selected";
+            retrievedMOObjects = FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives()[confirmObject];
+            if (retrievedMOObjects == true)
+            {
+                FindObjectOfType<MissionObjectivesDataHolder>().toggleStatus(confirmObject, false);
+                confirmObject.GetComponent<Image>().color = Color.red;
+                confirmObject = null;
+            }
+            else
+            {
+                FindObjectOfType<MissionObjectivesDataHolder>().toggleStatus(confirmObject, true);
+                confirmObject.GetComponent<Image>().color = Color.green;
+                confirmObject = null;
+            }
         }
     }
 
