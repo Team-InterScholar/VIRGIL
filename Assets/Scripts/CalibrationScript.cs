@@ -62,7 +62,7 @@ public class CalibrationScript : MonoBehaviour
 
     private IEnumerator doCalibration()
     {
-
+        calibrationButton.GetComponent<Button>().interactable = false;
         myLabel.GetComponent<TextMeshProUGUI>().text = "Starting Calibration...";
         yield return new WaitForSeconds(2);
         Instruction1();
