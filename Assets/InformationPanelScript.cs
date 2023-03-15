@@ -7,6 +7,7 @@ public class InformationPanelScript : MonoBehaviour
     public GameObject MOPanel;
     public GameObject spectroPanel;
 
+
     public bool isShowingMO;
     public bool isShowingSpectro;
     // Start is called before the first frame update
@@ -30,7 +31,6 @@ public class InformationPanelScript : MonoBehaviour
             {
                 if (item.Value == true)
                 {
-                    print("detected");
                     item.Key.GetComponent<Image>().color = Color.green;
                 }
                 else
