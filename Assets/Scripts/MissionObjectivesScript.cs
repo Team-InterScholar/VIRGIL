@@ -11,9 +11,8 @@ using System;
 
 public class MissionObjectivesScript : MonoBehaviour
 {
-    public TextMeshProUGUI MOLabel;
-    public GameObject MOLabelGO;
-    public GameObject MOHolder;
+
+    public GameObject MOPanel;
     public bool isShowing;
 
     public GameObject CalibrationStatusGO;
@@ -39,8 +38,7 @@ public class MissionObjectivesScript : MonoBehaviour
 
         isShowing = false;
 
-        MOLabelGO.SetActive(isShowing);
-        MOHolder.SetActive(isShowing);
+        MOPanel.SetActive(isShowing);
 
     }
 
@@ -48,8 +46,7 @@ public class MissionObjectivesScript : MonoBehaviour
     {
         isShowing = !isShowing;
 
-        MOLabelGO.SetActive(isShowing);
-        MOHolder.SetActive(isShowing);
+        MOPanel.SetActive(isShowing);
        
         //CalibrationStatusGO.SetActive(isShowing);
         //EgressStatusGO.SetActive(isShowing);

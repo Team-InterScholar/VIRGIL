@@ -7,7 +7,6 @@ public class UIADataHolderScript : MonoBehaviour
 {
     public Dictionary<string, bool> UIABooleans;
     public TextMeshProUGUI UIALabel;
-    public GameObject UIALabelGO;
     private bool isShowing;
 
     // waste port
@@ -32,11 +31,8 @@ public class UIADataHolderScript : MonoBehaviour
 
     public void OnPressed()
     {
-        isShowing = !isShowing;
-
         if (isShowing == true)
         {
-            UIALabelGO.SetActive(true);
             UIALabel.GetComponent<TextMeshProUGUI>().text = "" +
             "EV1" + UIABooleans["EV1"] + "\n" +
             "EV2" + UIABooleans["EV2"] + "\n" +
@@ -49,12 +45,13 @@ public class UIADataHolderScript : MonoBehaviour
             "Depress Pump" + UIABooleans["depressPump"] + "\n" +
             "";
         }
-        else
-        {
-            UIALabelGO.SetActive (false);
-        }
    
 
+    }
+
+    public Dictionary<string, bool> GetUIABooleans()
+    {
+        return UIABooleans;
     }
 
 }

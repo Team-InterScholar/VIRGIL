@@ -33,6 +33,7 @@ public class CalibrationScript : MonoBehaviour
 {
     public TextMeshProUGUI myLabel; // Where I am putting program output
 
+    public GameObject EVAbutton;
     public GameObject missionObjectCalibration; // so that i can change bools under the mission objectives element
     public GameObject calibrationButton;
     public GameObject calibrationCanvas;
@@ -45,6 +46,7 @@ public class CalibrationScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EVAbutton.SetActive(false);
         myLabel.GetComponent<TextMeshProUGUI>().text = "Welcome to VIRGIL! To begin, " +
             "please press the button to start Calibration";
         //calibrationButton.SetActive(false);
@@ -88,6 +90,7 @@ public class CalibrationScript : MonoBehaviour
         
         calibrationButton.SetActive(false);
         calibrationCanvas.SetActive(false);
+        EVAbutton.SetActive(true);
 
     }
 
@@ -137,10 +140,12 @@ public class CalibrationScript : MonoBehaviour
     IEnumerator calibration2()
     {
         initialAngleY = FindObjectOfType<TelemetryStream>().getCurrentAngleY();
+        print(initialAngleY);
         float goalAngle = initialAngleY + (90);
         currentAngleY = FindObjectOfType<TelemetryStream>().getCurrentAngleY();
         while (currentAngleY < goalAngle)
         {
+            print(currentAngleY);
             currentAngleY = FindObjectOfType<TelemetryStream>().getCurrentAngleY();
             yield return null;
         }
