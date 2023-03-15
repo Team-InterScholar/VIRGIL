@@ -11,8 +11,9 @@ using System;
 
 public class MissionObjectivesScript : MonoBehaviour
 {
-    public TextMeshProUGUI EVALabel;
-    public GameObject EVALabelGO;
+    public TextMeshProUGUI MOLabel;
+    public GameObject MOLabelGO;
+    public GameObject MOHolder;
     public bool isShowing;
 
     public GameObject CalibrationStatusGO;
@@ -38,14 +39,8 @@ public class MissionObjectivesScript : MonoBehaviour
 
         isShowing = false;
 
-        CalibrationStatusGO.SetActive(isShowing);
-        EgressStatusGO.SetActive(isShowing);
-        SiteNavigationStatusGO.SetActive(isShowing);
-        GeologicalScanningStatusGO.SetActive(isShowing);
-        ROVERStatusGO.SetActive(isShowing);
-        ReturnNavigationStatusGO.SetActive(isShowing);
-
-
+        MOLabelGO.SetActive(isShowing);
+        MOHolder.SetActive(isShowing);
 
     }
 
@@ -53,24 +48,31 @@ public class MissionObjectivesScript : MonoBehaviour
     {
         isShowing = !isShowing;
 
-        EVALabelGO.SetActive(isShowing);
+        MOLabelGO.SetActive(isShowing);
+        MOHolder.SetActive(isShowing);
        
-        CalibrationStatusGO.SetActive(isShowing);
-        EgressStatusGO.SetActive(isShowing);
-        SiteNavigationStatusGO.SetActive(isShowing);
-        GeologicalScanningStatusGO.SetActive(isShowing);
-        ROVERStatusGO.SetActive(isShowing);
-        ReturnNavigationStatusGO.SetActive(isShowing);
+        //CalibrationStatusGO.SetActive(isShowing);
+        //EgressStatusGO.SetActive(isShowing);
+        //SiteNavigationStatusGO.SetActive(isShowing);
+        //GeologicalScanningStatusGO.SetActive(isShowing);
+        //ROVERStatusGO.SetActive(isShowing);
+        //ReturnNavigationStatusGO.SetActive(isShowing);
 
-        foreach (KeyValuePair<GameObject, bool> item in FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives())
+        if(isShowing == true)
         {
-            if (item.Value == true) {
-                item.Key.GetComponent<Image>().color = Color.green;
-            } else
+            foreach (KeyValuePair<GameObject, bool> item in FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives())
             {
-                item.Key.GetComponent<Image>().color = Color.red;
+                if (item.Value == true)
+                {
+                    item.Key.GetComponent<Image>().color = Color.green;
+                }
+                else
+                {
+                    item.Key.GetComponent<Image>().color = Color.red;
+                }
             }
         }
+
     }
 
 }

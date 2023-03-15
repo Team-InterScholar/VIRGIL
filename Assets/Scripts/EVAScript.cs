@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EVAScript : MonoBehaviour
 {
-    public GameObject myLabel;
     public GameObject EVAButton;
     public GameObject canvas;
 
@@ -21,8 +20,6 @@ public class EVAScript : MonoBehaviour
     void Start()
     {
         
-        myLabel.GetComponent<TextMeshProUGUI>().text = "";
-
         MissionObjectivesButton.SetActive(false);
         UIAStatusButton.SetActive(false);
         SpectrometerDataButton.SetActive(false);
@@ -47,7 +44,6 @@ public class EVAScript : MonoBehaviour
         MissionObjectivesButton.SetActive(isShowing);
         UIAStatusButton.SetActive(isShowing);
         SpectrometerDataButton.SetActive(isShowing);
-        myLabel.SetActive(isShowing);
 
     }
 }
