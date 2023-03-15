@@ -6,50 +6,52 @@ using UnityEngine.UI;
 
 public class MissionObjectivesObjectScript : MonoBehaviour
 {
-    public GameObject buttonGO;
+    //public GameObject buttonGO;
+    public TextMeshProUGUI labelInstructions;
+    private GameObject confirmObject;
     private bool colorBool;
-    //public TextMeshProUGUI buttonUI;
-    //public GameObject EgressStatusGO;
-    //public TextMeshProUGUI EgressStatus;
-    //public GameObject SiteNavigationStatusGO;
-    //public TextMeshProUGUI SiteNavigationStatus;
-    //public GameObject GeologicalScanningStatusGO;
-    //public GameObject GeologicalScanningStatus;
-    //public GameObject ROVERStatusGO;
-    //public TextMeshProUGUI ROVERStatus;
-    //public GameObject ReturnNavigationStatusGO;
-    //public TextMeshProUGUI ReturnNavigationStatus;
-    // Start is called before the first frame update
+    public GameObject CalibrationStatusGO;
+    public GameObject EgressStatusGO;
+    public GameObject SiteNavigationStatusGO;
+    public GameObject GeologicalScanningStatusGO;
+    public GameObject ROVERStatusGO;
+    public GameObject ReturnNavigationStatusGO;
+
     void Start()
     {
         colorBool = false;
-        buttonGO.GetComponent<Image>().color = Color.red;
+        //buttonGO.GetComponent<Image>().color = Color.red;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    public void ButtonPressed()
+    // When user presses button once
+    //      Display instructions
+    //      Enable button to change mission objectives status
+    //      User presses again
+    //          BUtton changes color
+
+    public void ConfirmButton()
     {
-        colorBool = !colorBool;
-        if (colorBool == true )
+        if (confirmObject != null)
         {
-            buttonGO.GetComponent<Image>().color = Color.green;
+            colorBool = !colorBool;
+            if (colorBool == true)
+            {
+                confirmObject.GetComponent<Image>().color = Color.green;
+            }
+            else
+            {
+                confirmObject.GetComponent<Image>().color = Color.red;
+            }
+            FindObjectOfType<MissionObjectivesDataHolder>().toggleStatus(confirmObject, colorBool);
+            confirmObject = null;
         }
         else
         {
-            buttonGO.GetComponent<Image>().color = Color.red;
+            labelInstructions.GetComponent<TextMeshProUGUI>().text = "There is nothing selected";
         }
-        FindObjectOfType<MissionObjectivesDataHolder>().toggleStatus(buttonGO, colorBool);
     }
 
-    private GameObject getObject()
-    {
-        return buttonGO;
-    }
 
     public void setColor(GameObject statusGameObject,  bool dataHolderBool)
     {
@@ -61,5 +63,41 @@ public class MissionObjectivesObjectScript : MonoBehaviour
         {
             statusGameObject.GetComponent<Image>().color = Color.red;
         }
+    }
+
+    public void OnButtonPressCalibration()
+    {
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "This is where the instructions go for Calibration";
+        confirmObject = CalibrationStatusGO;
+    }
+
+    public void OnButtonPressEgress()
+    {
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "This is where the instructions go for Egress";
+        confirmObject = EgressStatusGO;
+    }
+
+    public void OnButtonPressSiteNav()
+    {
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "This is where the instructions go for SiteNav";
+        confirmObject = SiteNavigationStatusGO;
+    }
+
+    public void OnButtonPressGeoScan()
+    {
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "This is where the instructions go for GeoScan";
+        confirmObject = GeologicalScanningStatusGO;
+    }
+
+    public void OnButtonPressROVER()
+    {
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "This is where the instructions go for Rover";
+        confirmObject = ROVERStatusGO;
+    }
+
+    public void OnButtonPressReturnNav()
+    {
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "This is where the instructions go for return Nav";
+        confirmObject = ReturnNavigationStatusGO;
     }
 }

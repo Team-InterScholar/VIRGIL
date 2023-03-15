@@ -85,6 +85,7 @@ public class CalibrationScript : MonoBehaviour
         yield return new WaitForSeconds(2);
         myLabel.GetComponent<TextMeshProUGUI>().text = "Calibration completed!";
         FindObjectOfType<MissionObjectivesDataHolder>().toggleStatus(missionObjectCalibration, true);
+        print("test");
         yield return new WaitForSeconds(2);
 
         

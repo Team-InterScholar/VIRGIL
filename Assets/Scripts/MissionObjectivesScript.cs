@@ -15,26 +15,8 @@ public class MissionObjectivesScript : MonoBehaviour
     public GameObject MOPanel;
     public bool isShowing;
 
-    public GameObject CalibrationStatusGO;
-    public GameObject EgressStatusGO;
-    public GameObject SiteNavigationStatusGO;
-    public GameObject GeologicalScanningStatusGO;
-    public GameObject ROVERStatusGO;
-    public GameObject ReturnNavigationStatusGO;
-
-    GameObject[] missionObjectsArr;
-
-
-
     void Start()
     {
-        missionObjectsArr = new GameObject[6];
-        missionObjectsArr[0] = CalibrationStatusGO;
-        missionObjectsArr[1] = EgressStatusGO;
-        missionObjectsArr[2] = SiteNavigationStatusGO;
-        missionObjectsArr[3] = GeologicalScanningStatusGO;
-        missionObjectsArr[4] = ROVERStatusGO;
-        missionObjectsArr[5] = ReturnNavigationStatusGO;
 
         isShowing = false;
 
@@ -48,12 +30,6 @@ public class MissionObjectivesScript : MonoBehaviour
 
         MOPanel.SetActive(isShowing);
        
-        //CalibrationStatusGO.SetActive(isShowing);
-        //EgressStatusGO.SetActive(isShowing);
-        //SiteNavigationStatusGO.SetActive(isShowing);
-        //GeologicalScanningStatusGO.SetActive(isShowing);
-        //ROVERStatusGO.SetActive(isShowing);
-        //ReturnNavigationStatusGO.SetActive(isShowing);
 
         if(isShowing == true)
         {
@@ -61,6 +37,7 @@ public class MissionObjectivesScript : MonoBehaviour
             {
                 if (item.Value == true)
                 {
+                    print("detected");
                     item.Key.GetComponent<Image>().color = Color.green;
                 }
                 else
@@ -70,6 +47,16 @@ public class MissionObjectivesScript : MonoBehaviour
             }
         }
 
+    }
+
+    public bool isMOShowing()
+    {
+        return isShowing;
+    }
+
+    public void setIsShowingMO(bool display)
+    {
+        isShowing = display;
     }
 
 }

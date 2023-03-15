@@ -28,4 +28,14 @@ public class SpectrometerObjectScript : MonoBehaviour
 
 
     }
+
+    public bool isSpectroShowing()
+    {
+        return isShowing;
+    }
+
+    public void setIsSpectroShowing(bool display)
+    {
+        isShowing = display;
+    }
 }
