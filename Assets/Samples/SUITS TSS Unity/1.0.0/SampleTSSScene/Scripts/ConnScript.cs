@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TSS;
+using UnityEditor.TerrainTools;
+using TSS.Msgs;
+using TMPro;
 
 public class ConnScript : MonoBehaviour
 {
+    public TextMeshProUGUI label;
+
+
     TSSConnection tss;
     string tssUri;
 
@@ -36,6 +42,8 @@ public class ConnScript : MonoBehaviour
 
     }
 
+
+
     public async void Connect()
     {
         tssUri = inputField.text;
@@ -44,39 +52,43 @@ public class ConnScript : MonoBehaviour
         // Create a function that takes asing TSSMsg parameter and returns void. For example:
         // public static void PrintInfo(TSS.Msgs.TSSMsg tssMsg) { ... }
         // Then just subscribe to the OnTSSTelemetryMsg
+
+        tss.OnTSSTelemetryMsg += (telemMsg) => testing(telemMsg);
+
         tss.OnTSSTelemetryMsg += (telemMsg) =>
         {
             msgCount++;
             Debug.Log("Message #" + msgCount + "\nMessage:\n " + JsonUtility.ToJson(telemMsg, prettyPrint: true));
 
-            if (telemMsg.GPS.Count > 0)
-            {
-                gpsMsgBox.text = "GPS Msg: " + JsonUtility.ToJson(telemMsg.GPS[0], prettyPrint: true);
-                print(telemMsg.EVA[0].time);
-            }
-            else
-            {
-                gpsMsgBox.text = "No GPS Msg received";
-            }
+            //if (telemMsg.GPS.Count > 0)
+            //{
+            //    gpsMsgBox.text = "GPS Msg: " + JsonUtility.ToJson(telemMsg.GPS[0], prettyPrint: true);
+            //    //print(telemMsg.EVA[0].timer);
+            //}
+            //else
+            //{
+            //    gpsMsgBox.text = "No GPS Msg received";
+            //}
 
-            if (telemMsg.IMU.Count > 0)
-            {
-                imuMsgBox.text = "IMU Msg: " + JsonUtility.ToJson(telemMsg.IMU[0], prettyPrint: true);
-            }
-            else
-            {
-                imuMsgBox.text = "No IMU Msg received";
-            }
+            //if (telemMsg.IMU.Count > 0)
+            //{
+            //    imuMsgBox.text = "IMU Msg: " + JsonUtility.ToJson(telemMsg.IMU[0], prettyPrint: true);
+            //}
+            //else
+            //{
+            //    imuMsgBox.text = "No IMU Msg received";
+            //}
 
-            if (telemMsg.EVA.Count > 0)
-            {
-                evaMsgBox.text = "EVA Msg: " + JsonUtility.ToJson(telemMsg.EVA[0], prettyPrint: true);
-            }
-            else
-            {
-                evaMsgBox.text = "No EVA Msg received";
-            }
+            //if (telemMsg.EVA.Count > 0)
+            //{
+            //    evaMsgBox.text = "EVA Msg: " + JsonUtility.ToJson(telemMsg.EVA[0], prettyPrint: true);
+            //}
+            //else
+            //{
+            //    evaMsgBox.text = "No EVA Msg received";
+            //}
         };
+
 
         // tss.OnOpen, OnError, and OnClose events just re-raise events from websockets.
         // Similar to OnTSSTelemetryMsg, create functions with the appropriate return type and parameters, and subscribe to them
@@ -105,4 +117,18 @@ public class ConnScript : MonoBehaviour
     {
         Debug.Log("Received the following telemetry data from the TSS:\n" + JsonUtility.ToJson(tssMsg, prettyPrint: true));
     }
+
+    public void testing(TSS.Msgs.TSSMsg tssMsg)
+    {
+        if (tssMsg.EVA.Count > 0)
+        {
+            label.GetComponent<TextMeshProUGUI>().text = tssMsg.EVA[0].timer;
+            print(tssMsg.EVA[0].timer);
+        }
+        else
+        {
+            print("uhhh");
+        }
+    }
+
 }
