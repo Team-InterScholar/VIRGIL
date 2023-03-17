@@ -46,7 +46,7 @@ public class CalibrationScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EVAbutton.SetActive(false);
+        //EVAbutton.SetActive(false);
         myLabel.GetComponent<TextMeshProUGUI>().text = "Welcome to VIRGIL! To begin, " +
             "please press the button to start Calibration";
         //calibrationButton.SetActive(false);
@@ -91,7 +91,7 @@ public class CalibrationScript : MonoBehaviour
         
         calibrationButton.SetActive(false);
         calibrationCanvas.SetActive(false);
-        EVAbutton.SetActive(true);
+        //EVAbutton.SetActive(true);
 
     }
 
