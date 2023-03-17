@@ -122,8 +122,7 @@ public class ConnScript : MonoBehaviour
     {
         if (tssMsg.EVA.Count > 0)
         {
-            label.GetComponent<TextMeshProUGUI>().text = tssMsg.EVA[0].timer;
-            print(tssMsg.EVA[0].timer);
+            label.GetComponent<TextMeshProUGUI>().text = "Mission Time: " + tssMsg.EVA[0].timer;
         }
         else
         {
