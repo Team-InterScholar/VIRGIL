@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TSS;
+using UnityEditor.TerrainTools;
+using TSS.Msgs;
 using TMPro;
 
 public class ConnScript : MonoBehaviour
 {
+
+    public TextMeshProUGUI label;
+
     TSSConnection tss;
     string tssUri;
 
@@ -115,7 +120,7 @@ public class ConnScript : MonoBehaviour
     {
         if (tssMsg.EVA.Count > 0)
         {
-            //label.GetComponent<TextMeshProUGUI>().text = "Mission Time: " + tssMsg.EVA[0].timer;
+            label.GetComponent<TextMeshProUGUI>().text = "Mission Time: " + tssMsg.EVA[0].timer;
         }
         else
         {
