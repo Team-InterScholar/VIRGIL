@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class IkePlayerController : MonoBehaviour
 {
     public float speed;
     public Transform orientation;
