@@ -8,8 +8,8 @@ using TMPro;
 
 public class ConnScript : MonoBehaviour
 {
-    public TextMeshProUGUI label;
 
+    public TextMeshProUGUI label;
 
     TSSConnection tss;
     string tssUri;
@@ -41,8 +41,6 @@ public class ConnScript : MonoBehaviour
         tss.Update();
 
     }
-
-
 
     public async void Connect()
     {
@@ -122,13 +120,11 @@ public class ConnScript : MonoBehaviour
     {
         if (tssMsg.EVA.Count > 0)
         {
-            label.GetComponent<TextMeshProUGUI>().text = tssMsg.EVA[0].timer;
-            print(tssMsg.EVA[0].timer);
+            label.GetComponent<TextMeshProUGUI>().text = "Mission Time: " + tssMsg.EVA[0].timer;
         }
         else
         {
             print("uhhh");
         }
     }
-
 }
