@@ -8,8 +8,8 @@ using TMPro;
 
 public class ConnScript : MonoBehaviour
 {
-    public TextMeshProUGUI label;
 
+    public TextMeshProUGUI label;
 
     TSSConnection tss;
     string tssUri;
@@ -41,8 +41,6 @@ public class ConnScript : MonoBehaviour
         tss.Update();
 
     }
-
-
 
     public async void Connect()
     {
@@ -129,5 +127,4 @@ public class ConnScript : MonoBehaviour
             print("uhhh");
         }
     }
-
 }

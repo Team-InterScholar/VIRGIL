@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem.Composites;
 using TMPro;
-using UnityEngine.XR.MagicLeap;
+//using UnityEngine.XR.MagicLeap;
 using System.Xml;
 using System;
 
