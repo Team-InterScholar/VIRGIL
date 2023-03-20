@@ -88,8 +88,9 @@ public class InformationPanelScript : MonoBehaviour
             telemPanel.SetActive(isShowingTelem);
         }
 
-
     }
+
+
 
 
 
