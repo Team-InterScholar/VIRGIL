@@ -85,7 +85,7 @@ public class InformationPanelScript : MonoBehaviour
         }
         else
         {
-            telemPanel.SetActive(isShowingSpectro);
+            telemPanel.SetActive(isShowingTelem);
         }
 
     }
