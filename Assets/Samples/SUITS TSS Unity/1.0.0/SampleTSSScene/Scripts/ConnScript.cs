@@ -5,13 +5,11 @@ using TSS;
 using UnityEditor.TerrainTools;
 using TSS.Msgs;
 using TMPro;
-using Codice.Client.Commands;
 
 public class ConnScript : MonoBehaviour
 {
 
     public TextMeshProUGUI label;
-    public TextMeshProUGUI connectionStatusLabel;
 
     TSSConnection tss;
     string tssUri;
@@ -30,9 +28,9 @@ public class ConnScript : MonoBehaviour
         tss = new TSSConnection();
         inputField = GameObject.Find("Socket URI Input Field").GetComponent<TMPro.TMP_InputField>();
 
-        //gpsMsgBox = GameObject.Find("GPS Msg Box").GetComponent<TMPro.TMP_Text>();
-        //imuMsgBox = GameObject.Find("IMU Msg Box").GetComponent<TMPro.TMP_Text>();
-        //evaMsgBox = GameObject.Find("EVA Msg Box").GetComponent<TMPro.TMP_Text>();
+        gpsMsgBox = GameObject.Find("GPS Msg Box").GetComponent<TMPro.TMP_Text>();
+        imuMsgBox = GameObject.Find("IMU Msg Box").GetComponent<TMPro.TMP_Text>();
+        evaMsgBox = GameObject.Find("EVA Msg Box").GetComponent<TMPro.TMP_Text>();
 
     }
 
@@ -53,7 +51,7 @@ public class ConnScript : MonoBehaviour
         // public static void PrintInfo(TSS.Msgs.TSSMsg tssMsg) { ... }
         // Then just subscribe to the OnTSSTelemetryMsg
 
-
+        tss.OnTSSTelemetryMsg += (telemMsg) => testing(telemMsg);
 
         tss.OnTSSTelemetryMsg += (telemMsg) =>
         {
@@ -89,29 +87,21 @@ public class ConnScript : MonoBehaviour
             //}
         };
 
-        tss.OnTSSTelemetryMsg += (telemMsg) => testing(telemMsg);
-        //tss.OnTSSConnectionMsg += (telemMsg) => showConnectionStatus(telemMsg);
-
 
         // tss.OnOpen, OnError, and OnClose events just re-raise events from websockets.
         // Similar to OnTSSTelemetryMsg, create functions with the appropriate return type and parameters, and subscribe to them
         tss.OnOpen += () =>
         {
-            connectionStatusLabel.GetComponent<TextMeshProUGUI>().text = "Connection: OPENED";
-            Debug.Log("Websocket connection opened");
+            Debug.Log("Websocket connectio opened");
         };
 
         tss.OnError += (string e) =>
         {
-            connectionStatusLabel.GetComponent<TextMeshProUGUI>().text = "Connection: ERROR \n" +
-            "Error Code: " + e;
             Debug.Log("Websocket error occured: " + e);
         };
 
         tss.OnClose += (e) =>
         {
-            connectionStatusLabel.GetComponent<TextMeshProUGUI>().text = "Connection: CLOSED \n" +
-            "Exit Code:" + e;
             Debug.Log("Websocket closed with code: " + e);
         };
 
@@ -137,10 +127,4 @@ public class ConnScript : MonoBehaviour
             print("uhhh");
         }
     }
-
-    //public void showConnectionStatus(string str)
-    //{
-    //    //connectionStatusLabel.GetComponent<TextMeshProUGUI>().text = str;
-    //    //print(str);
-    //}
 }

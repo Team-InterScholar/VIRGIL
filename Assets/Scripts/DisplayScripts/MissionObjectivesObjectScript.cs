@@ -70,60 +70,37 @@ public class MissionObjectivesObjectScript : MonoBehaviour
 
     public void OnButtonPressCalibration()
     {
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "" +
-            "Calibration is to make sure the VISIONKit, HoloLens 2, " +
-            "and Telemetry Stream are working correctly together." +
-            "The Objective should have turned green, signalling" +
-            " objective success!";
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "This is where the instructions go for Calibration";
         confirmObject = CalibrationStatusGO;
     }
 
     public void OnButtonPressEgress()
     {
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "" +
-            "To complete Egress, refer to the UIA data found in" +
-            " 'UIA'. It will show the current positions of the switches." +
-            "Once they are in the correct positions, the Egress Objective " +
-            "should automatically be toggled green.";
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "This is where the instructions go for Egress";
         confirmObject = EgressStatusGO;
     }
 
     public void OnButtonPressSiteNav()
     {
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "" +
-            "The status of this Objective needs to be toggled" +
-            "manually. During Site Navigation, you will be placing " +
-            "Flags to keep track of your path. You may " +
-            "find more navigation information in the NAV Card. ";
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "This is where the instructions go for SiteNav";
         confirmObject = SiteNavigationStatusGO;
     }
 
     public void OnButtonPressGeoScan()
     {
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "" +
-            "The status of this Objective needs to be toggled manually. " +
-            "During Geological Scanning, you will scan rocks with " +
-            "RFID tags. You may find a list of all recently scanned " +
-            "RFID tags in 'Spectrometer Data'.";
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "This is where the instructions go for GeoScan";
         confirmObject = GeologicalScanningStatusGO;
     }
 
     public void OnButtonPressROVER()
     {
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "" +
-            "The status of this Objective needs to be toggled manually. " +
-            "During this section, you will command the ROVER through " +
-            "recall orders as well custom location orders. To find more " +
-            "information, please see the ROVER Card. ";
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "This is where the instructions go for Rover";
         confirmObject = ROVERStatusGO;
     }
 
     public void OnButtonPressReturnNav()
     {
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "" +
-            "During Return Navigation, you will be retracing your " +
-            "steps using the NAV Card as well as scanning any rocks " +
-            "with RFID tags. ";
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "This is where the instructions go for return Nav";
         confirmObject = ReturnNavigationStatusGO;
     }
 }
