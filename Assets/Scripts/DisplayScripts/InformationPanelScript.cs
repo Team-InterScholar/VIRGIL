@@ -27,7 +27,7 @@ public class InformationPanelScript : MonoBehaviour
     public void OnButtonPressMO()
     {
         isShowingMO = !isShowingMO;
-        if(isShowingSpectro == true || isShowingTelem == true)
+        if (isShowingSpectro == true || isShowingTelem == true)
         {
             isShowingSpectro = false;
             isShowingTelem = false;
@@ -50,10 +50,7 @@ public class InformationPanelScript : MonoBehaviour
         {
             MOPanel.SetActive(isShowingMO);
         }
-
-
     }
-
     public void OnButtonPressSpectro()
     {
         isShowingSpectro = !isShowingSpectro;
@@ -69,9 +66,7 @@ public class InformationPanelScript : MonoBehaviour
         {
             spectroPanel.SetActive(isShowingSpectro);
         }
-
     }
-
     public void OnButtonPressTelem()
     {
         isShowingTelem = !isShowingTelem;
@@ -87,6 +82,7 @@ public class InformationPanelScript : MonoBehaviour
         {
             telemPanel.SetActive(isShowingTelem);
         }
+
 
     }
 
