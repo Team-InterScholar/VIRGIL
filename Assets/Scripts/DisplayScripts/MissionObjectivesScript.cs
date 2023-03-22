@@ -71,11 +71,9 @@ public class MissionObjectivesScript : MonoBehaviour
     public void OnButtonPressCalibration()
     {
         confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Calbiration: \n" +
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Calibration: \n" +
             "Calibration is to make sure the VISIONKit, HoloLens 2, " +
-            "and Telemetry Stream are working correctly together. " +
-            "The Objective should have turned green, signalling" +
-            " objective success!";
+            "and Telemetry Stream are working correctly together. ";
         confirmObject = CalibrationStatusGO;
     }
 
@@ -83,10 +81,8 @@ public class MissionObjectivesScript : MonoBehaviour
     {
         confirmButton.interactable = true;
         labelInstructions.GetComponent<TextMeshProUGUI>().text = "Egress: \n" +
-            "To complete Egress, refer to the UIA data found in" +
-            " 'UIA'. It will show the current positions of the switches. " +
-            "Once they are in the correct positions, the Egress Objective " +
-            "should automatically be toggled green.";
+            "To complete Egress, refer to the status of the UIA switches" +
+            " under 'UIA'. ";
         confirmObject = EgressStatusGO;
     }
 
