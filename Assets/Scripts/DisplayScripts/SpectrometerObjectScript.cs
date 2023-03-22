@@ -19,7 +19,7 @@ public class SpectrometerObjectScript : MonoBehaviour
     {
 
         spectrometerData = FindObjectOfType<SpectrometerDataHolderScript>().GetSpectroData();
-        labelSpectro.GetComponent<TextMeshProUGUI>().text = " testttttt ";
+        labelSpectro.GetComponent<TextMeshProUGUI>().text = " TBD ";
 
 
 
