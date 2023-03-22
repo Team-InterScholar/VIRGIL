@@ -17,7 +17,9 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void OnButtonPress()
     {
+        print("before" + isShowing);
         isShowing = !isShowing;
+        print("after" + isShowing);
         finalCard.SetActive(isShowing);
     }
     public void onButtonPressEVA()
