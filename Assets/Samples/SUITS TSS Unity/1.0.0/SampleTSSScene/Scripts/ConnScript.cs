@@ -12,6 +12,7 @@ public class ConnScript : MonoBehaviour
 
     public TextMeshProUGUI label;
     public TextMeshProUGUI connectionStatusLabel;
+    public TextMeshProUGUI infoLabel;
 
     TSSConnection tss;
     string tssUri;
@@ -58,7 +59,7 @@ public class ConnScript : MonoBehaviour
         tss.OnTSSTelemetryMsg += (telemMsg) =>
         {
             msgCount++;
-            Debug.Log("Message #" + msgCount + "\nMessage:\n " + JsonUtility.ToJson(telemMsg, prettyPrint: true));
+            //Debug.Log("Message #" + msgCount + "\nMessage:\n " + JsonUtility.ToJson(telemMsg, prettyPrint: true));
 
             //if (telemMsg.GPS.Count > 0)
             //{
@@ -89,7 +90,7 @@ public class ConnScript : MonoBehaviour
             //}
         };
 
-        tss.OnTSSTelemetryMsg += (telemMsg) => testing(telemMsg);
+        tss.OnTSSTelemetryMsg += (telemMsg) => showTelemInfo(telemMsg);
         //tss.OnTSSConnectionMsg += (telemMsg) => showConnectionStatus(telemMsg);
 
 
@@ -97,7 +98,9 @@ public class ConnScript : MonoBehaviour
         // Similar to OnTSSTelemetryMsg, create functions with the appropriate return type and parameters, and subscribe to them
         tss.OnOpen += () =>
         {
-            connectionStatusLabel.GetComponent<TextMeshProUGUI>().text = "Connection: OPENED";
+            connectionStatusLabel.GetComponent<TextMeshProUGUI>().text = "" +
+            "Connection: OPEN";
+
             Debug.Log("Websocket connection opened");
         };
 
@@ -126,11 +129,14 @@ public class ConnScript : MonoBehaviour
         Debug.Log("Received the following telemetry data from the TSS:\n" + JsonUtility.ToJson(tssMsg, prettyPrint: true));
     }
 
-    public void testing(TSS.Msgs.TSSMsg tssMsg)
+    public void showTelemInfo(TSS.Msgs.TSSMsg tssMsg)
     {
         if (tssMsg.EVA.Count > 0)
         {
-            label.GetComponent<TextMeshProUGUI>().text = "Mission Time: " + tssMsg.EVA[0].timer;
+            label.GetComponent<TextMeshProUGUI>().text = "Mission Time: \n" + tssMsg.EVA[0].timer;
+            infoLabel.GetComponent<TextMeshProUGUI>().text = "" +
+                "ID: " + tssMsg.EVA[0].id + "\n" +
+                "Room: " + tssMsg.EVA[0].room + "\n";
         }
         else
         {

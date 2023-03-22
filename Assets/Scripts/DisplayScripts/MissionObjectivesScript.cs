@@ -71,7 +71,7 @@ public class MissionObjectivesScript : MonoBehaviour
     public void OnButtonPressCalibration()
     {
         confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "" +
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Calbiration: \n" +
             "Calibration is to make sure the VISIONKit, HoloLens 2, " +
             "and Telemetry Stream are working correctly together. " +
             "The Objective should have turned green, signalling" +
@@ -82,7 +82,7 @@ public class MissionObjectivesScript : MonoBehaviour
     public void OnButtonPressEgress()
     {
         confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "" +
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Egress: \n" +
             "To complete Egress, refer to the UIA data found in" +
             " 'UIA'. It will show the current positions of the switches. " +
             "Once they are in the correct positions, the Egress Objective " +
@@ -93,7 +93,7 @@ public class MissionObjectivesScript : MonoBehaviour
     public void OnButtonPressSiteNav()
     {
         confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "" +
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Site Navigation: \n" +
             "During Site Navigation, you will be placing " +
             "Flags to keep track of your path. You may " +
             "find more navigation information in the NAV Card. ";
@@ -103,7 +103,7 @@ public class MissionObjectivesScript : MonoBehaviour
     public void OnButtonPressGeoScan()
     {
         confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "" +
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Geological Scanning: \n" +
             "During Geological Scanning, you will scan rocks with " +
             "RFID tags. You may find a list of all recently scanned " +
             "RFID tags in 'Spectrometer Data'.";
@@ -113,7 +113,7 @@ public class MissionObjectivesScript : MonoBehaviour
     public void OnButtonPressROVER()
     {
         confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "" +
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "ROVER: \n" +
             "During this section, you will command the ROVER through " +
             "recall orders as well custom location orders. To find more " +
             "information, please see the ROVER Card. ";
@@ -123,7 +123,7 @@ public class MissionObjectivesScript : MonoBehaviour
     public void OnButtonPressReturnNav()
     {
         confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "" +
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Return Navigation: \n" +
             "During Return Navigation, you will be retracing your " +
             "steps using the NAV Card as well as scanning any rocks " +
             "with RFID tags. ";
