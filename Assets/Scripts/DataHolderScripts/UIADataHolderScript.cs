@@ -15,7 +15,7 @@ public class UIADataHolderScript : MonoBehaviour
     void Start()
     {
         UIABooleans = new Dictionary<string, bool>();
-        UIABooleans.Add("EMU1", false);
+        UIABooleans.Add("EMU1", true);
         UIABooleans.Add("EMU2", false);
         UIABooleans.Add("O2 Supply Pressure 1", false);
         UIABooleans.Add("O2 Supply Pressure 2", false);
@@ -57,6 +57,11 @@ public class UIADataHolderScript : MonoBehaviour
     public Dictionary<string, bool> GetUIABooleans()
     {
         return UIABooleans;
+    }
+
+    public void setUIABoolean(string str, bool newStatus)
+    {
+        UIABooleans[str] = newStatus;
     }
 
 }
