@@ -45,6 +45,15 @@ public class ButtonBehaviour : MonoBehaviour
         {
 
         }
+        GameObject selectButton = GameObject.Find("CurrentObjButton");
+        if (confirmButton != null)
+        {
+            selectButton.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+
+        }
         // GameObject.Find("ConfirmButton").GetComponent<Button>().interactable = false;
 
         GameObject uiaInfo = GameObject.Find("UIAInfo");

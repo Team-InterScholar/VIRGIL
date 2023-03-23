@@ -8,15 +8,22 @@ public class MissionObjectivesScript : MonoBehaviour
 {
     //public GameObject buttonGO;
     public TextMeshProUGUI labelInstructions;
-    public GameObject confirmObject;
+    public TextMeshProUGUI currentObjectiveLabel;
+
+    private GameObject confirmObject;
+    private GameObject selectObject;
     private bool retrievedMOObjects;
+    private string MOname;
+
     public GameObject CalibrationStatusGO;
     public GameObject EgressStatusGO;
     public GameObject SiteNavigationStatusGO;
     public GameObject GeologicalScanningStatusGO;
     public GameObject ROVERStatusGO;
     public GameObject ReturnNavigationStatusGO;
-    public Button confirmButton;
+
+    public Button changingStatusButton;
+    public Button changingCurrentObjectiveButton;
 
     void Start()
     {
@@ -51,8 +58,22 @@ public class MissionObjectivesScript : MonoBehaviour
                 confirmObject.GetComponent<Image>().color = Color.green;
                 confirmObject = null;
             }
-            confirmButton.interactable = false;
+            changingStatusButton.interactable = false;
         }
+    }
+
+    public void SelectObject()
+    {
+        if (selectObject == null) 
+        {
+            currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Selected: None";
+        }
+        else
+        {
+            currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Current Objective: " + MOname;
+            selectObject = null;
+        }
+        changingCurrentObjectiveButton.interactable = false;
     }
 
 
@@ -70,59 +91,77 @@ public class MissionObjectivesScript : MonoBehaviour
 
     public void OnButtonPressCalibration()
     {
-        confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Calibration: \n" +
+        changingStatusButton.interactable = true;
+        changingCurrentObjectiveButton.interactable=true;
+    labelInstructions.GetComponent<TextMeshProUGUI>().text = "Selected: Calibration \n" +
             "Calibration is to make sure the VISIONKit, HoloLens 2, " +
             "and Telemetry Stream are working correctly together. ";
         confirmObject = CalibrationStatusGO;
+        selectObject = CalibrationStatusGO;
+        MOname = "Calibration";
     }
 
     public void OnButtonPressEgress()
     {
-        confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Egress: \n" +
+        changingStatusButton.interactable = true;
+        changingCurrentObjectiveButton.interactable = true;
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Selected: Egress \n" +
             "To complete Egress, refer to the status of the UIA switches" +
             " under 'UIA'. ";
         confirmObject = EgressStatusGO;
+        selectObject = EgressStatusGO;
+        MOname = "Egress";
     }
 
     public void OnButtonPressSiteNav()
     {
-        confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Site Navigation: \n" +
+        changingStatusButton.interactable = true;
+        changingCurrentObjectiveButton.interactable = true;
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Selected: Site Navigation \n" +
             "During Site Navigation, you will be placing " +
             "Flags to keep track of your path. You may " +
             "find more navigation information in the NAV Card. ";
         confirmObject = SiteNavigationStatusGO;
+        selectObject = SiteNavigationStatusGO;
+        MOname = "Site Navigation";
     }
 
     public void OnButtonPressGeoScan()
     {
-        confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Geological Scanning: \n" +
+        changingStatusButton.interactable = true;
+        changingCurrentObjectiveButton.interactable = true;
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Selected: Geological Scanning \n" +
             "During Geological Scanning, you will scan rocks with " +
             "RFID tags. You may find a list of all recently scanned " +
             "RFID tags in 'Spectrometer Data'.";
         confirmObject = GeologicalScanningStatusGO;
+        selectObject = GeologicalScanningStatusGO;
+        MOname = "Geological Scanning";
     }
 
     public void OnButtonPressROVER()
     {
-        confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "ROVER: \n" +
+        changingStatusButton.interactable = true;
+        changingCurrentObjectiveButton.interactable = true;
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Selected: ROVER \n" +
             "During this section, you will command the ROVER through " +
             "recall orders as well custom location orders. To find more " +
             "information, please see the ROVER Card. ";
         confirmObject = ROVERStatusGO;
+        selectObject = ROVERStatusGO;
+        MOname = "ROVER";
     }
 
     public void OnButtonPressReturnNav()
     {
-        confirmButton.interactable = true;
-        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Return Navigation: \n" +
+        changingStatusButton.interactable = true;
+        changingCurrentObjectiveButton.interactable = true;
+        labelInstructions.GetComponent<TextMeshProUGUI>().text = "Selected: Return Navigation \n" +
             "During Return Navigation, you will be retracing your " +
             "steps using the NAV Card as well as scanning any rocks " +
             "with RFID tags. ";
         confirmObject = ReturnNavigationStatusGO;
+        selectObject = ReturnNavigationStatusGO;
+        MOname = "Return Navigation";
     }
 }
