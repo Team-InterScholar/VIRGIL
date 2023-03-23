@@ -24,15 +24,34 @@ public class ButtonBehaviour : MonoBehaviour
     }
     public void onButtonPressEVA()
     {
-        foreach (KeyValuePair<GameObject, bool> item in FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives())
+        //foreach (KeyValuePair<GameObject, bool[]> item in FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives())
+        //{
+        //    if (item.Value[1] == true)
+        //    {
+        //        item.Key.GetComponent<Image>().color = Color.green;
+        //    }
+        //    else
+        //    {
+        //        item.Key.GetComponent<Image>().color = Color.red;
+        //    }
+        //}
+
+        foreach (KeyValuePair<GameObject, bool[]> item in FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives())
         {
-            if (item.Value == true)
+            if (item.Value[0] == true)
             {
-                item.Key.GetComponent<Image>().color = Color.green;
+                item.Key.GetComponent<Image>().color = Color.yellow;
             }
             else
             {
-                item.Key.GetComponent<Image>().color = Color.red;
+                if (item.Value[1] == true)
+                {
+                    item.Key.GetComponent<Image>().color = Color.green;
+                }
+                else
+                {
+                    item.Key.GetComponent<Image>().color = Color.red;
+                }
             }
         }
 

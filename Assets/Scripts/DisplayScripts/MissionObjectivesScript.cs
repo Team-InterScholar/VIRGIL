@@ -12,7 +12,8 @@ public class MissionObjectivesScript : MonoBehaviour
 
     private GameObject confirmObject;
     private GameObject selectObject;
-    private bool retrievedMOObjects;
+    bool retrievedBoolIsCompleted;
+    bool retrievedBoolIsInProg;
     private string MOname;
 
     public GameObject CalibrationStatusGO;
@@ -39,22 +40,25 @@ public class MissionObjectivesScript : MonoBehaviour
 
     public void ConfirmButton()
     {
+        Dictionary<GameObject, bool[]> missionObjectives = FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives();
         if (confirmObject == null)
         {
             labelInstructions.GetComponent<TextMeshProUGUI>().text = "There is nothing selected";
         }
         else
         {
-            retrievedMOObjects = FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives()[confirmObject];
-            if (retrievedMOObjects == true)
+            retrievedBoolIsCompleted = missionObjectives[confirmObject][1];
+            if (retrievedBoolIsCompleted == true)
             {
-                FindObjectOfType<MissionObjectivesDataHolder>().toggleStatus(confirmObject, false);
+                FindObjectOfType<MissionObjectivesDataHolder>().toggleIsCompleted(confirmObject, false);
+                FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(confirmObject, false);
                 confirmObject.GetComponent<Image>().color = Color.red;
                 confirmObject = null;
             }
             else
             {
-                FindObjectOfType<MissionObjectivesDataHolder>().toggleStatus(confirmObject, true);
+                FindObjectOfType<MissionObjectivesDataHolder>().toggleIsCompleted(confirmObject, true);
+                FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(confirmObject, false);
                 confirmObject.GetComponent<Image>().color = Color.green;
                 confirmObject = null;
             }
@@ -62,15 +66,42 @@ public class MissionObjectivesScript : MonoBehaviour
         }
     }
 
+
     public void SelectObject()
     {
+        GameObject currentObjective = FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective();
+        Dictionary<GameObject, bool[]> missionObjectives = FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives();
         if (selectObject == null) 
         {
             currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Selected: None";
         }
         else
         {
+            if (currentObjective != null)
+            {
+                retrievedBoolIsCompleted = missionObjectives[currentObjective][1];
+                if (retrievedBoolIsCompleted == true)
+                {
+                    currentObjective.GetComponent<Image>().color = Color.red;
+                }
+                else
+                {
+                    currentObjective.GetComponent<Image>().color = Color.red;
+
+                }
+                FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(currentObjective, false);
+                FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(selectObject);
+
+
+            }
+            else
+            {
+                FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(selectObject);
+                FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(selectObject, true);
+            }
             currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Current Objective: " + MOname;
+            FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(selectObject, true);
+            selectObject.GetComponent<Image>().color = Color.yellow;
             selectObject = null;
         }
         changingCurrentObjectiveButton.interactable = false;
