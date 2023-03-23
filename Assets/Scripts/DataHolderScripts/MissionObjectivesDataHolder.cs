@@ -9,7 +9,7 @@ public class MissionObjectivesDataHolder : MonoBehaviour
 {
     public Dictionary<GameObject, bool> missionObjectives;
 
-    public GameObject CalibrationStatusGO;
+    //public GameObject CalibrationStatusGO;
     public GameObject EgressStatusGO;
     public GameObject SiteNavigationStatusGO;
     public GameObject GeologicalScanningStatusGO;
@@ -22,7 +22,7 @@ public class MissionObjectivesDataHolder : MonoBehaviour
     void Start()
     {
         missionObjectives = new Dictionary<GameObject, bool>();
-        missionObjectives.Add(CalibrationStatusGO, false);
+        //missionObjectives.Add(CalibrationStatusGO, false);
         missionObjectives.Add(EgressStatusGO, false);
         missionObjectives.Add(SiteNavigationStatusGO, false);
         missionObjectives.Add(GeologicalScanningStatusGO, false);
