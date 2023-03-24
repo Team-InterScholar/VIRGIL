@@ -4,17 +4,33 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*-------------------------------------------------------*/
+/*  Script that handles displaying the Mission Objective 
+ *  buttons and labels. 
+ *  
+ *  Mission Objecive Buttons display colors (green, yellow, red)
+ *  to indicate their respective Objective's status.
+ *  
+ *  Labels display information on what the current objective
+ *  is as well as general information about the mission
+ *  objective. 
+ *      
+ *  The confirm and select objects handles intermediary
+ *  selections. 
+ *--------------------------------------------------------*/
+
 public class MissionObjectivesScript : MonoBehaviour
 {
-    //public GameObject buttonGO;
     public TextMeshProUGUI labelInstructions;
     public TextMeshProUGUI currentObjectiveLabel;
 
     private GameObject confirmObject;
     private GameObject selectObject;
+    public Button changingStatusButton;
+    public Button changingCurrentObjectiveButton;
+
     bool retrievedBoolIsCompleted;
-    bool retrievedBoolIsInProg;
-    private string MOname;
+    private string MOname; // to display the current objective
 
     public GameObject CalibrationStatusGO;
     public GameObject EgressStatusGO;
@@ -23,20 +39,6 @@ public class MissionObjectivesScript : MonoBehaviour
     public GameObject ROVERStatusGO;
     public GameObject ReturnNavigationStatusGO;
 
-    public Button changingStatusButton;
-    public Button changingCurrentObjectiveButton;
-
-    void Start()
-    {
-        //buttonGO.GetComponent<Image>().color = Color.red;
-    }
-
-
-    // When user presses button once
-    //      Display instructions
-    //      Enable button to change mission objectives status
-    //      User presses again
-    //          BUtton changes color
 
     public void ConfirmButton()
     {
@@ -47,11 +49,11 @@ public class MissionObjectivesScript : MonoBehaviour
         }
         else
         {
-            retrievedBoolIsCompleted = missionObjectives[confirmObject][1];
+            retrievedBoolIsCompleted = FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives()[confirmObject][1];
             if (retrievedBoolIsCompleted == true)
             {
                 FindObjectOfType<MissionObjectivesDataHolder>().toggleIsCompleted(confirmObject, false);
-                FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(confirmObject, false);
+                //FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(confirmObject, false);
                 confirmObject.GetComponent<Image>().color = Color.red;
                 confirmObject = null;
             }
@@ -60,6 +62,7 @@ public class MissionObjectivesScript : MonoBehaviour
                 FindObjectOfType<MissionObjectivesDataHolder>().toggleIsCompleted(confirmObject, true);
                 FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(confirmObject, false);
                 confirmObject.GetComponent<Image>().color = Color.green;
+                FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(null);
                 confirmObject = null;
             }
             changingStatusButton.interactable = false;
@@ -69,40 +72,68 @@ public class MissionObjectivesScript : MonoBehaviour
 
     public void SelectObject()
     {
-        GameObject currentObjective = FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective();
-        Dictionary<GameObject, bool[]> missionObjectives = FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives();
         if (selectObject == null) 
         {
             currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Selected: None";
         }
         else
         {
-            if (currentObjective != null)
+            if(FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective() == null)
             {
-                retrievedBoolIsCompleted = missionObjectives[currentObjective][1];
-                if (retrievedBoolIsCompleted == true)
+                if (FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives()[selectObject][0] == false)
                 {
-                    currentObjective.GetComponent<Image>().color = Color.red;
+                    FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(selectObject, true);
+                    FindObjectOfType<MissionObjectivesDataHolder>().toggleIsCompleted(selectObject, false);
+                    FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(selectObject);
+                    FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective().GetComponent<Image>().color = Color.yellow;
+                    selectObject = null;
                 }
                 else
                 {
-                    currentObjective.GetComponent<Image>().color = Color.red;
-
+                    currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Current Objective: " + MOname;
                 }
-                FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(currentObjective, false);
-                FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(selectObject);
-
-
             }
             else
             {
-                FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(selectObject);
+                FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective().GetComponent<Image>().color = Color.red;
+                FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective(), false);
+                FindObjectOfType<MissionObjectivesDataHolder>().toggleIsCompleted(FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective(), false);
                 FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(selectObject, true);
+                FindObjectOfType<MissionObjectivesDataHolder>().toggleIsCompleted(selectObject, false);
+                FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(selectObject);
+                FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective().GetComponent<Image>().color = Color.yellow;
+                selectObject = null;
             }
-            currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Current Objective: " + MOname;
-            FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(selectObject, true);
-            selectObject.GetComponent<Image>().color = Color.yellow;
-            selectObject = null;
+            
+
+
+            //if (currentObjective != null)
+            //{
+            //    retrievedBoolIsCompleted = missionObjectives[currentObjective][1];
+            //    if (retrievedBoolIsCompleted == true)
+            //    {
+            //        FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(currentObjective, false);
+            //        currentObjective.GetComponent<Image>().color = Color.red;
+            //    }
+            //    else
+            //    {
+            //        currentObjective.GetComponent<Image>().color = Color.red;
+
+            //    }
+            //    FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(currentObjective, false);
+            //    FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(selectObject);
+
+
+            //}
+            //else
+            //{
+            //    FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(selectObject);
+            //    FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(selectObject, true);
+            //}
+            //currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Current Objective: " + MOname;
+            //FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(selectObject, true);
+            //selectObject.GetComponent<Image>().color = Color.yellow;
+            //selectObject = null;
         }
         changingCurrentObjectiveButton.interactable = false;
     }
