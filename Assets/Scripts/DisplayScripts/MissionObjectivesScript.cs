@@ -16,7 +16,7 @@ using UnityEngine.UI;
  *  objective. 
  *      
  *  The confirm and select objects handles intermediary
- *  selections. 
+ *  selections for changing objective statuses. 
  *--------------------------------------------------------*/
 
 public class MissionObjectivesScript : MonoBehaviour
@@ -39,37 +39,35 @@ public class MissionObjectivesScript : MonoBehaviour
     public GameObject ROVERStatusGO;
     public GameObject ReturnNavigationStatusGO;
 
-
+    // button to confirm change of mission objective completion status
     public void ConfirmButton()
     {
-        Dictionary<GameObject, bool[]> missionObjectives = FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives();
         if (confirmObject == null)
         {
             labelInstructions.GetComponent<TextMeshProUGUI>().text = "There is nothing selected";
         }
         else
         {
-            retrievedBoolIsCompleted = FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives()[confirmObject][1];
-            if (retrievedBoolIsCompleted == true)
+            // if the objective in question is already completed, then set it to not completed and red.
+            if (FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives()[confirmObject][1] == true)
             {
                 FindObjectOfType<MissionObjectivesDataHolder>().toggleIsCompleted(confirmObject, false);
-                //FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(confirmObject, false);
                 confirmObject.GetComponent<Image>().color = Color.red;
-                confirmObject = null;
             }
+            // else set it to completed, not in progress, green, and clear the current objective
             else
             {
                 FindObjectOfType<MissionObjectivesDataHolder>().toggleIsCompleted(confirmObject, true);
                 FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(confirmObject, false);
                 confirmObject.GetComponent<Image>().color = Color.green;
                 FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(null);
-                confirmObject = null;
             }
+            confirmObject = null;
             changingStatusButton.interactable = false;
         }
     }
 
-
+    // button logic to confirm change of current objective
     public void SelectObject()
     {
         if (selectObject == null) 
@@ -78,8 +76,11 @@ public class MissionObjectivesScript : MonoBehaviour
         }
         else
         {
+            // if there is no current objective, then check if the selected object is in progress
             if(FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective() == null)
             {
+                // if the selected object is not in progress, set it to in progress, not completed, set it as 
+                // the new current objective, and yellow, and clear the selected object
                 if (FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives()[selectObject][0] == false)
                 {
                     FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(selectObject, true);
@@ -93,6 +94,9 @@ public class MissionObjectivesScript : MonoBehaviour
                     currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Current Objective: " + MOname;
                 }
             }
+            // if there is a current objective, set it to red, not in progress, not completed,
+            // set the selected object as in proress, not completed, and set it as the current objective
+            // and yellow
             else
             {
                 FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective().GetComponent<Image>().color = Color.red;
@@ -105,51 +109,12 @@ public class MissionObjectivesScript : MonoBehaviour
                 selectObject = null;
             }
             
-
-
-            //if (currentObjective != null)
-            //{
-            //    retrievedBoolIsCompleted = missionObjectives[currentObjective][1];
-            //    if (retrievedBoolIsCompleted == true)
-            //    {
-            //        FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(currentObjective, false);
-            //        currentObjective.GetComponent<Image>().color = Color.red;
-            //    }
-            //    else
-            //    {
-            //        currentObjective.GetComponent<Image>().color = Color.red;
-
-            //    }
-            //    FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(currentObjective, false);
-            //    FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(selectObject);
-
-
-            //}
-            //else
-            //{
-            //    FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(selectObject);
-            //    FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(selectObject, true);
-            //}
-            //currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Current Objective: " + MOname;
-            //FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(selectObject, true);
-            //selectObject.GetComponent<Image>().color = Color.yellow;
-            //selectObject = null;
         }
         changingCurrentObjectiveButton.interactable = false;
     }
 
-
-    public void setColor(GameObject statusGameObject,  bool dataHolderBool)
-    {
-        if (dataHolderBool == true)
-        {
-            statusGameObject.GetComponent<Image>().color = Color.green;
-        }
-        else
-        {
-            statusGameObject.GetComponent<Image>().color = Color.red;
-        }
-    }
+    // if an objective is pressed, it'll become the object in question for changing its completion
+    // status or in progres status. 
 
     public void OnButtonPressCalibration()
     {
