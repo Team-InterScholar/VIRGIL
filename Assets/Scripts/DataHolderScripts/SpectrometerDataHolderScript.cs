@@ -4,12 +4,20 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/*-------------------------------------------------------*/
+/*  Script that lets an object:
+ *   
+ *   1. Initalize a hashmap to store Rock samples
+ *      using their RFIDs.
+ *   2. Allow other objects to access the hashmap.
+ *     
+ *      
+ *--------------------------------------------------------*/
+
 
 public class SpectrometerDataHolderScript : MonoBehaviour
 {
     public Dictionary<int, string> spectrometerData;
-    public bool isShowing;
-    // Start is called before the first frame update
     void Start()
     {
         spectrometerData = new Dictionary<int, string>();

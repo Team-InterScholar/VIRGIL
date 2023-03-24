@@ -1,22 +1,21 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+/*-------------------------------------------------------*/
+/*  Script that lets an object:
+ *   
+ *   1. Initialize a hashmap to store Mission Objectives 
+ *      and their statuses.
+ *   2. Allow other objects to retrieve this hashmap.
+ *   3. Allow other objects to modify the statuses of the
+ *      Mission Objectives.
+ *   4. Allow other objects to modify the Current
+ *      Mission Objective.
+ *      
+ *--------------------------------------------------------*/
 
 public class MissionObjectivesDataHolder : MonoBehaviour
 {
-    /*-------------------------------------------------------*/
-    /*  Script that lets an object:
-     *   
-     *   1. Initialize a hashmap to store Mission Objectives 
-     *      and their statuses.
-     *   2. Allow other objects to retrieve this hashmap.
-     *   3. Allow other objects to modify the statuses of the
-     *      Mission Objectives.
-     *   4. Allow other objects to modify the Current
-     *      Mission Objective.
-     *      
-     *--------------------------------------------------------*/
-
     public Dictionary<GameObject, bool[]> missionObjectives;
 
      //Each gameobject references the Mission Objective buttons
