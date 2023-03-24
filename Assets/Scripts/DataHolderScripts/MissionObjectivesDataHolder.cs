@@ -1,16 +1,33 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
+using System.Reflection;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MissionObjectivesDataHolder : MonoBehaviour
 {
-    public Dictionary<GameObject, bool[]> missionObjectives;
-    private GameObject currentObjective;
+    /*-------------------------------------------------------*/
+    /*  Script that lets an object:
+     *   
+     *   1. Initialize a hashmap to store Mission Objectives 
+     *      and their statuses.
+     *   2. Allow other objects to retrieve this hashmap.
+     *   3. Allow other objects to modify the statuses of the
+     *      Mission Objectives.
+     *   4. Allow other objects to modify the Current
+     *      Mission Objective.
+     *      
+     *--------------------------------------------------------*/
 
-    //public GameObject CalibrationStatusGO;
+    public Dictionary<GameObject, bool[]> missionObjectives;
+
+     //Each gameobject references the Mission Objective buttons
+     //so that their appearances can be manipulated during 
+     //runtime.
+
+     //Each bool array holds two indices for if a Mission
+     //Objective is in progress and if it is completed.
+
+
+    //public GameObject CalibrationStatusGO; disabled until the main features are built
     public GameObject EgressStatusGO;
     public GameObject SiteNavigationStatusGO;
     public GameObject GeologicalScanningStatusGO;
@@ -18,13 +35,10 @@ public class MissionObjectivesDataHolder : MonoBehaviour
     public GameObject ReturnNavigationStatusGO;
 
     private bool[] inProgAndCompletion;
+    private GameObject currentObjective;
 
-    // Start is called before the first frame update
     void Start()
     {
-
-        // in this hashmap:
-        // (Key: Mission Objective, Value: bool[] arr = new bool[] (is in progress, is completed))
         missionObjectives = new Dictionary<GameObject, bool[]>();
         currentObjective = null;
         //missionObjectives.Add(CalibrationStatusGO, false);
@@ -34,6 +48,16 @@ public class MissionObjectivesDataHolder : MonoBehaviour
         missionObjectives.Add(ROVERStatusGO, inProgAndCompletion = new bool[] { false, false });
         missionObjectives.Add(ReturnNavigationStatusGO, inProgAndCompletion = new bool[] { false, false });
     }
+
+    public Dictionary<GameObject, bool[]> GetMissionObjectives()
+    {
+        return missionObjectives;
+    }
+
+
+    // functions to modify the booleans in each array;
+    // the first index in the array refers to "in progress"
+    // and the second index is for if the objective is complete
 
     public void toggleIsCompleted(GameObject missionObject, bool newStatus)
     {
@@ -46,15 +70,13 @@ public class MissionObjectivesDataHolder : MonoBehaviour
         currentObjective = missionObject;
     }
 
+
+    // functions to modify the current objective
     public void setCurrentObjective(GameObject newCurrentObjective)
     {
         currentObjective = newCurrentObjective;
     }
 
-    public Dictionary<GameObject, bool[]> GetMissionObjectives()
-    {
-        return missionObjectives;
-    }
 
     public GameObject GetCurrentObjective()
     {
