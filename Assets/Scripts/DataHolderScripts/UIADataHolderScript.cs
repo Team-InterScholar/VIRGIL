@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+/*-------------------------------------------------------*/
+/*  Script that lets an object:
+ *   
+ *   1. Initialize a hashmap to store UIA data provided 
+ *      by the Telemetry Stream.
+ *   2. Allow other objects to retrieve the hashmap.
+ *   3. Allow other obejcts to modify the UIA data. 
+ *   
+ *   NOTE: Subject to change due to incoming Telemetry 
+ *          Stream update.
+ *      
+ *--------------------------------------------------------*/
 public class UIADataHolderScript : MonoBehaviour
 {
     public Dictionary<string, bool> UIABooleans;
     public TextMeshProUGUI UIALabel;
     private bool isShowing;
 
-    // waste port
-    // emu2 supply press
-    // Start is called before the first frame update
     void Start()
     {
         UIABooleans = new Dictionary<string, bool>();
@@ -29,30 +38,8 @@ public class UIADataHolderScript : MonoBehaviour
         UIABooleans.Add("EMU2 O2", false);
         UIABooleans.Add("O2 Vent", false);
         UIABooleans.Add("Depress Pump", false);
-
-
     }
 
-
-    public void OnPressed()
-    {
-        if (isShowing == true)
-        {
-            UIALabel.GetComponent<TextMeshProUGUI>().text = "" +
-            "EV1" + UIABooleans["EV1"] + "\n" +
-            "EV2" + UIABooleans["EV2"] + "\n" +
-            "EMU1" + UIABooleans["EMU1"] + "\n" +
-            "EMU2" + UIABooleans["EMU2"] + "\n" +
-            "Supply Switch" + UIABooleans["supplySwitch"] + "\n" +
-            "Waste Switch" + UIABooleans["wasteSwitch"] + "\n" +
-            "EMU" + UIABooleans["EMU"] + "\n" +
-            "EMU Power" + UIABooleans["emuPower"] + "\n" +
-            "Depress Pump" + UIABooleans["depressPump"] + "\n" +
-            "";
-        }
-   
-
-    }
 
     public Dictionary<string, bool> GetUIABooleans()
     {

@@ -11,6 +11,8 @@ using UnityEngine;
  *      using their RFIDs.
  *   2. Allow other objects to access the hashmap.
  *     
+ *   NOTE: Subject to change due to incoming Telemetry
+ *          Stream update.
  *      
  *--------------------------------------------------------*/
 
