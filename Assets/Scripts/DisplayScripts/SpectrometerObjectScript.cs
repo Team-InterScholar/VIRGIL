@@ -6,7 +6,8 @@ using UnityEngine;
 public class SpectrometerObjectScript : MonoBehaviour
 {
     public TextMeshProUGUI labelSpectro;
-    private bool isShowing;
+    public GameObject refreshButton;
+
     private Dictionary<int, string> spectrometerData;
     // Start is called before the first frame update
     void Start()
@@ -18,19 +19,9 @@ public class SpectrometerObjectScript : MonoBehaviour
     {
 
         spectrometerData = FindObjectOfType<SpectrometerDataHolderScript>().GetSpectroData();
-        labelSpectro.GetComponent<TextMeshProUGUI>().text = " testttttt ";
+        labelSpectro.GetComponent<TextMeshProUGUI>().text = " TBD ";
 
 
 
-    }
-
-    public bool isSpectroShowing()
-    {
-        return isShowing;
-    }
-
-    public void setIsSpectroShowing(bool display)
-    {
-        isShowing = display;
     }
 }
