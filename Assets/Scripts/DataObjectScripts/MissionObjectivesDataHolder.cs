@@ -66,7 +66,14 @@ public class MissionObjectivesDataHolder : MonoBehaviour
     public void toggleInProgStatus(GameObject missionObject, bool newStatus)
     {
         missionObjectives[missionObject][0] = newStatus;
-        currentObjective = missionObject;
+        if (newStatus == false)
+        {
+
+        }
+        else
+        {
+            currentObjective = missionObject;
+        }
     }
 
 

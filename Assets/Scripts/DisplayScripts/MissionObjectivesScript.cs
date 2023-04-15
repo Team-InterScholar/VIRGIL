@@ -57,10 +57,20 @@ public class MissionObjectivesScript : MonoBehaviour
             // else set it to completed, not in progress, green, and clear the current objective
             else
             {
+
+
                 FindObjectOfType<MissionObjectivesDataHolder>().toggleIsCompleted(confirmObject, true);
                 FindObjectOfType<MissionObjectivesDataHolder>().toggleInProgStatus(confirmObject, false);
                 confirmObject.GetComponent<Image>().color = Color.green;
-                FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(null);
+
+                if (FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective() != confirmObject)
+                {
+                    // don't null it
+                }
+                else
+                {
+                    FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(null);
+                }
             }
             confirmObject = null;
             changingStatusButton.interactable = false;
@@ -87,6 +97,7 @@ public class MissionObjectivesScript : MonoBehaviour
                     FindObjectOfType<MissionObjectivesDataHolder>().toggleIsCompleted(selectObject, false);
                     FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(selectObject);
                     FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective().GetComponent<Image>().color = Color.yellow;
+                    currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Current Objective: " + MOname;
                     selectObject = null;
                 }
                 else
@@ -94,8 +105,10 @@ public class MissionObjectivesScript : MonoBehaviour
                     currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Current Objective: " + MOname;
                 }
             }
+
+
             // if there is a current objective, set it to red, not in progress, not completed,
-            // set the selected object as in proress, not completed, and set it as the current objective
+            // set the selected object as in progress, not completed, and set it as the current objective
             // and yellow
             else
             {
@@ -106,6 +119,7 @@ public class MissionObjectivesScript : MonoBehaviour
                 FindObjectOfType<MissionObjectivesDataHolder>().toggleIsCompleted(selectObject, false);
                 FindObjectOfType<MissionObjectivesDataHolder>().setCurrentObjective(selectObject);
                 FindObjectOfType<MissionObjectivesDataHolder>().GetCurrentObjective().GetComponent<Image>().color = Color.yellow;
+                currentObjectiveLabel.GetComponent<TextMeshProUGUI>().text = "Current Objective: " + MOname;
                 selectObject = null;
             }
             

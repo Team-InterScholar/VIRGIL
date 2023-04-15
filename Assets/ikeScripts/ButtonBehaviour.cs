@@ -100,4 +100,9 @@ public class ButtonBehaviour : MonoBehaviour
         }
 
     }
+
+    public void OnButtonPressSUIT()
+    {
+        //GameObject.Find("BiometricsInfo").GetComponent<TextMeshProUGUI>().text = "test";
+    }
 }

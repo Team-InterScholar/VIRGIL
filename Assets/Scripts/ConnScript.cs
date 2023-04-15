@@ -15,6 +15,10 @@ public class ConnScript : MonoBehaviour
     public TextMeshProUGUI infoLabel;
     public TextMeshProUGUI testLabel;
 
+    public TextMeshProUGUI biometricsLabel;
+    public TextMeshProUGUI suitIntegrityLabel;
+    public TextMeshProUGUI alertsLabel;
+
     TSSConnection tss;
     string tssUri;
 
@@ -102,6 +106,8 @@ public class ConnScript : MonoBehaviour
 
         tss.OnTSSTelemetryMsg += (telemMsg) => showTelemInfo(telemMsg);
         tss.OnTSSTelemetryMsg += (telemMsg) => updateUIA(telemMsg);
+        tss.OnTSSTelemetryMsg += (telemMsg) => updateBiometrics(telemMsg);
+        tss.OnTSSTelemetryMsg += (telemMsg) => updateSuitIntegrity(telemMsg);
         //tss.OnTSSConnectionMsg += (telemMsg) => showConnectionStatus(telemMsg);
 
 
@@ -173,11 +179,57 @@ public class ConnScript : MonoBehaviour
             FindObjectOfType<UIADataHolderScript>().setUIABoolean("O2 Vent", telemMsg.UIA[0].O2_vent);
             FindObjectOfType<UIADataHolderScript>().setUIABoolean("Depress Pump", telemMsg.UIA[0].depress_pump);
 
-            FindObjectOfType<UIAObjectScript>().setLastRefreshTime(telemMsg.EVA[0].timer);
+
+
+            if(FindObjectOfType<UIAObjectScript>() == null)
+            {
+                // catch object not set to instance error
+            }
+            else
+            {
+                FindObjectOfType<UIAObjectScript>().setLastRefreshTime(telemMsg.EVA[0].timer);
+            }
         }
         else
         {
             testLabel.text = "No UIA Msg received";
+        }
+    }
+
+    public void updateBiometrics(TSS.Msgs.TSSMsg telemMsg)
+    {
+        if(telemMsg.EVA.Count > 0)
+        {
+            if (telemMsg.EVA[0].heart_bpm > 93 || telemMsg.EVA[0].heart_bpm < 85)
+            {
+                FindObjectOfType<AlertsDataHolderScript>().setUIABoolean("heartRate", false);
+            }
+            else
+            {
+                FindObjectOfType<AlertsDataHolderScript>().setUIABoolean("heartRate", true);
+            }
+            biometricsLabel.text = "Heart Rate: " + telemMsg.EVA[0].heart_bpm;
+        }
+        else
+        {
+            biometricsLabel.text = "No biometric data received";
+        }
+    }
+
+    public void updateSuitIntegrity(TSS.Msgs.TSSMsg telemMsg)
+    {
+        if (telemMsg.EVA.Count > 0)
+        {
+
+            suitIntegrityLabel.text = "Suit Pressure: " + telemMsg.EVA[0].p_suit + "\n"
+                                    + "Fan: " + telemMsg.EVA[0].v_fan + "\n"
+                                    + "O2 Pressure: " + telemMsg.EVA[0].p_o2 + "\n"
+                                    + "O2 Rate: " + telemMsg.EVA[0].rate_o2 + "\n"
+                                    + "Battery Capacity: " + telemMsg.EVA[0].cap_battery + "\n";
+        }
+        else
+        {
+            biometricsLabel.text = "No biometric data received";
         }
     }
 
