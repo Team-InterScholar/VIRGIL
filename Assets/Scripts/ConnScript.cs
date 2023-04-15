@@ -16,6 +16,8 @@ public class ConnScript : MonoBehaviour
     public TextMeshProUGUI testLabel;
 
     public TextMeshProUGUI biometricsLabel;
+    public TextMeshProUGUI suitIntegrityLabel;
+    public TextMeshProUGUI alertsLabel;
 
     TSSConnection tss;
     string tssUri;
@@ -105,6 +107,7 @@ public class ConnScript : MonoBehaviour
         tss.OnTSSTelemetryMsg += (telemMsg) => showTelemInfo(telemMsg);
         tss.OnTSSTelemetryMsg += (telemMsg) => updateUIA(telemMsg);
         tss.OnTSSTelemetryMsg += (telemMsg) => updateBiometrics(telemMsg);
+        tss.OnTSSTelemetryMsg += (telemMsg) => updateSuitIntegrity(telemMsg);
         //tss.OnTSSConnectionMsg += (telemMsg) => showConnectionStatus(telemMsg);
 
 
@@ -197,8 +200,32 @@ public class ConnScript : MonoBehaviour
     {
         if(telemMsg.EVA.Count > 0)
         {
+            if (telemMsg.EVA[0].heart_bpm > 93 || telemMsg.EVA[0].heart_bpm < 85)
+            {
+                FindObjectOfType<AlertsDataHolderScript>().setUIABoolean("heartRate", false);
+            }
+            else
+            {
+                FindObjectOfType<AlertsDataHolderScript>().setUIABoolean("heartRate", true);
+            }
             biometricsLabel.text = "Heart Rate: " + telemMsg.EVA[0].heart_bpm;
-            print(telemMsg.EVA[0].heart_bpm);
+        }
+        else
+        {
+            biometricsLabel.text = "No biometric data received";
+        }
+    }
+
+    public void updateSuitIntegrity(TSS.Msgs.TSSMsg telemMsg)
+    {
+        if (telemMsg.EVA.Count > 0)
+        {
+
+            suitIntegrityLabel.text = "Suit Pressure: " + telemMsg.EVA[0].p_suit + "\n"
+                                    + "Fan: " + telemMsg.EVA[0].v_fan + "\n"
+                                    + "O2 Pressure: " + telemMsg.EVA[0].p_o2 + "\n"
+                                    + "O2 Rate: " + telemMsg.EVA[0].rate_o2 + "\n"
+                                    + "Battery Capacity: " + telemMsg.EVA[0].cap_battery + "\n";
         }
         else
         {
