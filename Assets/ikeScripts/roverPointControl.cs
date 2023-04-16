@@ -8,18 +8,30 @@ public class roverPointControl : MonoBehaviour
 {
     double longitude; //or strings?
     double latitude;
+    private bool isShowing;
+    public GameObject roverOff;
+    public GameObject roverOnIdle;
+    public GameObject roverOnActive;
     public TMP_InputField userEnterLong;
     public TMP_InputField userEnterLat;
     public Button mobilizeButton;
+    public Button recallButton;
     public TMP_Text displayEnterLong;
     public TMP_Text displayEnterLat;
-    public Button recallButton;
+    public TMP_Text currentLong;
+    public TMP_Text currentLat;
+    public TMP_Text returnPLong;
+    public TMP_Text returnPLat;
 
     // Start is called before the first frame update
     private void Start()
     {
-        //attach button event
-        mobilizeButton.onClick.AddListener(onMobilizePress);
+        isShowing = false;
+        roverOff.SetActive(!isShowing);
+        roverOnIdle.SetActive(isShowing);
+        roverOnActive.SetActive(isShowing);
+        mobilizeButton.onClick.AddListener(onMobilizePress); //attach button event
+        recallButton.onClick.AddListener(onRecallPress); //attach button event
     }
 
     // Update is called once per frame
@@ -36,7 +48,38 @@ public class roverPointControl : MonoBehaviour
         displayEnterLong.text = userEnterLong.text;
         displayEnterLat.text = userEnterLat.text;
 
+        roverOff.SetActive(isShowing);
+        roverOnIdle.SetActive(isShowing);
+        roverOnActive.SetActive(!isShowing); //turn on the green-active text object
+
+        StartCoroutine(coroutine()); //counter for 5 seconds
+
+        //function will then take the user's coords and randomize a point near them to set as the return point coords
     }
+
+    public void onRecallPress()
+    {
+        displayEnterLong.text = returnPLong.text;
+        displayEnterLat.text = returnPLat.text;
+
+        roverOff.SetActive(isShowing);
+        roverOnIdle.SetActive(isShowing);
+        roverOnActive.SetActive(!isShowing); //turn on the green-active text object
+
+        StartCoroutine(coroutine()); //counter for 5 seconds
+    }
+
+    IEnumerator coroutine()
+    {
+        yield return new WaitForSeconds(5f);
+
+        currentLong.text = displayEnterLong.text;
+        currentLat.text = displayEnterLat.text; // within counter end is current coord change
+        roverOff.SetActive(isShowing);
+        roverOnActive.SetActive(isShowing);
+        roverOnIdle.SetActive(!isShowing); //also within is turn on yellow-idle text object
+    }
+
 }
 
 
