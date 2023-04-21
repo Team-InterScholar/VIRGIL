@@ -20,6 +20,12 @@ public class ButtonBehaviour : MonoBehaviour
         isShowing = !isShowing;
         finalCard.SetActive(isShowing);
     }
+
+    public void OnButtonExit()
+    {
+        Invoke("OnButtonPress",0.5f);
+    }
+
     public void onButtonPressEVA()
     {
         //foreach (KeyValuePair<GameObject, bool[]> item in FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives())

@@ -19,6 +19,8 @@ public class ConnScript : MonoBehaviour
     public TextMeshProUGUI suitIntegrityLabel;
     public TextMeshProUGUI alertsLabel;
 
+    public GameObject socketField;
+
     TSSConnection tss;
     string tssUri;
 
@@ -34,7 +36,7 @@ public class ConnScript : MonoBehaviour
     async void Start()
     {
         tss = new TSSConnection();
-        inputField = GameObject.Find("Socket URI Input Field").GetComponent<TMPro.TMP_InputField>();
+        inputField = socketField.GetComponent<TMPro.TMP_InputField>();
 
         //gpsMsgBox = GameObject.Find("GPS Msg Box").GetComponent<TMPro.TMP_Text>();
         //imuMsgBox = GameObject.Find("IMU Msg Box").GetComponent<TMPro.TMP_Text>();
