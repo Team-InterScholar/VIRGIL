@@ -18,8 +18,8 @@ public class SpectrometerObjectScript : MonoBehaviour
     public void OnButtonPressed()
     {
 
-        spectrometerData = FindObjectOfType<SpectrometerDataHolderScript>().GetSpectroData();
-        labelSpectro.GetComponent<TextMeshProUGUI>().text = " TBD ";
+        //spectrometerData = FindObjectOfType<SpectrometerDataHolderScript>().GetSpectroData();
+        //labelSpectro.GetComponent<TextMeshProUGUI>().text = " TBD ";
 
 
 

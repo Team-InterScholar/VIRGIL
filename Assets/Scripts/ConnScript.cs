@@ -23,6 +23,16 @@ public class ConnScript : MonoBehaviour
     public TMPro.TMP_Text ventSwitch;
     public TMPro.TMP_Text depressPumpSwitch;
 
+    public TMPro.TMP_Text SiO2Info;
+    public TMPro.TMP_Text TiO2Info;
+    public TMPro.TMP_Text Al2O3;
+    public TMPro.TMP_Text FeO;
+    public TMPro.TMP_Text MnO;
+    public TMPro.TMP_Text MgO;
+    public TMPro.TMP_Text CaO;
+    public TMPro.TMP_Text K2O;
+    public TMPro.TMP_Text P2O3;
+
     // Start is called before the first frame update
     async void Start()
     {
@@ -77,6 +87,7 @@ public class ConnScript : MonoBehaviour
         };
 
         tss.OnTSSTelemetryMsg += (telemMsg) => printUIA(telemMsg);
+        //tss.OnTSSTelemetryMsg += (telemMsg) => printSpectr(telemMsg);
         // tss.OnOpen, OnError, and OnClose events just re-raise events from websockets.
         // Similar to OnTSSTelemetryMsg, create functions with the appropriate return type and parameters, and subscribe to them
         tss.OnOpen += () =>
@@ -128,6 +139,44 @@ public class ConnScript : MonoBehaviour
             depressPumpSwitch.text = "No UIA msg received";
         }
     }
+
+
+    void printSpectr(TSS.Msgs.TSSMsg telemMsg)
+    {
+        //if (telemMsg.specMsg.count > 0)
+        //{
+        //    SiO2Info.text = "" + telemMsg.specMsg[0].SiO2;
+        //    TiO2Info.text = "" + telemMsg.specMsg[0].TiO2;
+        //    Al2O3.text = "" + telemMsg.specMsg[0].Al2O3;
+        //    FeO.text = "" + telemMsg.specMsg[0].FeO;
+        //    MnO.text = "" + telemMsg.specMsg[0].MnO;
+        //    MgO.text = "" + telemMsg.specMsg[0].MgO;
+        //    CaO.text = "" + telemMsg.specMsg[0].CaO;
+        //    K2O.text = "" + telemMsg.specMsg[0].K2O;
+        //    P2O3.text = "" + telemMsg.specMsg[0].P2O3;
+
+        //    //public TMPro.TMP_Text SiO2Info;
+        //    //public TMPro.TMP_Text TiO2Info;
+        //    //public TMPro.TMP_Text Al2O3;
+        //    //public TMPro.TMP_Text FeO;
+        //    //public TMPro.TMP_Text MnO;
+        //    //public TMPro.TMP_Text CaO;
+        //    //public TMPro.TMP_Text K2O;
+        //    //public TMPro.TMP_Text P2O3; "no spec msg received";
+        //}
+        //else
+        //{
+        //    SiO2Info.text = "no spec msg received";
+        //    TiO2Info.text = "no spec msg received";
+        //    Al2O3.text = "no spec msg received";
+        //    MnO.text = "no spec msg received";
+        //    MgO.text = "no spec msg received";
+        //    CaO.text = "no spec msg received";
+        //    K2O.text = "no spec msg received";
+        //    P2O3.text = "no spec msg received";
+        //}
+    }
+
     // An example handler for the OnTSSMsgReceived event which just serializes to JSON and prints it all out
     // Can be any function that returns void and has a single parameter of type TSS.Msgs.TSSMsg
     public static void PrintInfo(TSS.Msgs.TSSMsg tssMsg)
