@@ -6,14 +6,15 @@ public class ButtonColorChangeScript : MonoBehaviour
 {
     public GameObject Object;
     MeshRenderer a_renderer;
-    public Material firstMaterial;
-    public Material otherMaterial;
+    public Material red;
+    public Material yellow;
+    public Material green;
 
     // Start is called before the first frame update
     void Start()
     {
         a_renderer = Object.GetComponent<MeshRenderer>();
-        a_renderer.material = firstMaterial;
+        a_renderer.material = red;
     }
 
     // Update is called once per frame
@@ -24,6 +25,6 @@ public class ButtonColorChangeScript : MonoBehaviour
 
     public void OnButtonPress()
     {
-        a_renderer.material = otherMaterial; 
+        a_renderer.material = green; 
     }
 }

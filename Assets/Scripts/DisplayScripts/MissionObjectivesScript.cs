@@ -67,6 +67,10 @@ public class MissionObjectivesScript : MonoBehaviour
         returnnav_Renderer = returnnavObject_Renderer.GetComponent<MeshRenderer> ();
 
         egress_Renderer.material = red;
+        sitenav_Renderer.material = red;
+        geoscan_Renderer.material = red;
+        rover_Renderer.material = red;
+        returnnav_Renderer.material = red;
 
         labelInstructions = GameObject.Find("MissionInfo").GetComponent<TMPro.TMP_Text>();
     }
