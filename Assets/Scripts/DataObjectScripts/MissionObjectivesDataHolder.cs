@@ -35,6 +35,7 @@ public class MissionObjectivesDataHolder : MonoBehaviour
 
     private bool[] inProgAndCompletion;
     private GameObject currentObjective;
+    private MeshRenderer currentObjectiveRenderer;
 
     void Start()
     {
@@ -87,6 +88,16 @@ public class MissionObjectivesDataHolder : MonoBehaviour
     public GameObject GetCurrentObjective()
     {
         return currentObjective;
+    }
+
+    public MeshRenderer getCurrentObjectiveRenderer()
+    {
+        return currentObjectiveRenderer;
+    }
+
+    public void setCurrentObjectiveRenderer(MeshRenderer newMeshRender)
+    {
+        currentObjectiveRenderer = newMeshRender;
     }
 }
 
