@@ -7,12 +7,13 @@ using TSS.Msgs;
 using TMPro;
 using Codice.Client.Commands;
 
-public class ConnScript : MonoBehaviour
+public class ConnScriptOld : MonoBehaviour
 {
 
-    public TextMeshProUGUI label;
-    public TextMeshProUGUI connectionStatusLabel;
-    public TextMeshProUGUI infoLabel;
+    public GameObject missionTime;
+    public GameObject connectionStatusLabel;
+    public GameObject roomLabel;
+    public GameObject idLabel;
     public TextMeshProUGUI testLabel;
 
     public TextMeshProUGUI biometricsLabel;
@@ -37,7 +38,6 @@ public class ConnScript : MonoBehaviour
     {
         tss = new TSSConnection();
         inputField = socketField.GetComponent<TMPro.TMP_InputField>();
-
         //gpsMsgBox = GameObject.Find("GPS Msg Box").GetComponent<TMPro.TMP_Text>();
         //imuMsgBox = GameObject.Find("IMU Msg Box").GetComponent<TMPro.TMP_Text>();
         //evaMsgBox = GameObject.Find("EVA Msg Box").GetComponent<TMPro.TMP_Text>();
@@ -55,6 +55,9 @@ public class ConnScript : MonoBehaviour
     public async void Connect()
     {
         tssUri = inputField.text;
+        print(tssUri);
+        //tssUri = "ws://localhost:3001";
+        print(tssUri);
         var connecting = tss.ConnectToURI(tssUri);
         Debug.Log("Connecting to " + tssUri);
         // Create a function that takes asing TSSMsg parameter and returns void. For example:
@@ -107,10 +110,9 @@ public class ConnScript : MonoBehaviour
         //};
 
         tss.OnTSSTelemetryMsg += (telemMsg) => showTelemInfo(telemMsg);
-        tss.OnTSSTelemetryMsg += (telemMsg) => updateUIA(telemMsg);
-        tss.OnTSSTelemetryMsg += (telemMsg) => updateBiometrics(telemMsg);
-        tss.OnTSSTelemetryMsg += (telemMsg) => updateSuitIntegrity(telemMsg);
-        //tss.OnTSSConnectionMsg += (telemMsg) => showConnectionStatus(telemMsg);
+        //tss.OnTSSTelemetryMsg += (telemMsg) => updateUIA(telemMsg);
+        //tss.OnTSSTelemetryMsg += (telemMsg) => updateBiometrics(telemMsg);
+        //tss.OnTSSTelemetryMsg += (telemMsg) => updateSuitIntegrity(telemMsg);
 
 
         // tss.OnOpen, OnError, and OnClose events just re-raise events from websockets.
@@ -123,19 +125,18 @@ public class ConnScript : MonoBehaviour
             Debug.Log("Websocket connection opened");
         };
 
-        tss.OnError += (string e) =>
-        {
-            connectionStatusLabel.GetComponent<TextMeshProUGUI>().text = "Connection: ERROR \n" +
-            "Error Code: " + e;
-            Debug.Log("Websocket error occured: " + e);
-        };
+        //tss.OnError += (string e) =>
+        //{
+        //    connectionStatusLabel.GetComponent<TextMeshProUGUI>().text = "Connection: ERROR \n" + "Error Code: " + e;
+        //    Debug.Log("Websocket error occured: " + e);
+        //};
 
-        tss.OnClose += (e) =>
-        {
-            connectionStatusLabel.GetComponent<TextMeshProUGUI>().text = "Connection: CLOSED \n" +
-            "Exit Code:" + e;
-            Debug.Log("Websocket closed with code: " + e);
-        };
+        //tss.OnClose += (e) =>
+        //{
+        //    connectionStatusLabel.GetComponent<TextMeshProUGUI>().text = "Connection: CLOSED \n" +
+        //    "Exit Code:" + e;
+        //    Debug.Log("Websocket closed with code: " + e);
+        //};
 
         await connecting;
 
@@ -152,15 +153,18 @@ public class ConnScript : MonoBehaviour
     {
         if (tssMsg.EVA.Count > 0)
         {
-            label.GetComponent<TextMeshProUGUI>().text = "Mission Time: \n" + tssMsg.EVA[0].timer;
-            infoLabel.GetComponent<TextMeshProUGUI>().text = "" +
-                "ID: " + tssMsg.EVA[0].id + "\n" +
+            missionTime.GetComponent<TMPro.TMP_Text>().text = "Mission Time: \n" + tssMsg.EVA[0].timer;
+            idLabel.GetComponent<TextMeshProUGUI>().text = "" +
+                "ID: " + tssMsg.EVA[0].id + "\n";
+            roomLabel.GetComponent<TextMeshProUGUI>().text = "" +
                 "Room: " + tssMsg.EVA[0].room + "\n";
+
         }
         else
         {
-            label.GetComponent<TextMeshProUGUI>().text = "No EVA msg received.";
-            infoLabel.GetComponent<TextMeshProUGUI>().text = "No EVA msg received.";
+            missionTime.GetComponent<TextMeshProUGUI>().text = "No EVA msg received.";
+            idLabel.GetComponent<TextMeshProUGUI>().text = "No EVA msg received.";
+            roomLabel.GetComponent<TextMeshProUGUI>().text = "No EVA msg received.";
         }
     }
 
