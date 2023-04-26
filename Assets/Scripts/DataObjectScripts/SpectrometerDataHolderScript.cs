@@ -24,11 +24,11 @@ public class SpectrometerDataHolderScript : MonoBehaviour
     {
         spectrometerData = new Dictionary<string, float>();
         spectrometerData.Add("SiO2", 0.0f);
-        spectrometerData.Add("Ti02", 0.0f);
-        spectrometerData.Add("Al203", 0.0f);
+        spectrometerData.Add("TiO2", 0.0f);
+        spectrometerData.Add("Al2O3", 0.0f);
         spectrometerData.Add("FeO", 0.0f);
         spectrometerData.Add("MnO", 0.0f);
-        spectrometerData.Add("Mgo", 0.0f);
+        spectrometerData.Add("MgO", 0.0f);
         spectrometerData.Add("CaO", 0.0f);
         spectrometerData.Add("K2O", 0.0f);
         spectrometerData.Add("P2O3", 0.0f);
