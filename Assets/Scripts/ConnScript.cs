@@ -178,17 +178,17 @@ public class ConnScript : MonoBehaviour
             PrimaryOxygenRateInfo.text = "" + telemMsg.EVA[0].rate_o2;
 
             SecondaryOxygenInfo.text = "" + telemMsg.EVA[0].ox_secondary;
-            SecondaryOxygenTimeInfo.text = "" + telemMsg.EVA[0].t_oxygenSec;
+            SecondaryOxygenTimeInfo.text = "" + telemMsg.EVA[0].t_oxygenSec.ToString("#.##");
             SecondaryOxygenPressureInfo.text = "" + telemMsg.EVA[0].p_sop;
             SecondaryOxygenRateInfo.text = "" + telemMsg.EVA[0].rate_sop;
 
             H2OTimeLeftInfo.text = "" + telemMsg.EVA[0].t_water;
             LiquidPressureInfo.text = "" + telemMsg.EVA[0].p_h2o_l;
             GasPressureInfo.text = "" + telemMsg.EVA[0].p_h2o_g;
-            WaterCapacityInfo.text = "" + telemMsg.EVA[0].cap_water;
+            WaterCapacityInfo.text = "" + telemMsg.EVA[0].cap_water.ToString("#.##");
 
             BatteryTimeInfo.text = "" + telemMsg.EVA[0].t_battery;
-            BatteryPercentageInfo.text = "" + telemMsg.EVA[0].batteryPercent;
+            BatteryPercentageInfo.text = "" + telemMsg.EVA[0].batteryPercent.ToString("#.##");
             BatteryOutputInfo.text = "" + telemMsg.EVA[0].battery_out;
             BatteryCapacityInfo.text = "" + telemMsg.EVA[0].cap_battery;
 
