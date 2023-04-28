@@ -54,6 +54,7 @@ public class ConnScript : MonoBehaviour
     public TMPro.TMP_Text TemperatureInfo;
     public TMPro.TMP_Text SuitPressureInfo;
     public TMPro.TMP_Text SubPressureInfo;
+    public TMPro.TMP_Text HeartRateInfo;
 
 
     // Start is called before the first frame update
@@ -197,6 +198,8 @@ public class ConnScript : MonoBehaviour
             SuitPressureInfo.text = "" + telemMsg.EVA[0].p_suit;
             SubPressureInfo.text = "" + telemMsg.EVA[0].p_sub;
 
+            HeartRateInfo.text = "" + telemMsg.EVA[0].heart_bpm;
+
 
         }
         else
@@ -222,6 +225,7 @@ public class ConnScript : MonoBehaviour
             TemperatureInfo.text = "?";
             SuitPressureInfo.text = "?";
             SubPressureInfo.text = "?";
+            HeartRateInfo.text = "?";
 
         }
     }
