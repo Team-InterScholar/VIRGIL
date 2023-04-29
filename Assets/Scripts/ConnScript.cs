@@ -200,6 +200,8 @@ public class ConnScript : MonoBehaviour
 
             HeartRateInfo.text = "" + telemMsg.EVA[0].heart_bpm;
 
+            
+
 
         }
         else
