@@ -8,8 +8,8 @@ using System;
 public class BluetoothConnection : MonoBehaviour
 {
 
-	string arduinoName = "MyArduino";
-	string arduinoServiceUuid = "asdf::asdf::asdf::1234";
+	string arduinoName = "DSD TEC HC-05";
+	string arduinoServiceUuid = "00000000-0000-0000-0000-000000000000";
     string[] characteristicUuids = {
          "{59c2f246-5199-11eb-ae93-0242ac130002}",      // CUUID 1
          "{617c753e-5199-11eb-ae93-0242ac130002}"       // CUUID 2
