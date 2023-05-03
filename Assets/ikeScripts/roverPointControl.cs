@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Microsoft.MixedReality.Toolkit.UX;
 
 public class roverPointControl : MonoBehaviour
 {
@@ -12,8 +13,6 @@ public class roverPointControl : MonoBehaviour
     public GameObject roverOff;
     public GameObject roverOnIdle;
     public GameObject roverOnActive;
-    public TMP_InputField userEnterLong;
-    public TMP_InputField userEnterLat;
     public Button mobilizeButton;
     public Button recallButton;
     public TMP_Text displayEnterLong;
@@ -22,7 +21,8 @@ public class roverPointControl : MonoBehaviour
     public TMP_Text currentLat;
     public TMP_Text returnPLong;
     public TMP_Text returnPLat;
-
+    public MRTKTMPInputField mrtkDisplayEnterLong;
+    public MRTKTMPInputField mrtkDisplayEnterLat;
     // Start is called before the first frame update
     private void Start()
     {
@@ -30,8 +30,8 @@ public class roverPointControl : MonoBehaviour
         roverOff.SetActive(!isShowing);
         roverOnIdle.SetActive(isShowing);
         roverOnActive.SetActive(isShowing);
-        mobilizeButton.onClick.AddListener(onMobilizePress); //attach button event
-        recallButton.onClick.AddListener(onRecallPress); //attach button event
+        //mobilizeButton.onClick.AddListener(onMobilizePress); //attach button event
+        //recallButton.onClick.AddListener(onRecallPress); //attach button event
     }
 
     // Update is called once per frame
@@ -42,11 +42,11 @@ public class roverPointControl : MonoBehaviour
 
     public void onMobilizePress()
     {
-        longitude = double.Parse(userEnterLong.text); //use double.TryParse() if this ends up not working
-        latitude = double.Parse(userEnterLat.text); //do I want them as double???
+        longitude = double.Parse(mrtkDisplayEnterLong.text); //use double.TryParse() if this ends up not working
+        latitude = double.Parse(mrtkDisplayEnterLat.text); //do I want them as double???
 
-        displayEnterLong.text = userEnterLong.text;
-        displayEnterLat.text = userEnterLat.text;
+        displayEnterLong.text = mrtkDisplayEnterLong.text;
+        displayEnterLat.text = mrtkDisplayEnterLat.text;
 
         roverOff.SetActive(isShowing);
         roverOnIdle.SetActive(isShowing);

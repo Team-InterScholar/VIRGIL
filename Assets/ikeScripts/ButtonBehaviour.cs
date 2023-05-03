@@ -8,6 +8,7 @@ public class ButtonBehaviour : MonoBehaviour
 {
     public GameObject finalCard;
     private bool isShowing;
+    private GameObject currentPanel;
 
     void Start()
     {
@@ -20,6 +21,39 @@ public class ButtonBehaviour : MonoBehaviour
         isShowing = !isShowing;
         finalCard.SetActive(isShowing);
     }
+
+    //public void OnButtonExit()
+    //{
+    //    Invoke("OnButtonPress",0.5f);
+    //}
+
+    public void OnButtonPressTest()
+    {
+        
+        if (currentPanel == null)
+        {
+            currentPanel = GameObject.Find("telemPanel");
+        }
+        else
+        {
+            if (this.name == "TelemetryBtn")
+            {
+                currentPanel = GameObject.Find("telemPanel");
+            } else if (this.name == "ObjectivesBtn") {
+                currentPanel = GameObject.Find("objectivesPanel");
+            } else if (this.name == "UIABtn")
+            {
+                currentPanel = GameObject.Find("UIAPanel");
+            } else if (this.name == "SpectroBtn")
+            {
+                currentPanel = GameObject.Find("scansPanel");
+            }
+        }
+
+        currentPanel.SetActive(true);
+
+    }
+
     public void onButtonPressEVA()
     {
         //foreach (KeyValuePair<GameObject, bool[]> item in FindObjectOfType<MissionObjectivesDataHolder>().GetMissionObjectives())
