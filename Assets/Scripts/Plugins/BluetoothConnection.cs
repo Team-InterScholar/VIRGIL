@@ -186,7 +186,7 @@ public class BluetoothConnection : MonoBehaviour
         scan.Found = (_deviceId, deviceName) =>
         {
 
-            Debug.Log("found device with name: " + deviceName);
+            Debug.Log("found device with name: " + deviceName + " and with id: " + _deviceId);
             if(discoveredDevices.ContainsKey(_deviceId))
             {
                 print(deviceName + " already found");

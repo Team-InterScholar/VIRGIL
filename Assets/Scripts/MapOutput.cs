@@ -7,8 +7,17 @@ public class MapOutput : MonoBehaviour
 {
     //public GameObject irlScale;
     public GameObject user;
+    public TMPro.TMP_Text x;
+    public TMPro.TMP_Text z;
     //public GameObject map;
-    //public GameObject marker;
+    public GameObject marker;
+    float userXPos;
+    float userZPos;
+    float userRotation;
+    float markerX;
+    float markerZ;
+    float markerRotation;
+    float userRotationY;
 
     // Start is called before the first frame update
     private void Start()
@@ -20,14 +29,47 @@ public class MapOutput : MonoBehaviour
     // Could probably remove variable count by combining them into longer calculations, but left them to show what each one is with a name.
     void Update()
     {
+        // In real life:
+        //      1. User moves with VisionKit
+
+        // In Unity:
+        //      1. A quad (with map texture) sits a hundred meters above ground level.
+        //      2. A second camera sits 50 meters above it, pointing downwards.
+        //      3. A red cube sits on map
+
+        // In ConnScript:
+        //      1. Read user's long and lat
+        //      2. Compute distance of latitude from real life origin
+        //      3. Compute distance of longtitude from real life origin
+        //      4. Use setters for MapOutput to save computed distances
+
+        // In MapOutput
+        //      1. Add distances to virtual origin
+        //      2. Updates red cube's position
+
+        //  Concerns:
+        //      
+
+
+
+
         //float xMeter = irlScale.transform.localScale.x * 10; //101
         //float zMeter = irlScale.transform.localScale.z * 10; //94.3
         //float xDiff = 101 - 0; //101
         //float zDiff = 0 - 94.3f; //-94.3
-        float userXPos = user.transform.position.x; //75
-        float userZPos = user.transform.position.z; //-25
+        userXPos = user.transform.position.x; //75
+        userZPos = user.transform.position.z; //-25
+        userRotationY = user.transform.rotation.eulerAngles.y;
+
+        marker.transform.position = new Vector3(userXPos,86.0f, userZPos);
+        marker.transform.rotation = Quaternion.Euler(90.0f, userRotationY, 0.0f);
+
+        //marker
+        x.text = "X: " + userXPos + "Rotation: " + userRotationY;
+        z.text = "Z: " + userZPos;
 
         print("X: " + userXPos + ", Z:" + userZPos);
+        print("Rotation: " + userRotationY);
         //float markerX = xDiff - userXPos; //101 - 75 = 26
         //float markerZ = zDiff - userZPos; //-94.3 - (-25) = -69.3
         //float ratioPointX = markerX / xDiff; //0.25742574257
