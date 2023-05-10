@@ -8,23 +8,19 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class MapOutput : MonoBehaviour
 {
-    //public GameObject irlScale;
     public GameObject user;
-    public TMPro.TMP_Text x;
-    public TMPro.TMP_Text z;
-    //public GameObject map;
-    public GameObject marker;
+
+    public TMPro.TMP_Text latitude;
+    public TMPro.TMP_Text longitude;
+    public TMPro.TMP_Text altitude;
+    public GameObject userMarker;
+    public GameObject roverMarker;
     float userXPos;
     float userZPos;
-    float userYPos;
-    float userRotation;
-    float markerX;
-    float markerZ;
-    float markerRotation;
     float userRotationY;
-    public TMPro.TMP_Text distancedata;
-    public TMPro.TMP_Text positiondata;
+
     public GameObject flag;
+    public GameObject mapFlag;
 
     public MRTKTMPInputField mrtkDisplayEnterLong;
     float distance;
@@ -34,87 +30,96 @@ public class MapOutput : MonoBehaviour
     public GameObject crumb1;
     public GameObject crumb2;
     public GameObject crumb3;
-
-
+    public GameObject mapCrumb1;
+    public GameObject mapCrumb2;
+    public GameObject mapCrumb3;
+    public GameObject breadCrumbHolder;
     bool isBreadcrumbsOn = true;
 
+    float realOriginLat;
+    float realOriginLon;
+    float realBearing;
+    float realAltitude;
 
-    // Start is called before the first frame update
+    public TMPro.TMP_Text realOriginInfo;
+    Vector3 realOriginVector;
+    Vector3 realUserPosVector;
+    Vector3 realRoverPosVector;
+    Vector3 virtualUserPos;
+    Vector3 virtualRoverPos;
+
     private void Start()
     {
+        breadCrumbHolder.SetActive(false);
         StartCoroutine(breadCrumbSystemCoroutine());
-        // putting everything from Update() in here also works, just won't move marker after start
+
     }
 
-    // Update is called once per frame
-    // Could probably remove variable count by combining them into longer calculations, but left them to show what each one is with a name.
+
     void Update()
     {
-        // In real life:
-        //      1. User moves with VisionKit
+        // put calculation functions here (1)
+        userXPos = user.transform.position.x; // delete these(2)
+        userZPos = user.transform.position.z;
 
-        // In Unity:
-        //      1. A quad (with map texture) sits a hundred meters above ground level.
-        //      2. A second camera sits 50 meters above it, pointing downwards.
-        //      3. A red cube sits on map
-
-        // In ConnScript:
-        //      1. Read user's long and lat
-        //      2. Compute distance of latitude from real life origin
-        //      3. Compute distance of longtitude from real life origin
-        //      4. Use setters for MapOutput to save computed distances
-
-        // In MapOutput
-        //      1. Add distances to virtual origin
-        //      2. Updates red cube's position
-
-        //  Concerns:
-        //      
+        userRotationY = user.transform.rotation.eulerAngles.y; // replace this with set bearing (3)
 
 
+        userMarker.transform.position = new Vector3(userXPos, 86.0f, userZPos); // delete (4)
+        userMarker.transform.rotation = Quaternion.Euler(90.0f, userRotationY, 0.0f); // delete (5)
 
+        latitude.text = "" + userXPos; // replace with virtual.x (6)
+        longitude.text = "" + userZPos;// replace with virtual.z (7)
 
-        //float xMeter = irlScale.transform.localScale.x * 10; //101
-        //float zMeter = irlScale.transform.localScale.z * 10; //94.3
-        //float xDiff = 101 - 0; //101
-        //float zDiff = 0 - 94.3f; //-94.3
-        userXPos = user.transform.position.x; //75
-        userZPos = user.transform.position.z; //-25
-
-        userRotationY = user.transform.rotation.eulerAngles.y;
-
-        //user.transform.position = new Vector3(userXPos, 1.72f, userZPos);
-
-        marker.transform.position = new Vector3(userXPos, 86.0f, userZPos);
-        marker.transform.rotation = Quaternion.Euler(90.0f, userRotationY, 0.0f);
-
-        //marker
-        x.text = "" + userXPos;
-        z.text = "" + userZPos;
-
-        //print("X: " + userXPos + ", Z:" + userZPos);
-        //print("Rotation: " + userRotationY);
-
-        //float markerX = xDiff - userXPos; //101 - 75 = 26
-        //float markerZ = zDiff - userZPos; //-94.3 - (-25) = -69.3
-        //float ratioPointX = markerX / xDiff; //0.25742574257
-        //float ratioPointZ = markerZ / zDiff; //0.73488865323
-        //float xMapPos = map.transform.position.x; //275
-        //float yMapPos = map.transform.position.y; //40
-        //var rectTransform = GetComponent<RectTransform>();
-        //float width = rectTransform.sizeDelta.x; //303
-        //float height = rectTransform.sizeDelta.y; //283
-        //float xRightBorder = xMapPos + (width / 2.0f); //275 + (303/2) = 426.5
-
-        //double xLeftBorder = xMapPos - (width / 2.0); //275 - (303/2)
-        //double yTopBorder = yMapPos + (height / 2.0); //40 + (283/2) = 181.5
-
-        //float yBotBorder = yMapPos - (height / 2.0f); //40 - (283/2) = -101.5
-        //float xPos = xRightBorder - (width * ratioPointX); //426.5 - (303x.25)
-        //float yPos = yBotBorder + (height * ratioPointX); //-101.5 + (283x.75)
-        //Vector3 newPos = new Vector3(xPos, yPos, 0);
-        //marker.transform.position = newPos;
     }
+    public void setAltitude(float altFromTelem)
+    {
+        realAltitude = altFromTelem;
+    }
+    public void setBearing(float bearingFromTelem)
+    {
+        realBearing = bearingFromTelem; 
+        userMarker.transform.rotation = Quaternion.Euler(90.0f, realBearing, 0.0f);
+    }
+
+    public void setRealOriginPoint(float realOriginPointLat, float realOriginPointLon)
+    {
+        realOriginLat = realOriginPointLat;
+        realOriginLon = realOriginPointLon;
+        realOriginInfo.text = "Real origin lat: " + realOriginLat + " Real origin lon: " + realOriginLon;
+        realOriginVector = new(realOriginLat, 0f, realOriginLon);
+    }
+
+    public void calculateUserLatLongDistanceFromOrigin(float userRealLat, float userRealLon)
+    {
+
+        realUserPosVector = new(userRealLat, 0f, userRealLon);
+
+        virtualUserPos = realUserPosVector - realOriginVector; // actual real life origin is 29deg33min53sec N, 095deg04min53sec W
+
+        userMarker.transform.position = new Vector3(virtualUserPos.x, 86.0f, virtualUserPos.y);
+    }
+
+    public void calculateRoverLatLongDistanceFromOrigin(float roverRealLat, float roverRealLon)
+    {
+        realRoverPosVector = new(roverRealLat, 0f, roverRealLon);
+
+        virtualRoverPos = realRoverPosVector - realOriginVector;
+
+        roverMarker.transform.position = new Vector3(virtualRoverPos.x, 86.0f, virtualRoverPos.y);
+    }
+
+    public void returnBtn()
+    {
+        isBreadcrumbsOn = !isBreadcrumbsOn;
+        breadCrumbHolder.SetActive(isBreadcrumbsOn);
+
+        if (isBreadcrumbsOn)
+        {
+            StartCoroutine (breadCrumbSystemCoroutine());
+        }
+    }
+
 
     public void submitDistance()
     {
@@ -125,22 +130,18 @@ public class MapOutput : MonoBehaviour
         float x = altitude / distance;
         float angle = Mathf.Acos(x);
         float distanceActual = Mathf.Sin(angle) * distance;
-        distancedata.text = "" + distanceActual;
 
         // calculate position of flag
-        float radians = (userRotationY / 180.0f) * 3.14f;
-        print("user rotation is " + userRotationY);
+        float radians = (userRotationY / 180.0f) * 3.14f; // replace with bearing (8)
         float horizCompVector = distanceActual * Mathf.Sin(radians);
-        print("horizontal component is " + horizCompVector + "Mathf.sin is " + Mathf.Sin(radians));
         float vertCompVector = distanceActual * Mathf.Cos(radians);
-        print("vertical component is " + vertCompVector + "Mathf.cos is " + Mathf.Cos(radians) );
         
-        float flagXPos = userXPos + horizCompVector;
-        float flagZPos = userZPos + vertCompVector;
+        //offset flag position from user position
+        float flagXPos = userXPos + horizCompVector; // replace with virtual.x (9)
+        float flagZPos = userZPos + vertCompVector;  // replace with virtual.z (10)
 
-        positiondata.text = "horizont: " + horizCompVector + " verti:" + vertCompVector;
-
-        Instantiate(flag, new Vector3(flagXPos, 0.0f, flagZPos), Quaternion.Euler(0, 0, 0));
+        Instantiate(flag, new Vector3(flagXPos, 0.5f, flagZPos), Quaternion.Euler(0, 0, 0));
+        Instantiate(mapFlag, new Vector3(flagXPos, 100.0f, flagZPos), Quaternion.Euler(0, 0, 0));
     }
 
 
@@ -152,29 +153,33 @@ public class MapOutput : MonoBehaviour
 
     IEnumerator breadCrumbSystemCoroutine()
     {
-        Vector3 oldPosition = new Vector3(userXPos, 0.3f, userZPos);
+        Vector3 oldPosition = new Vector3(userXPos, 0.3f, userZPos); // replace with virtual (11)
         int colorCounter = 0;
         while (isBreadcrumbsOn)
         {
 
-            Vector3 newPosition = new Vector3(userXPos, 0.3f, userZPos);
+            Vector3 newPosition = new Vector3(userXPos, 0.3f, userZPos);// replace with virtual (12)
 
             Vector3 diff = newPosition - oldPosition;
             float magnitude = Mathf.Sqrt(Mathf.Pow(diff.x, 2) + Mathf.Pow(diff.z, 2));
-            print("mag " + magnitude);
-            if  (magnitude > .75f)
+            if  (magnitude > .75f) // change (??)
             {
                 print("Placing a breadcrumb...");
                 if (colorCounter == 0)
                 {
-                    Instantiate(crumb1, new Vector3(userXPos, 0.3f, userZPos), Quaternion.Euler(0, userRotationY - 90.0f, 0));
+                    Instantiate(crumb1, new Vector3(userXPos, 0.3f, userZPos), Quaternion.Euler(0, userRotationY - 90.0f, 0), breadCrumbHolder.transform); // replace with virtual (13)
+                    Instantiate(mapCrumb1, new Vector3(userXPos, 86f, userZPos), Quaternion.Euler(0, userRotationY - 90.0f, 0), breadCrumbHolder.transform);// replace with virtual (14)
                 } else if (colorCounter == 1)
                 {
-                    Instantiate(crumb2, new Vector3(userXPos, 0.3f, userZPos), Quaternion.Euler(0, userRotationY - 90.0f, 0));
+                    Instantiate(crumb2, new Vector3(userXPos, 0.3f, userZPos), Quaternion.Euler(0, userRotationY - 90.0f, 0), breadCrumbHolder.transform); // replace with virtual (15)
+                    Instantiate(mapCrumb2, new Vector3(userXPos, 86f, userZPos), Quaternion.Euler(0, userRotationY - 90.0f, 0), breadCrumbHolder.transform);// replace with virtual (16)
+
                 } else if (colorCounter == 2)
                 {
-                    Instantiate(crumb3, new Vector3(userXPos, 0.3f, userZPos), Quaternion.Euler(0, userRotationY - 90.0f, 0));
+                    Instantiate(crumb3, new Vector3(userXPos, 0.3f, userZPos), Quaternion.Euler(0, userRotationY - 90.0f, 0), breadCrumbHolder.transform);// replace with virtual (17)
+                    Instantiate(mapCrumb2, new Vector3(userXPos, 86f, userZPos), Quaternion.Euler(0, userRotationY - 90.0f, 0), breadCrumbHolder.transform);// replace with virtual (18)
                 }
+
                 oldPosition = newPosition;
                 colorCounter++;
             }
@@ -210,10 +215,6 @@ public class MapOutput : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100))
         {
-            print("name: " + hit.transform.gameObject);
-            print("point: " + hit.point);
-            print("distance: " + hit.distance);
-
             Instantiate(flag, hit.point, Quaternion.Euler(0, 0, 0));
         }
     }

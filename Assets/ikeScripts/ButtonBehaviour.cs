@@ -1,3 +1,4 @@
+using Microsoft.MixedReality.Toolkit.SpatialManipulation;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,9 @@ public class ButtonBehaviour : MonoBehaviour
     private bool isShowing;
     private GameObject currentPanel;
 
+    public GameObject emptyObjectButtons;
+
+
     void Start()
     {
         isShowing = false;
@@ -20,6 +24,13 @@ public class ButtonBehaviour : MonoBehaviour
     {
         isShowing = !isShowing;
         finalCard.SetActive(isShowing);
+        emptyObjectButtons.GetComponent<IsFinalCardsShowing>().setMaxView();
+
+    }
+
+    public bool getIsShowing()
+    {
+        return isShowing;
     }
 
     //public void OnButtonExit()
@@ -27,32 +38,32 @@ public class ButtonBehaviour : MonoBehaviour
     //    Invoke("OnButtonPress",0.5f);
     //}
 
-    public void OnButtonPressTest()
-    {
+    //public void OnButtonPressTest()
+    //{
         
-        if (currentPanel == null)
-        {
-            currentPanel = GameObject.Find("telemPanel");
-        }
-        else
-        {
-            if (this.name == "TelemetryBtn")
-            {
-                currentPanel = GameObject.Find("telemPanel");
-            } else if (this.name == "ObjectivesBtn") {
-                currentPanel = GameObject.Find("objectivesPanel");
-            } else if (this.name == "UIABtn")
-            {
-                currentPanel = GameObject.Find("UIAPanel");
-            } else if (this.name == "SpectroBtn")
-            {
-                currentPanel = GameObject.Find("scansPanel");
-            }
-        }
+    //    if (currentPanel == null)
+    //    {
+    //        currentPanel = GameObject.Find("telemPanel");
+    //    }
+    //    else
+    //    {
+    //        if (this.name == "TelemetryBtn")
+    //        {
+    //            currentPanel = GameObject.Find("telemPanel");
+    //        } else if (this.name == "ObjectivesBtn") {
+    //            currentPanel = GameObject.Find("objectivesPanel");
+    //        } else if (this.name == "UIABtn")
+    //        {
+    //            currentPanel = GameObject.Find("UIAPanel");
+    //        } else if (this.name == "SpectroBtn")
+    //        {
+    //            currentPanel = GameObject.Find("scansPanel");
+    //        }
+    //    }
 
-        currentPanel.SetActive(true);
+    //    currentPanel.SetActive(true);
 
-    }
+    //}
 
     public void onButtonPressEVA()
     {
