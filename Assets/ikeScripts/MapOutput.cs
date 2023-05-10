@@ -82,6 +82,16 @@ public class MapOutput : MonoBehaviour
         userMarker.transform.rotation = Quaternion.Euler(90.0f, realBearing, 0.0f);
     }
 
+    public float getBearing()
+    {
+        return userRotationY; // replace with realBearing
+    }
+
+    public Vector3 getUserVector()
+    {
+        return userMarker.transform.position;
+    }
+
     public void setRealOriginPoint(float realOriginPointLat, float realOriginPointLon)
     {
         realOriginLat = realOriginPointLat;
@@ -216,6 +226,7 @@ public class MapOutput : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 100))
         {
             Instantiate(flag, hit.point, Quaternion.Euler(0, 0, 0));
+            Instantiate(mapFlag, new Vector3(hit.point.x, 100.0f, hit.point.y), Quaternion.Euler(0, 0, 0));
         }
     }
 }
