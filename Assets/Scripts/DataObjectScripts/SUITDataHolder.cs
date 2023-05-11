@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
+using System.Text;
 using UnityEngine;
 
 public class SUITDataHolder : MonoBehaviour
@@ -41,6 +43,17 @@ public class SUITDataHolder : MonoBehaviour
     public TMPro.TMP_Text O2RateLabel;
     public TMPro.TMP_Text Batt_CapacityLabel;
 
+    bool isHeartRateAnomalyDetected;
+    bool isSuitPressureAnomalyDetected;
+    bool isFanLabelDetected;
+    bool isO2PressureAnomalyDetected;
+    bool isO2RateAnomalyDetected;
+    bool isBattCapacityAnomalyDetected;
+
+    public MeshRenderer SUITrenderer;
+    public Material red;
+    public Material transparent;
+
 
     void Start()
     {
@@ -74,7 +87,7 @@ public class SUITDataHolder : MonoBehaviour
 
     }
 
-    void setO2Data(float p_o2time, float p_o2pressure, float p_o2rate,float s_o2timeleft, float s_o2pressure, float s_o2rate, string o2_timeleft)
+    public void setO2Data(float p_o2time, float p_o2pressure, float p_o2rate,float s_o2timeleft, float s_o2pressure, float s_o2rate, string o2_timeleft)
     {
         SUITFloatData["P_O2Time"]=p_o2time;
         SUITFloatData["P_O2Pressure"] = p_o2pressure;
@@ -87,7 +100,7 @@ public class SUITDataHolder : MonoBehaviour
 
     }
 
-    void setH2OData(float h2o_lpressure, float h2o_gpressure, float h2o_cap, string h2o_timeleft)
+    public void setH2OData(float h2o_lpressure, float h2o_gpressure, float h2o_cap, string h2o_timeleft)
     {
         SUITFloatData["H2O_LiquidPressure"] = h2o_lpressure;
         SUITFloatData["H2O_GasPressure"] = h2o_gpressure;
@@ -95,7 +108,7 @@ public class SUITDataHolder : MonoBehaviour
         SUITTimeLeftData["H2OTimeLeft"] = h2o_timeleft;
     }
 
-    void setBatteryData(float batt_percent, float batt_output, float batt_cap, string batt_timeleft)
+    public void setBatteryData(float batt_percent, float batt_output, float batt_cap, string batt_timeleft) 
     {
         SUITFloatData["Battery_Percentage"] = batt_percent;
         SUITFloatData["Battery_Output"] = batt_output;
@@ -105,7 +118,7 @@ public class SUITDataHolder : MonoBehaviour
 
     }
 
-    void setIntegrityData(float fan_tach, float temp, float suit_pressure, float sub_Pressure)
+    public void setIntegrityData(float fan_tach, float temp, float suit_pressure, float sub_Pressure)
     {
         SUITFloatData["Fan_Tachometer"] = fan_tach;
         SUITFloatData["Temperature"] = temp;
@@ -115,10 +128,23 @@ public class SUITDataHolder : MonoBehaviour
 
     }
 
-    void setHeartRate(float heart_rate)
+    public void setHeartRate(float heart_rate)
     {
         SUITFloatData["Heart_Rate"] = heart_rate;
 
+    }
+
+    void alertButton()
+    {
+
+        if (isBattCapacityAnomalyDetected || isFanLabelDetected || isHeartRateAnomalyDetected || isO2PressureAnomalyDetected || isO2RateAnomalyDetected || isSuitPressureAnomalyDetected)
+        {
+            SUITrenderer.material = red;
+        }
+        else
+        {
+
+        }
     }
 
     void checkAnomalies()
@@ -126,55 +152,67 @@ public class SUITDataHolder : MonoBehaviour
         if (SUITFloatData["P_O2Pressure"] > 780 || SUITFloatData["P_O2Pressure"] < 770)
         {
             O2PressureLabel.color = new Color(1.0f, 0.0f, 0f, 1);
+            isO2PressureAnomalyDetected = true;
         }
         else
         {
             O2PressureLabel.color = new Color(0f, 0.8f, 0f, 1);
+            isO2PressureAnomalyDetected = false;
         }
 
         if (SUITFloatData["Battery_Capacity"] > 45 || SUITFloatData["Battery_Capacity"] < 60)
         {
             Batt_CapacityLabel.color = new Color(1.0f, 0.0f, 0f, 1);
+            isBattCapacityAnomalyDetected = true;
         }
         else
         {
             Batt_CapacityLabel.color = new Color(0f, 0.8f, 0f, 1);
+            isBattCapacityAnomalyDetected = false;
         }
 
         if (SUITFloatData["Fan_Tachometer"] > 40000 || SUITFloatData["Fan_Tachometer"] < 39000)
         {
             FanLabel.color = new Color(1.0f, 0.0f, 0f, 1);
+            isFanLabelDetected = true;
         }
         else
         {
             FanLabel.color = new Color(0f, 0.8f, 0f, 1);
+            isFanLabelDetected = false;
         }
 
         if (SUITFloatData["Suit_Pressure"] > 4.0 || SUITFloatData["Suit_Pressure"] < 3.92)
         {
             O2PressureLabel.color = new Color(1.0f, 0.0f, 0f, 1);
+            isSuitPressureAnomalyDetected = true;
         }
         else
         {
             O2PressureLabel.color = new Color(0f, 0.8f, 0f, 1);
+            isSuitPressureAnomalyDetected = false;
         }
 
         if (SUITFloatData["Heart_Rate"] > 93 || SUITFloatData["Heart_Rate"] < 85)
         {
             HeartRateLabel.color = new Color(1.0f, 0.0f, 0f, 1);
+            isHeartRateAnomalyDetected=true;
         }
         else
         {
             HeartRateLabel.color = new Color(0f, 0.8f, 0f, 1);
+            isHeartRateAnomalyDetected = false;
         }
 
         if (SUITFloatData["P_O2rate"] > 0.5 || SUITFloatData["P_O2rate"] < 0.6)
         {
             O2RateLabel.color = new Color(1.0f, 0.0f, 0f, 1);
+            isO2RateAnomalyDetected = true;
         }
         else
         {
             O2RateLabel.color = new Color(0f, 0.8f, 0f, 1);
+            isO2RateAnomalyDetected = false;
         }
 
     }
@@ -183,6 +221,7 @@ public class SUITDataHolder : MonoBehaviour
     {
         displaySUIT();
         checkAnomalies();
+        alertButton();
     }
 
 
