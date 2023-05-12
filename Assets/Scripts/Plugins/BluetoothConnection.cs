@@ -9,10 +9,10 @@ public class BluetoothConnection : MonoBehaviour
 {
 
 	string arduinoName = "DSD TEC HC-05";
-	string arduinoServiceUuid = "00000000-0000-0000-0000-000000000000";
+	string arduinoServiceUuid = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
     string[] characteristicUuids = {
-         "{59c2f246-5199-11eb-ae93-0242ac130002}",      // CUUID 1
-         "{617c753e-5199-11eb-ae93-0242ac130002}"       // CUUID 2
+         "{6E400001-B5A3-F393-E0A9-E50E24DCCA9E}"      // CUUID 1
+         //"{617c753e-5199-11eb-ae93-0242ac130002}"       // CUUID 2
     };
 
     BLE ble;
@@ -186,7 +186,7 @@ public class BluetoothConnection : MonoBehaviour
         scan.Found = (_deviceId, deviceName) =>
         {
 
-            Debug.Log("found device with name: " + deviceName);
+            Debug.Log("found device with name: " + deviceName + " and with id: " + _deviceId);
             if(discoveredDevices.ContainsKey(_deviceId))
             {
                 print(deviceName + " already found");

@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Microsoft.MixedReality.Toolkit.UX;
+using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
 public class roverPointControl : MonoBehaviour
 {
-    double longitude; //or strings?
-    double latitude;
+    float longitude; //or strings?
+    float latitude;
+    float distance;
     private bool isShowing;
     public GameObject roverOff;
     public GameObject roverOnIdle;
@@ -22,7 +24,7 @@ public class roverPointControl : MonoBehaviour
     public TMP_Text returnPLong;
     public TMP_Text returnPLat;
     public MRTKTMPInputField mrtkDisplayEnterLong;
-    public MRTKTMPInputField mrtkDisplayEnterLat;
+    public TMP_Text navigationStatusInfo;
     // Start is called before the first frame update
     private void Start()
     {
@@ -42,31 +44,76 @@ public class roverPointControl : MonoBehaviour
 
     public void onMobilizePress()
     {
-        longitude = double.Parse(mrtkDisplayEnterLong.text); //use double.TryParse() if this ends up not working
-        latitude = double.Parse(mrtkDisplayEnterLat.text); //do I want them as double???
+        distance = float.Parse(mrtkDisplayEnterLong.text); //use double.TryParse() if this ends up not working
+        float altitude = 1.72f;
+        float x = altitude / distance;
+        float angle = Mathf.Acos(x);
+        float distanceActual = Mathf.Sin(angle) * distance;
 
-        displayEnterLong.text = mrtkDisplayEnterLong.text;
-        displayEnterLat.text = mrtkDisplayEnterLat.text;
+        // calculate position of flag
+        float radians = (FindObjectOfType<MapOutput>().getBearing() / 180.0f) * 3.14f; 
+        float horizCompVector = distanceActual * Mathf.Sin(radians);
+        float vertCompVector = distanceActual * Mathf.Cos(radians);
 
-        roverOff.SetActive(isShowing);
-        roverOnIdle.SetActive(isShowing);
-        roverOnActive.SetActive(!isShowing); //turn on the green-active text object
+        //offset rover position from user position
+        float roverXPos = FindObjectOfType<MapOutput>().getUserVector().x + horizCompVector; 
+        float roverZPos = FindObjectOfType<MapOutput>().getUserVector().z + vertCompVector; 
 
-        StartCoroutine(coroutine()); //counter for 5 seconds
+        print("Rover would be going to " + roverXPos + ", " + roverZPos);
+
+        displayEnterLat.text = "" + roverXPos;
+        displayEnterLong.text = "" + roverZPos;
+
+        //roverOff.SetActive(isShowing);
+        //roverOnIdle.SetActive(isShowing);
+        //roverOnActive.SetActive(!isShowing); //turn on the green-active text object
+
+        //StartCoroutine(coroutine()); //counter for 5 seconds
 
         //function will then take the user's coords and randomize a point near them to set as the return point coords
     }
 
     public void onRecallPress()
     {
-        displayEnterLong.text = returnPLong.text;
-        displayEnterLat.text = returnPLat.text;
 
-        roverOff.SetActive(isShowing);
-        roverOnIdle.SetActive(isShowing);
-        roverOnActive.SetActive(!isShowing); //turn on the green-active text object
+        displayEnterLong.text = "" + FindObjectOfType<MapOutput>().getUserVector().x;
+        displayEnterLat.text = "" + FindObjectOfType<MapOutput>().getUserVector().z;
 
-        StartCoroutine(coroutine()); //counter for 5 seconds
+
+        //roverOff.SetActive(isShowing);
+        //roverOnIdle.SetActive(isShowing);
+        //roverOnActive.SetActive(!isShowing); //turn on the green-active text object
+
+        //StartCoroutine(coroutine()); //counter for 5 seconds
+    }
+
+
+    public void setRoverLatPos(float floatFromTelem)
+    {
+        latitude = floatFromTelem;
+        currentLat.text = "" + latitude;
+    }
+
+    public void setRoverLongPos(float floatFromTelem)
+    {
+        longitude = floatFromTelem;
+        currentLong.text = "" + longitude;
+    }
+    
+    public void setNavigationStatus(string statusFromTelem)
+    {
+        if (statusFromTelem != "NAVIGATING") 
+        {
+            roverOff.SetActive(true);
+            roverOnIdle.SetActive(false);
+            roverOnActive.SetActive(!false); //turn on the green-active text object
+        }
+        else
+        {
+            roverOff.SetActive(false);
+            roverOnIdle.SetActive(true);
+            roverOnActive.SetActive(!true); //turn on the green-active text object
+        }
     }
 
     IEnumerator coroutine()
