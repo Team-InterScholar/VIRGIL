@@ -37,13 +37,7 @@ public class UIADataHolderScript : MonoBehaviour
 
     void Start()
     {
-        UIABooleans = new Dictionary<string, bool>();
-        UIABooleans.Add("EMU1_Power_Switch", false);
-        UIABooleans.Add("EV1_Supply_Switch", false);
-        UIABooleans.Add("EV1_Water_Waste_Switch", false);
-        UIABooleans.Add("EMU1_O2_Supply_Switch", false);
-        UIABooleans.Add("O2_Vent_Switch", false);
-        UIABooleans.Add("Depress_Pump", false);
+
         //UIABooleans.Add("O2 Supply Pressure Out 2", false);
         //UIABooleans.Add("EV1 Supply", false);
         //UIABooleans.Add("EV2 Supply", false);
@@ -54,9 +48,32 @@ public class UIADataHolderScript : MonoBehaviour
         //UIABooleans.Add("O2 Vent", false);
     }
 
+    public void HouseKeeping()
+    {
+        UIABooleans = new Dictionary<string, bool>();
+        UIABooleans.Add("EMU1_Power_Switch", false);
+        UIABooleans.Add("EV1_Supply_Switch", false);
+        UIABooleans.Add("EV1_Water_Waste_Switch", false);
+        UIABooleans.Add("EMU1_O2_Supply_Switch", false);
+        UIABooleans.Add("O2_Vent_Switch", false);
+        UIABooleans.Add("Depress_Pump", false);
+
+        StartCoroutine(CoroutineUpdate());
+    }
+
     private void Update()
     {
-        displayUIABooleans();
+
+    }
+
+    IEnumerator CoroutineUpdate()
+    {
+        while (true)
+        {
+            displayUIABooleans();
+            yield return null;
+        }
+
     }
 
 

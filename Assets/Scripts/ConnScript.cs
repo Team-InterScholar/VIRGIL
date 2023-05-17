@@ -12,12 +12,21 @@ public class ConnScript : MonoBehaviour
     int msgCount = 0;
 
     public TMPro.TMP_InputField inputField;
+    public TMPro.TMP_InputField welcomeInputField;
     public TMPro.TMP_Text missionTimeInfo;
     public TMPro.TMP_Text IDInfo;
     public TMPro.TMP_Text roomInfo;
     public TMPro.TMP_Text connectionStatusInfo;
 
     public GameObject suitDataHolder;
+
+    public Material red;
+    public Material green;
+    public Material yellow;
+
+    public GameObject statusLight;
+
+    bool isConnectedAtWelcomeCard;
 
 
     // Start is called before the first frame update
@@ -45,6 +54,75 @@ public class ConnScript : MonoBehaviour
     {
         // Updates the websocket once per frame
         tss.Update();
+
+    }
+
+    public bool getIsTelemOn()
+    {
+        return isConnectedAtWelcomeCard;
+    }
+    public void setIsTelemOn()
+    {
+        isConnectedAtWelcomeCard = false;
+    }
+
+    public async void WelcomeConnect()
+    {
+        tssUri = welcomeInputField.text;
+        var connecting = tss.ConnectToURI(tssUri);
+        Debug.Log("Connecting to " + tssUri);
+
+        tss.OnTSSTelemetryMsg += (telemMsg) =>
+        {
+            if (telemMsg.EVA.Count > 0)
+            {
+                missionTimeInfo.text = telemMsg.EVA[0].timer;
+                IDInfo.text = "" + telemMsg.EVA[0].id;
+                roomInfo.text = "" + telemMsg.EVA[0].room;
+
+            }
+            else
+            {
+                missionTimeInfo.text = "No EVA Msg received";
+                IDInfo.text = "No EVA Msg received";
+                roomInfo.text = "No EVA Msg received";
+            }
+        };
+
+
+        statusLight.GetComponent<MeshRenderer>().material = yellow;
+
+        tss.OnOpen += () =>
+        {
+            connectionStatusInfo.text = "OPEN";
+            Debug.Log("Websocket connection opened");
+
+            statusLight.GetComponent<MeshRenderer>().material = green;
+            isConnectedAtWelcomeCard = true;
+
+
+
+        };
+
+        tss.OnError += (string e) =>
+        {
+            connectionStatusInfo.text = "ERROR " + e;
+            Debug.Log("Websocket error occured: " + e);
+        };
+
+        tss.OnClose += (e) =>
+        {
+            connectionStatusInfo.text = "CLOSED " + e;
+            Debug.Log("Websocket closed with code: " + e);
+            statusLight.GetComponent<MeshRenderer>().material = red;
+        };
+
+
+
+    }
+
+    public async void Continue()
+    {
 
     }
 

@@ -7,6 +7,12 @@ public class AlertsDataHolderScript : MonoBehaviour
     public Dictionary<string, bool> alertsBooleans;
     void Start()
     {
+
+
+    }
+
+    public void HouseKeeping()
+    {
         alertsBooleans = new Dictionary<string, bool>();
         alertsBooleans.Add("heartRate", false);
         alertsBooleans.Add("suitPressure", false);
@@ -14,7 +20,6 @@ public class AlertsDataHolderScript : MonoBehaviour
         alertsBooleans.Add("o2Pressure", false);
         alertsBooleans.Add("o2Rate", false);
         alertsBooleans.Add("batteryCapacity", false);
-
     }
 
 

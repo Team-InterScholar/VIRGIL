@@ -35,6 +35,11 @@ public class SpectrometerDataHolderScript : MonoBehaviour
     string LastUpdatedString;
     void Start()
     {
+
+    }
+
+    public void HouseKeeping()
+    {
         spectrometerData = new Dictionary<string, float>();
         spectrometerData.Add("SiO2", 0.0f);
         spectrometerData.Add("TiO2", 0.0f);
@@ -45,11 +50,23 @@ public class SpectrometerDataHolderScript : MonoBehaviour
         spectrometerData.Add("CaO", 0.0f);
         spectrometerData.Add("K2O", 0.0f);
         spectrometerData.Add("P2O3", 0.0f);
+
+        StartCoroutine(CoroutineUpdate());
+
     }
 
     private void Update()
     {
-        displayScanFloats();
+    }
+
+    IEnumerator CoroutineUpdate()
+    {
+        while (true)
+        {
+            displayScanFloats();
+            yield return null;
+        }
+
     }
 
 
