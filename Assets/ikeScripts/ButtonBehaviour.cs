@@ -16,6 +16,11 @@ public class ButtonBehaviour : MonoBehaviour
 
     void Start()
     {
+
+    }
+
+    public void HouseKeeping()
+    {
         isShowing = false;
         finalCard.SetActive(isShowing);
     }

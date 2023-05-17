@@ -30,6 +30,11 @@ public class IsFinalCardsShowing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+ 
+    }
+
+    public void HouseKeeping()
+    {
         EVArenderer.material = transparent;
         SUITrenderer.material = transparent;
         NAVrenderer.material = transparent;
@@ -38,7 +43,7 @@ public class IsFinalCardsShowing : MonoBehaviour
         isFinalCardsShowing = false;
         isShowingEVA = EVA.GetComponent<ButtonBehaviour>().getIsShowing();
         isShowingSUIT = SUIT.GetComponent<ButtonBehaviour>().getIsShowing();
-        isShowingNAV = NAV.GetComponent<ButtonBehaviour>().getIsShowing(); 
+        isShowingNAV = NAV.GetComponent<ButtonBehaviour>().getIsShowing();
         isShowingROVER = ROVER.GetComponent<ButtonBehaviour>().getIsShowing();
     }
 

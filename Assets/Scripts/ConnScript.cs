@@ -12,12 +12,15 @@ public class ConnScript : MonoBehaviour
     int msgCount = 0;
 
     public TMPro.TMP_InputField inputField;
+    public TMPro.TMP_InputField welcomeInputField;
     public TMPro.TMP_Text missionTimeInfo;
     public TMPro.TMP_Text IDInfo;
     public TMPro.TMP_Text roomInfo;
     public TMPro.TMP_Text connectionStatusInfo;
 
     public GameObject suitDataHolder;
+
+    bool isConnectedAtWelcomeCard;
 
 
     // Start is called before the first frame update
@@ -45,6 +48,44 @@ public class ConnScript : MonoBehaviour
     {
         // Updates the websocket once per frame
         tss.Update();
+
+    }
+
+    public async void WelcomeConnect()
+    {
+        tssUri = welcomeInputField.text;
+        var connecting = tss.ConnectToURI(tssUri);
+        Debug.Log("Connecting to " + tssUri);
+
+        tss.OnTSSTelemetryMsg += (telemMsg) =>
+        {
+
+        };
+
+        tss.OnOpen += () =>
+        {
+            connectionStatusInfo.text = "OPEN";
+            Debug.Log("Websocket connection opened");
+
+        };
+
+        tss.OnError += (string e) =>
+        {
+            connectionStatusInfo.text = "ERROR " + e;
+            Debug.Log("Websocket error occured: " + e);
+        };
+
+        tss.OnClose += (e) =>
+        {
+            connectionStatusInfo.text = "CLOSED " + e;
+            Debug.Log("Websocket closed with code: " + e);
+        };
+        
+
+    }
+
+    public async void Continue()
+    {
 
     }
 
