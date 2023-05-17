@@ -18,12 +18,12 @@ public class MissionObjectivesDataHolder : MonoBehaviour
 {
     public Dictionary<GameObject, bool[]> missionObjectives;
 
-     //Each gameobject references the Mission Objective buttons
-     //so that their appearances can be manipulated during 
-     //runtime.
+    //Each gameobject references the Mission Objective buttons
+    //so that their appearances can be manipulated during 
+    //runtime.
 
-     //Each bool array holds two indices for if a Mission
-     //Objective is in progress and if it is completed.
+    //Each bool array holds two indices for if a Mission
+    //Objective is in progress and if it is completed.
 
 
     //public GameObject CalibrationStatusGO; disabled until the main features are built
@@ -39,10 +39,15 @@ public class MissionObjectivesDataHolder : MonoBehaviour
 
     void Start()
     {
+        
+    }
+
+    public void HouseKeeping()
+    {
         missionObjectives = new Dictionary<GameObject, bool[]>();
         currentObjective = null;
         //missionObjectives.Add(CalibrationStatusGO, false);
-        missionObjectives.Add(EgressStatusGO, inProgAndCompletion = new bool[] { false, false }); 
+        missionObjectives.Add(EgressStatusGO, inProgAndCompletion = new bool[] { false, false });
         missionObjectives.Add(SiteNavigationStatusGO, inProgAndCompletion = new bool[] { false, false });
         missionObjectives.Add(GeologicalScanningStatusGO, inProgAndCompletion = new bool[] { false, false });
         missionObjectives.Add(ROVERStatusGO, inProgAndCompletion = new bool[] { false, false });

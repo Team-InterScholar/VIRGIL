@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using System.Text;
+using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class SUITDataHolder : MonoBehaviour
@@ -57,6 +58,12 @@ public class SUITDataHolder : MonoBehaviour
 
     void Start()
     {
+
+
+    }
+
+    public void HouseKeeping()
+    {
         SUITFloatData = new Dictionary<string, float>();
         SUITTimeLeftData = new Dictionary<string, string>();
         SUITFloatData.Add("P_O2Time", 0.0f);
@@ -85,6 +92,7 @@ public class SUITDataHolder : MonoBehaviour
 
         SUITFloatData.Add("Heart_Rate", 0.0f);
 
+        StartCoroutine(CoroutineUpdate());
     }
 
     public void setO2Data(float p_o2time, float p_o2pressure, float p_o2rate,float s_o2timeleft, float s_o2pressure, float s_o2rate, string o2_timeleft)
@@ -219,9 +227,19 @@ public class SUITDataHolder : MonoBehaviour
 
     void Update()
     {
-        displaySUIT();
-        checkAnomalies();
-        alertButton();
+
+    }
+
+    IEnumerator CoroutineUpdate()
+    {
+        while (true)
+        {
+            displaySUIT();
+            checkAnomalies();
+            alertButton();
+            yield return null;
+        }
+
     }
 
 

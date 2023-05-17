@@ -20,6 +20,12 @@ public class ConnScript : MonoBehaviour
 
     public GameObject suitDataHolder;
 
+    public Material red;
+    public Material green;
+    public Material yellow;
+
+    public GameObject statusLight;
+
     bool isConnectedAtWelcomeCard;
 
 
@@ -51,6 +57,15 @@ public class ConnScript : MonoBehaviour
 
     }
 
+    public bool getIsTelemOn()
+    {
+        return isConnectedAtWelcomeCard;
+    }
+    public void setIsTelemOn()
+    {
+        isConnectedAtWelcomeCard = false;
+    }
+
     public async void WelcomeConnect()
     {
         tssUri = welcomeInputField.text;
@@ -59,13 +74,33 @@ public class ConnScript : MonoBehaviour
 
         tss.OnTSSTelemetryMsg += (telemMsg) =>
         {
+            if (telemMsg.EVA.Count > 0)
+            {
+                missionTimeInfo.text = telemMsg.EVA[0].timer;
+                IDInfo.text = "" + telemMsg.EVA[0].id;
+                roomInfo.text = "" + telemMsg.EVA[0].room;
 
+            }
+            else
+            {
+                missionTimeInfo.text = "No EVA Msg received";
+                IDInfo.text = "No EVA Msg received";
+                roomInfo.text = "No EVA Msg received";
+            }
         };
+
+
+        statusLight.GetComponent<MeshRenderer>().material = yellow;
 
         tss.OnOpen += () =>
         {
             connectionStatusInfo.text = "OPEN";
             Debug.Log("Websocket connection opened");
+
+            statusLight.GetComponent<MeshRenderer>().material = green;
+            isConnectedAtWelcomeCard = true;
+
+
 
         };
 
@@ -79,8 +114,10 @@ public class ConnScript : MonoBehaviour
         {
             connectionStatusInfo.text = "CLOSED " + e;
             Debug.Log("Websocket closed with code: " + e);
+            statusLight.GetComponent<MeshRenderer>().material = red;
         };
-        
+
+
 
     }
 

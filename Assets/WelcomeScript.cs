@@ -11,12 +11,39 @@ public class WelcomeScript : MonoBehaviour
 
     void Start()
     {
+        print("WelcomeScript is starting");
         mainRowOfCards.SetActive(false);
     }
 
-    public void OnButtonPressConnect()
+    public void OnButtonPressedConnect()
     {
+        StartCoroutine(wait());
+ 
+    }
 
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(3);
+        if (FindObjectOfType<ConnScript>().getIsTelemOn())
+        {
+            welcomeCard.SetActive(false);
+
+            mainRowOfCards.SetActive(true);
+
+            FindObjectOfType<MapOutput>().HouseKeeping();
+            FindObjectOfType<roverPointControl>().HouseKeeping();
+            FindObjectOfType<AlertsDataHolderScript>().HouseKeeping();
+            FindObjectOfType<MissionObjectivesDataHolder>().HouseKeeping();
+            FindObjectOfType<SpectrometerDataHolderScript>().HouseKeeping();
+            FindObjectOfType<SUITDataHolder>().HouseKeeping();
+            FindObjectOfType<UIADataHolderScript>().HouseKeeping();
+            FindObjectOfType<IsFinalCardsShowing>().HouseKeeping();
+            FindObjectOfType<ButtonBehaviour>().HouseKeeping();
+        }
+        else
+        {
+
+        }
     }
 
     public void OnButtonPressSkip()
@@ -25,8 +52,18 @@ public class WelcomeScript : MonoBehaviour
 
         mainRowOfCards.SetActive(true);
 
+        FindObjectOfType<ConnScript>().setIsTelemOn();
+
+        FindObjectOfType<MapOutput>().HouseKeeping();
+        FindObjectOfType<roverPointControl>().HouseKeeping();
+        FindObjectOfType<AlertsDataHolderScript>().HouseKeeping();
+        FindObjectOfType<MissionObjectivesDataHolder>().HouseKeeping();
+        FindObjectOfType<SpectrometerDataHolderScript>().HouseKeeping();
+        FindObjectOfType<SUITDataHolder>().HouseKeeping();
+        FindObjectOfType<UIADataHolderScript>().HouseKeeping();
         FindObjectOfType<IsFinalCardsShowing>().HouseKeeping();
         FindObjectOfType<ButtonBehaviour>().HouseKeeping();
+
 
 
     }

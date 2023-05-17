@@ -31,10 +31,7 @@ public class roverPointControl : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        isShowing = false;
-        roverOff.SetActive(!isShowing);
-        roverOnIdle.SetActive(isShowing);
-        roverOnActive.SetActive(isShowing);
+
         //mobilizeButton.onClick.AddListener(onMobilizePress); //attach button event
         //recallButton.onClick.AddListener(onRecallPress); //attach button event
     }
@@ -43,6 +40,14 @@ public class roverPointControl : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void HouseKeeping()
+    {
+        isShowing = false;
+        roverOff.SetActive(!isShowing);
+        roverOnIdle.SetActive(isShowing);
+        roverOnActive.SetActive(isShowing);
     }
 
     public void onMobilizePress()
