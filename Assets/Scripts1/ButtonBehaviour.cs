@@ -33,6 +33,11 @@ public class ButtonBehaviour : MonoBehaviour
 
     }
 
+    public void exitApp()
+    {
+        Application.Quit();
+    }
+
     public bool getIsShowing()
     {
         return isShowing;
