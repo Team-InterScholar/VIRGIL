@@ -25,6 +25,7 @@ public class MapOutput : MonoBehaviour
     public MRTKTMPInputField mrtkDisplayEnterLong;
     float distance;
     public GameObject farRay;
+    public GameObject eyeRay;
     public TMPro.TMP_Text timerInfo;
 
     public GameObject crumb1;
@@ -355,7 +356,7 @@ public class MapOutput : MonoBehaviour
     {
 
         yield return new WaitForSeconds(5f);
-        var ray = new Ray(farRay.transform.position, farRay.transform.forward);
+        var ray = new Ray(eyeRay.transform.position, eyeRay.transform.forward);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100))
         {
