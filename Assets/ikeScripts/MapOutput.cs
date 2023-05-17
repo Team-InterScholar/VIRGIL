@@ -135,7 +135,18 @@ public class MapOutput : MonoBehaviour
     {
 
         // get foot distance 
-        distance = float.Parse(mrtkDisplayEnterLong.text);
+        string distanceString = mrtkDisplayEnterLong.text;
+        foreach (char c in distanceString)
+        {
+            if (!char.IsDigit(c))
+            {
+                print("invalid");
+                return;
+            }
+            
+        }
+        print("valid");
+        distance = float.Parse(distanceString);
         float altitude = 1.72f;
         float x = altitude / distance;
         float angle = Mathf.Acos(x);

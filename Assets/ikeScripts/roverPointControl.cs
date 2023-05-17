@@ -10,6 +10,8 @@ public class roverPointControl : MonoBehaviour
 {
     float longitude; //or strings?
     float latitude;
+    float goalLatitude;
+    float goalLongitude;
     float distance;
     private bool isShowing;
     public GameObject roverOff;
@@ -23,7 +25,8 @@ public class roverPointControl : MonoBehaviour
     public TMP_Text currentLat;
     public TMP_Text returnPLong;
     public TMP_Text returnPLat;
-    public MRTKTMPInputField mrtkDisplayEnterLong;
+    public MRTKTMPInputField mrtkDisplayEnterLong;   
+    public MRTKTMPInputField mrtkDisplayEnterLat;
     public TMP_Text navigationStatusInfo;
     // Start is called before the first frame update
     private void Start()
@@ -44,25 +47,54 @@ public class roverPointControl : MonoBehaviour
 
     public void onMobilizePress()
     {
-        distance = float.Parse(mrtkDisplayEnterLong.text); //use double.TryParse() if this ends up not working
-        float altitude = 1.72f;
-        float x = altitude / distance;
-        float angle = Mathf.Acos(x);
-        float distanceActual = Mathf.Sin(angle) * distance;
+        string goalLatitudeStr = mrtkDisplayEnterLat.text; //use double.TryParse() if this ends up not working
+        string goalLongitudeStr = mrtkDisplayEnterLong.text;
 
-        // calculate position of flag
-        float radians = (FindObjectOfType<MapOutput>().getBearing() / 180.0f) * 3.14f; 
-        float horizCompVector = distanceActual * Mathf.Sin(radians);
-        float vertCompVector = distanceActual * Mathf.Cos(radians);
+        foreach (char c in goalLatitudeStr)
+        {
+            if (!char.IsDigit(c))
+            {
+                print("invalid");
+                return;
+            }
 
-        //offset rover position from user position
-        float roverXPos = FindObjectOfType<MapOutput>().getUserVector().x + horizCompVector; 
-        float roverZPos = FindObjectOfType<MapOutput>().getUserVector().z + vertCompVector; 
+        }
 
-        print("Rover would be going to " + roverXPos + ", " + roverZPos);
+        foreach (char c in goalLongitudeStr)
+        {
+            if (!char.IsDigit(c))
+            {
+                print("invalid");
+                return;
+            }
 
-        displayEnterLat.text = "" + roverXPos;
-        displayEnterLong.text = "" + roverZPos;
+        }
+
+        goalLatitude = float.Parse(goalLatitudeStr);
+        goalLongitude = float.Parse(goalLongitudeStr);
+        /*Send to telem stream*/
+        displayEnterLat.text = "" + goalLatitude;
+        displayEnterLong.text = "" + goalLongitude;
+
+
+        //float altitude = 1.72f;
+        //float x = altitude / distance;
+        //float angle = Mathf.Acos(x);
+        //float distanceActual = Mathf.Sin(angle) * distance;
+
+        //// calculate position of flag
+        //float radians = (FindObjectOfType<MapOutput>().getBearing() / 180.0f) * 3.14f; 
+        //float horizCompVector = distanceActual * Mathf.Sin(radians);
+        //float vertCompVector = distanceActual * Mathf.Cos(radians);
+
+        ////offset rover position from user position
+        //float roverXPos = FindObjectOfType<MapOutput>().getUserVector().x + horizCompVector; 
+        //float roverZPos = FindObjectOfType<MapOutput>().getUserVector().z + vertCompVector; 
+
+        //print("Rover would be going to " + roverXPos + ", " + roverZPos);
+
+        //displayEnterLat.text = "" + roverXPos;
+        //displayEnterLong.text = "" + roverZPos;
 
         //roverOff.SetActive(isShowing);
         //roverOnIdle.SetActive(isShowing);
