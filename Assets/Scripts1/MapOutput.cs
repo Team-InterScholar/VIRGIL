@@ -21,6 +21,7 @@ public class MapOutput : MonoBehaviour
 
     public GameObject flag;
     public GameObject mapFlag;
+    public GameObject flagHolder;
 
     public MRTKTMPInputField mrtkDisplayEnterLong;
     float distance;
@@ -219,8 +220,8 @@ public class MapOutput : MonoBehaviour
             //offset flag position from user position
             float flagXPos = userXPos + horizCompVector; 
             float flagZPos = userZPos + vertCompVector;
-            Instantiate(flag, new Vector3(flagXPos, 0.5f, flagZPos), Quaternion.Euler(0, 0, 0));
-            Instantiate(mapFlag, new Vector3(flagXPos, 100.0f, flagZPos), Quaternion.Euler(0, 0, 0));
+            Instantiate(flag, new Vector3(flagXPos, 0.5f, flagZPos), Quaternion.Euler(0, 0, 0), flagHolder.transform);
+            Instantiate(mapFlag, new Vector3(flagXPos, 100.0f, flagZPos), Quaternion.Euler(0, 0, 0), flagHolder.transform);
         }
         else
         {
@@ -232,8 +233,8 @@ public class MapOutput : MonoBehaviour
             //offset flag position from user position
             float flagXPos = userXPos + horizCompVector; // replace with virtual.x (9)
             float flagZPos = userZPos + vertCompVector;  // replace with virtual.z (10)
-            Instantiate(flag, new Vector3(flagXPos, 0.5f, flagZPos), Quaternion.Euler(0, 0, 0));
-            Instantiate(mapFlag, new Vector3(flagXPos, 100.0f, flagZPos), Quaternion.Euler(0, 0, 0));
+            Instantiate(flag, new Vector3(flagXPos, 0.5f, flagZPos), Quaternion.Euler(0, 0, 0), flagHolder.transform);
+            Instantiate(mapFlag, new Vector3(flagXPos, 100.0f, flagZPos), Quaternion.Euler(0, 0, 0), flagHolder.transform);
         }
 
 
@@ -360,8 +361,8 @@ public class MapOutput : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100))
         {
-            Instantiate(flag, hit.point, Quaternion.Euler(0, 0, 0));
-            Instantiate(mapFlag, new Vector3(hit.point.x, 100.0f, hit.point.y), Quaternion.Euler(0, 0, 0));
+            Instantiate(flag, hit.point, Quaternion.Euler(0, 0, 0), flagHolder.transform);
+            Instantiate(mapFlag, new Vector3(hit.point.x, 100.0f, hit.point.z), Quaternion.Euler(0, 0, 0), flagHolder.transform);
         }
     }
 }
