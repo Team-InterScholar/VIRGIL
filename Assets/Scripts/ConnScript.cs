@@ -18,6 +18,11 @@ public class ConnScript : MonoBehaviour
     public TMPro.TMP_Text roomInfo;
     public TMPro.TMP_Text connectionStatusInfo;
 
+    string teamName;
+    string username;
+    string university;
+    string userGuid;
+
     public GameObject suitDataHolder;
 
     public Material red;
@@ -69,24 +74,18 @@ public class ConnScript : MonoBehaviour
     public async void WelcomeConnect()
     {
         tssUri = welcomeInputField.text;
-        var connecting = tss.ConnectToURI(tssUri);
+        teamName = "Team InterScholar";
+        username = "InterScholar1";
+        university = "CerritosCollegeCalStateFullertonCalStateLongBeachCollegeoftheDesert";
+        userGuid = "fdbee7e5-9887-495e-aabb-f10d1386a7e9";
+        var connecting = tss.ConnectToURI(tssUri, teamName, username, university, userGuid);
         Debug.Log("Connecting to " + tssUri);
 
         tss.OnTSSTelemetryMsg += (telemMsg) =>
         {
-            if (telemMsg.EVA.Count > 0)
-            {
-                missionTimeInfo.text = telemMsg.EVA[0].timer;
-                IDInfo.text = "" + telemMsg.EVA[0].id;
-                roomInfo.text = "" + telemMsg.EVA[0].room;
-
-            }
-            else
-            {
-                missionTimeInfo.text = "No EVA Msg received";
-                IDInfo.text = "No EVA Msg received";
-                roomInfo.text = "No EVA Msg received";
-            }
+            missionTimeInfo.text = telemMsg.simulationStates.timer;
+            IDInfo.text = "" + telemMsg.simulationStates.room_id;
+            roomInfo.text = "";
         };
 
 
@@ -128,27 +127,24 @@ public class ConnScript : MonoBehaviour
 
     public async void Connect()
     {
-        tssUri = inputField.text;
-        var connecting = tss.ConnectToURI(tssUri);
+        tssUri = welcomeInputField.text;
+        teamName = "Team InterScholar";
+        username = "InterScholar1";
+        university = "CerritosCollegeCalStateFullertonCalStateLongBeachCollegeoftheDesert";
+        userGuid = "fdbee7e5-9887-495e-aabb-f10d1386a7e9";
+        var connecting = tss.ConnectToURI(tssUri, teamName, username, university, userGuid);
         Debug.Log("Connecting to " + tssUri);
         // Create a function that takes asing TSSMsg parameter and returns void. For example:
         // public static void PrintInfo(TSS.Msgs.TSSMsg tssMsg) { ... }
         // Then just subscribe to the OnTSSTelemetryMsg
         tss.OnTSSTelemetryMsg += (telemMsg) =>
         {
-            if (telemMsg.EVA.Count > 0)
-            {
-                missionTimeInfo.text = telemMsg.EVA[0].timer;
-                IDInfo.text = "" + telemMsg.EVA[0].id;
-                roomInfo.text = "" + telemMsg.EVA[0].room;
 
-            }
-            else
-            {
-                missionTimeInfo.text = "No EVA Msg received";
-                IDInfo.text = "No EVA Msg received";
-                roomInfo.text = "No EVA Msg received";
-            }
+            missionTimeInfo.text = telemMsg.simulationStates.timer;
+            IDInfo.text = "" + telemMsg.simulationStates.room_id;
+            roomInfo.text = "";
+
+
         };
 
 
