@@ -18,6 +18,11 @@ public class ConnScript : MonoBehaviour
     public TMPro.TMP_Text roomInfo;
     public TMPro.TMP_Text connectionStatusInfo;
 
+    string teamName;
+    string username;
+    string university;
+    string userGuid;
+
     public GameObject suitDataHolder;
 
     public Material red;
@@ -27,6 +32,8 @@ public class ConnScript : MonoBehaviour
     public GameObject statusLight;
 
     bool isConnectedAtWelcomeCard;
+
+    public GameObject mapObject;
 
 
     // Start is called before the first frame update
@@ -69,27 +76,30 @@ public class ConnScript : MonoBehaviour
     public async void WelcomeConnect()
     {
         tssUri = welcomeInputField.text;
-        var connecting = tss.ConnectToURI(tssUri);
+        teamName = "Team InterScholar";
+        username = "InterScholar1";
+        university = "CerritosCollegeCalStateFullertonCalStateLongBeachCollegeoftheDesert";
+        userGuid = "fdbee7e5-9887-495e-aabb-f10d1386a7e9";
+        var connecting = tss.ConnectToURI(tssUri, teamName, username, university, userGuid);
         Debug.Log("Connecting to " + tssUri);
 
         tss.OnTSSTelemetryMsg += (telemMsg) =>
         {
-            if (telemMsg.EVA.Count > 0)
-            {
-                missionTimeInfo.text = telemMsg.EVA[0].timer;
-                IDInfo.text = "" + telemMsg.EVA[0].id;
-                roomInfo.text = "" + telemMsg.EVA[0].room;
+            missionTimeInfo.text = telemMsg.simulationStates.timer;
+            IDInfo.text = "" + telemMsg.simulationStates.room_id;
+            roomInfo.text = "";
 
-            }
-            else
-            {
-                missionTimeInfo.text = "No EVA Msg received";
-                IDInfo.text = "No EVA Msg received";
-                roomInfo.text = "No EVA Msg received";
-            }
         };
 
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setBatteryData(telemMsg.simulationStates.battery_percentage, telemMsg.simulationStates.battery_output, telemMsg.simulationStates.battery_capacity, telemMsg.simulationStates.battery_time_left);
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setH2OData(telemMsg.simulationStates.h2o_liquid_pressure, telemMsg.simulationStates.h2o_gas_pressure, telemMsg.simulationStates.water_capacity, telemMsg.simulationStates.h2o_time_left); // float string error
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setHeartRate(telemMsg.simulationStates.heart_rate);
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setIntegrityData(telemMsg.simulationStates.fan_tachometer, telemMsg.simulationStates.temperature, telemMsg.simulationStates.suits_pressure, telemMsg.simulationStates.sub_pressure);
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setO2Data(telemMsg.simulationStates.oxygen_primary_time, telemMsg.simulationStates.o2_pressure, telemMsg.simulationStates.o2_rate, telemMsg.simulationStates.oxygen_secondary_time, telemMsg.simulationStates.sop_pressure, telemMsg.simulationStates.sop_rate, telemMsg.simulationStates.o2_time_left);
 
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<UIADataHolderScript>().SetUIABooleans(telemMsg.simulationStates.timer, telemMsg.uiaMsg.emu1_pwr_switch, telemMsg.uiaMsg.ev1_supply_switch, telemMsg.uiaMsg.emu1_water_waste, telemMsg.uiaMsg.emu1_o2_supply_switch, telemMsg.uiaMsg.o2_vent_switch, telemMsg.uiaMsg.depress_pump_switch);
+
+        //tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<MapOut>
         statusLight.GetComponent<MeshRenderer>().material = yellow;
 
         tss.OnOpen += () =>
@@ -128,38 +138,37 @@ public class ConnScript : MonoBehaviour
 
     public async void Connect()
     {
-        tssUri = inputField.text;
-        var connecting = tss.ConnectToURI(tssUri);
+        tssUri = welcomeInputField.text;
+        teamName = "Team InterScholar";
+        username = "InterScholar1";
+        university = "CerritosCollegeCalStateFullertonCalStateLongBeachCollegeoftheDesert";
+        userGuid = "fdbee7e5-9887-495e-aabb-f10d1386a7e9";
+        var connecting = tss.ConnectToURI(tssUri, teamName, username, university, userGuid);
         Debug.Log("Connecting to " + tssUri);
         // Create a function that takes asing TSSMsg parameter and returns void. For example:
         // public static void PrintInfo(TSS.Msgs.TSSMsg tssMsg) { ... }
         // Then just subscribe to the OnTSSTelemetryMsg
         tss.OnTSSTelemetryMsg += (telemMsg) =>
         {
-            if (telemMsg.EVA.Count > 0)
-            {
-                missionTimeInfo.text = telemMsg.EVA[0].timer;
-                IDInfo.text = "" + telemMsg.EVA[0].id;
-                roomInfo.text = "" + telemMsg.EVA[0].room;
 
-            }
-            else
-            {
-                missionTimeInfo.text = "No EVA Msg received";
-                IDInfo.text = "No EVA Msg received";
-                roomInfo.text = "No EVA Msg received";
-            }
+            missionTimeInfo.text = telemMsg.simulationStates.timer;
+            IDInfo.text = "" + telemMsg.simulationStates.room_id;
+            roomInfo.text = "";
+
+            print(telemMsg.simulationStates.suits_pressure);
+
         };
 
 
         /* UNCOMMENT WHEN 2.0.0*/
-        //tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setBatteryData(telemMsg.EVA[0].batteryPercent, telemMsg.EVA[0].battery_out, telemMsg.EVA[0].cap_battery, telemMsg.EVA[0].t_battery);
-        //tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setH2OData(telemMsg.EVA[0].p_h2o_l, telemMsg.EVA[0].p_h2o_g, telemMsg.EVA[0].t_water);
-        //tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setHeartRate(telemMsg.EVA[0].heart_bpm);
-        //tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setIntegrityData(telemMsg.EVA[0].v_fan,telemMsg.EVA[0].temp?, telemMsg.EVA[0].p_suit, telemMsg.EVA[0].p_sub);
-        //tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setO2Data(telemMsg.EVA[0].o2)
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setBatteryData(telemMsg.simulationStates.battery_percentage, telemMsg.simulationStates.battery_output, telemMsg.simulationStates.battery_capacity, telemMsg.simulationStates.battery_time_left);
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setH2OData(telemMsg.simulationStates.h2o_liquid_pressure, telemMsg.simulationStates.h2o_gas_pressure, telemMsg.simulationStates.water_capacity, telemMsg.simulationStates.h2o_time_left); // float string error
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setHeartRate(telemMsg.simulationStates.heart_rate);
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setIntegrityData(telemMsg.simulationStates.fan_tachometer, telemMsg.simulationStates.temperature, telemMsg.simulationStates.suits_pressure,telemMsg.simulationStates.sub_pressure);
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setO2Data(telemMsg.simulationStates.oxygen_primary_time, telemMsg.simulationStates.o2_pressure, telemMsg.simulationStates.o2_rate, telemMsg.simulationStates.oxygen_secondary_time, telemMsg.simulationStates.sop_pressure, telemMsg.simulationStates.sop_rate, telemMsg.simulationStates.o2_time_left);
 
-
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<UIADataHolderScript>().SetUIABooleans(telemMsg.simulationStates.timer, telemMsg.uiaMsg.emu1_pwr_switch, telemMsg.uiaMsg.ev1_supply_switch, telemMsg.uiaMsg.emu1_water_waste, telemMsg.uiaMsg.emu1_o2_supply_switch, telemMsg.uiaMsg.o2_vent_switch, telemMsg.uiaMsg.depress_pump_switch);
+        //public void SetUIABooleans(string telemLastUpdated,bool emu1Pwr, bool ev1Supl, bool ev1Watwste, bool emu1o2supl, bool o2vnt, bool dprspump)
 
         // tss.OnOpen, OnError, and OnClose events just re-raise events from websockets.
         // Similar to OnTSSTelemetryMsg, create functions with the appropriate return type and parameters, and subscribe to them
