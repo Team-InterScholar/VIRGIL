@@ -33,6 +33,8 @@ public class ConnScript : MonoBehaviour
 
     bool isConnectedAtWelcomeCard;
 
+    public GameObject mapObject;
+
 
     // Start is called before the first frame update
     async void Start()
@@ -86,6 +88,7 @@ public class ConnScript : MonoBehaviour
             missionTimeInfo.text = telemMsg.simulationStates.timer;
             IDInfo.text = "" + telemMsg.simulationStates.room_id;
             roomInfo.text = "";
+
         };
 
         tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setBatteryData(telemMsg.simulationStates.battery_percentage, telemMsg.simulationStates.battery_output, telemMsg.simulationStates.battery_capacity, telemMsg.simulationStates.battery_time_left);
@@ -95,6 +98,8 @@ public class ConnScript : MonoBehaviour
         tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SUITDataHolder>().setO2Data(telemMsg.simulationStates.oxygen_primary_time, telemMsg.simulationStates.o2_pressure, telemMsg.simulationStates.o2_rate, telemMsg.simulationStates.oxygen_secondary_time, telemMsg.simulationStates.sop_pressure, telemMsg.simulationStates.sop_rate, telemMsg.simulationStates.o2_time_left);
 
         tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<UIADataHolderScript>().SetUIABooleans(telemMsg.simulationStates.timer, telemMsg.uiaMsg.emu1_pwr_switch, telemMsg.uiaMsg.ev1_supply_switch, telemMsg.uiaMsg.emu1_water_waste, telemMsg.uiaMsg.emu1_o2_supply_switch, telemMsg.uiaMsg.o2_vent_switch, telemMsg.uiaMsg.depress_pump_switch);
+
+        //tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<MapOut>
         statusLight.GetComponent<MeshRenderer>().material = yellow;
 
         tss.OnOpen += () =>
