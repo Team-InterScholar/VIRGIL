@@ -79,7 +79,7 @@ public class ConnScript : MonoBehaviour
         teamName = "Team InterScholar";
         username = "InterScholar1";
         university = "CerritosCollegeCalStateFullertonCalStateLongBeachCollegeoftheDesert";
-        userGuid = "fdbee7e5-9887-495e-aabb-f10d1386a7e9";
+        userGuid = "a75e207e-f70f-4e4f-a66a-9f47bb84ab29";
         var connecting = tss.ConnectToURI(tssUri, teamName, username, university, userGuid);
         Debug.Log("Connecting to " + tssUri);
 
@@ -142,7 +142,7 @@ public class ConnScript : MonoBehaviour
         teamName = "Team InterScholar";
         username = "InterScholar1";
         university = "CerritosCollegeCalStateFullertonCalStateLongBeachCollegeoftheDesert";
-        userGuid = "fdbee7e5-9887-495e-aabb-f10d1386a7e9";
+        userGuid = "a75e207e-f70f-4e4f-a66a-9f47bb84ab29";
         var connecting = tss.ConnectToURI(tssUri, teamName, username, university, userGuid);
         Debug.Log("Connecting to " + tssUri);
         // Create a function that takes asing TSSMsg parameter and returns void. For example:
