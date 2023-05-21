@@ -228,47 +228,13 @@ public class roverPointControl : MonoBehaviour
         /*Send to telem stream*/
         FindObjectOfType<ConnScript>().getTSSObject().SendRoverNavigateCommand(goalLatitudeLocal, goalLongitudeLocal);
 
-        //float altitude = 1.72f;
-        //float x = altitude / distance;
-        //float angle = Mathf.Acos(x);
-        //float distanceActual = Mathf.Sin(angle) * distance;
 
-        //// calculate position of flag
-        //float radians = (FindObjectOfType<MapOutput>().getBearing() / 180.0f) * 3.14f; 
-        //float horizCompVector = distanceActual * Mathf.Sin(radians);
-        //float vertCompVector = distanceActual * Mathf.Cos(radians);
-
-        ////offset rover position from user position
-        //float roverXPos = FindObjectOfType<MapOutput>().getUserVector().x + horizCompVector; 
-        //float roverZPos = FindObjectOfType<MapOutput>().getUserVector().z + vertCompVector; 
-
-        //print("Rover would be going to " + roverXPos + ", " + roverZPos);
-
-        //displayEnterLat.text = "" + roverXPos;
-        //displayEnterLong.text = "" + roverZPos;
-
-        //roverOff.SetActive(isShowing);
-        //roverOnIdle.SetActive(isShowing);
-        //roverOnActive.SetActive(!isShowing); //turn on the green-active text object
-
-        //StartCoroutine(coroutine()); //counter for 5 seconds
-
-        //function will then take the user's coords and randomize a point near them to set as the return point coords
     }
 
     public void onRecallPress()
     {
         FindObjectOfType<ConnScript>().getTSSObject().SendRoverRecallCommand();
 
-        //displayEnterLong.text = "" + FindObjectOfType<MapOutput>().getUserVector().x;
-        //displayEnterLat.text = "" + FindObjectOfType<MapOutput>().getUserVector().z;
-
-
-        //roverOff.SetActive(isShowing);
-        //roverOnIdle.SetActive(isShowing);
-        //roverOnActive.SetActive(!isShowing); //turn on the green-active text object
-
-        //StartCoroutine(coroutine()); //counter for 5 seconds
     }
     
     public void setNavigationStatus()
@@ -287,17 +253,6 @@ public class roverPointControl : MonoBehaviour
             roverOnActive.SetActive(true); //turn on the green-active text object
         }
     }
-
-    //IEnumerator coroutine()
-    //{
-    //    //yield return new WaitForSeconds(5f);
-
-    //    //currentLong.text = displayEnterLong.text;
-    //    //currentLat.text = displayEnterLat.text; // within counter end is current coord change
-    //    //roverOff.SetActive(isShowing);
-    //    //roverOnActive.SetActive(isShowing);
-    //    //roverOnIdle.SetActive(!isShowing); //also within is turn on yellow-idle text object
-    //}
 
 }
 

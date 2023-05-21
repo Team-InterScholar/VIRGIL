@@ -110,14 +110,5 @@ public class SpectrometerDataHolderScript : MonoBehaviour
 
         LastUpdatedInfo.text = LastUpdatedString;
 
-        //public TMPro.TMP_Text SiO2Info;
-        //public TMPro.TMP_Text TiO2Info;
-        //public TMPro.TMP_Text Al2O3;
-        //public TMPro.TMP_Text FeOInfo;
-        //public TMPro.TMP_Text MgOInfo;
-        //public TMPro.TMP_Text MnOInfo;
-        //public TMPro.TMP_Text CaOInfo;
-        //public TMPro.TMP_Text K2OInfo;
-        //public TMPro.TMP_Text P2O3Info;
     }
 }
