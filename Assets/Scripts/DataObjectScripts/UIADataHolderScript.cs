@@ -34,19 +34,16 @@ public class UIADataHolderScript : MonoBehaviour
     public TMPro.TMP_Text DepressPumpSwitchInfo;
     public TMPro.TMP_Text LastUpdatedInfo;
 
+    public TMPro.TMP_Text emu1bootedinfo;
+    public TMPro.TMP_Text pumpfaultinfo;
+    public TMPro.TMP_Text supplypressureinfo;
+    public TMPro.TMP_Text waterlevelinfo;
+    public TMPro.TMP_Text airlockpressure;
+
     string LastUpdatedString;
 
     void Start()
     {
-
-        //UIABooleans.Add("O2 Supply Pressure Out 2", false);
-        //UIABooleans.Add("EV1 Supply", false);
-        //UIABooleans.Add("EV2 Supply", false);
-        //UIABooleans.Add("EV1 Waste", false);
-        //UIABooleans.Add("EV2 Waste", false);
-        //UIABooleans.Add("EMU1 O2", false);
-        //UIABooleans.Add("EMU2 O2", false);
-        //UIABooleans.Add("O2 Vent", false);
     }
 
     public void HouseKeeping()
@@ -104,8 +101,12 @@ public class UIADataHolderScript : MonoBehaviour
         UIABooleans["EMU1_O2_Supply_Switch"] = emu1o2supl;
         UIABooleans["O2_Vent_Switch"] = o2vnt;
         UIABooleans["Depress_Pump"] = dprspump;
-        //UIABooleans["EMU1IsBooted"] = emu1booted;
-        //UIABooleans["PumpFault"] = pumpfault;
+        UIABooleans["EMU1IsBooted"] = emu1booted;
+        UIABooleans["PumpFault"] = pumpfault;
+
+        UIAFloat["SupplyPressure"] = supplyPressure;
+        UIAFloat["WaterLevel"] = waterLevel;
+        UIAFloat["AirlockPressure"] = airlockPressure;
 
         LastUpdatedString = telemLastUpdated;
     }
@@ -119,15 +120,16 @@ public class UIADataHolderScript : MonoBehaviour
         O2VentSwitchInfo.text = "" + UIABooleans["O2_Vent_Switch"];
         DepressPumpSwitchInfo.text = "" + UIABooleans["Depress_Pump"];
 
+        emu1bootedinfo.text = "" + UIABooleans["EMU1IsBooted"];
+        pumpfaultinfo.text = "" + UIABooleans["PumpFault"];
+
+        supplypressureinfo.text = "" + UIAFloat["SupplyPressure"];
+        waterlevelinfo.text = "" + UIAFloat["WaterLevel"];
+        airlockpressure.text = "" + UIAFloat["AirlockPressure"];
+
 
         LastUpdatedInfo.text = LastUpdatedString;
 
-    //public TMPro.TMP_Text EMU1PowerSwitchInfo;
-    //public TMPro.TMP_Text EV1SupplySwitchInfo;
-    //public TMPro.TMP_Text EV1WaterWateSwitchInfo;
-    //public TMPro.TMP_Text EMU1O2SupplySwitchInfo;
-    //public TMPro.TMP_Text O2VentSwitchInfo;
-    //public TMPro.TMP_Text DepressPumpSwitchInfo;
 
     }
 
