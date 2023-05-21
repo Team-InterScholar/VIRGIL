@@ -33,7 +33,11 @@ public class ConnScript : MonoBehaviour
 
     bool isConnectedAtWelcomeCard;
 
-    public GameObject mapObject;
+    float roverLat;
+    float roverLon;
+    float roverGoalLat;
+    float roverGoalLon;
+    string navigationStatus;
 
 
     // Start is called before the first frame update
@@ -92,8 +96,6 @@ public class ConnScript : MonoBehaviour
             IDInfo.text = "" + telemMsg.simulationStates.room_id;
             roomInfo.text = "";
 
-            print(telemMsg.roverMsg.goal_lat);
-            print(telemMsg.roverMsg.goal_lon);
 
         };
 
@@ -105,7 +107,16 @@ public class ConnScript : MonoBehaviour
 
         tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<UIADataHolderScript>().SetUIABooleans(telemMsg.simulationStates.timer, telemMsg.uiaMsg.emu1_pwr_switch, telemMsg.uiaMsg.ev1_supply_switch, telemMsg.uiaMsg.emu1_water_waste, telemMsg.uiaMsg.emu1_o2_supply_switch, telemMsg.uiaMsg.o2_vent_switch, telemMsg.uiaMsg.depress_pump_switch, telemMsg.uiaState.emu1_is_booted, telemMsg.uiaState.depress_pump_fault, telemMsg.uiaState.uia_supply_pressure, telemMsg.uiaState.water_level, telemMsg.uiaState.airlock_pressure);
 
-        //tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<MapOut>
+
+        tss.OnTSSTelemetryMsg += (telemMsg) =>
+        {
+            roverLat = telemMsg.roverMsg.lat;
+            roverLon = telemMsg.roverMsg.lon;
+            roverGoalLat = telemMsg.roverMsg.goal_lat;
+            roverGoalLon = telemMsg.roverMsg.goal_lon;
+            navigationStatus = telemMsg.roverMsg.navigation_status;
+        };
+
         statusLight.GetComponent<MeshRenderer>().material = yellow;
 
         tss.OnOpen += () =>
@@ -198,6 +209,29 @@ public class ConnScript : MonoBehaviour
 
     }
 
+    public float getRoverLat()
+    {
+        return roverLat;
+    }
+    public float getRoverLon()
+    {
+        return roverLon;
+    }
+
+    public float getRoverGoalLat()
+    {
+        return roverGoalLat;
+    }
+
+    public float getRoverGoalLon()
+    {
+        return roverGoalLon;
+    }
+
+    public string getNavigationStatus()
+    {
+        return navigationStatus;
+    }
 
 
     void printSpectr(TSS.Msgs.TSSMsg telemMsg)
