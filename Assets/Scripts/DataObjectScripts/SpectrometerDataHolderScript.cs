@@ -69,6 +69,21 @@ public class SpectrometerDataHolderScript : MonoBehaviour
 
     }
 
+    public void setScanFloats(float sio2, float tio2, float al2o3, float feo, float mno, float mgo, float cao, float k2o, float p2o3)
+    {
+        spectrometerData["SiO2"] = sio2;
+        spectrometerData["TiO2"] = tio2;
+        spectrometerData["Al2O3"] = al2o3;
+        spectrometerData["FeO"] = feo;
+        spectrometerData["MnO"] = mno;
+        spectrometerData["MgO"] = mgo;
+        spectrometerData["CaO"] = cao;
+        spectrometerData["K2O"] = k2o;
+        spectrometerData["P2O3"] = p2o3;
+
+    }
+
+
 
     public Dictionary<string,float> GetSpectroData()
     {

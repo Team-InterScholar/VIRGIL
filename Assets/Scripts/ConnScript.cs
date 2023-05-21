@@ -107,6 +107,7 @@ public class ConnScript : MonoBehaviour
 
         tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<UIADataHolderScript>().SetUIABooleans(telemMsg.simulationStates.timer, telemMsg.uiaMsg.emu1_pwr_switch, telemMsg.uiaMsg.ev1_supply_switch, telemMsg.uiaMsg.emu1_water_waste, telemMsg.uiaMsg.emu1_o2_supply_switch, telemMsg.uiaMsg.o2_vent_switch, telemMsg.uiaMsg.depress_pump_switch, telemMsg.uiaState.emu1_is_booted, telemMsg.uiaState.depress_pump_fault, telemMsg.uiaState.uia_supply_pressure, telemMsg.uiaState.water_level, telemMsg.uiaState.airlock_pressure);
 
+        tss.OnTSSTelemetryMsg += (telemMsg) => FindObjectOfType<SpectrometerDataHolderScript>().setScanFloats(telemMsg.specMsg.SiO2, telemMsg.specMsg.TiO2, telemMsg.specMsg.Al2O3, telemMsg.specMsg.FeO, telemMsg.specMsg.MnO, telemMsg.specMsg.MgO,telemMsg.specMsg.CaO,telemMsg.specMsg.K2O, telemMsg.specMsg.P2O3);
 
         tss.OnTSSTelemetryMsg += (telemMsg) =>
         {
