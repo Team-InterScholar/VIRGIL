@@ -61,9 +61,12 @@ public class ConnScript : MonoBehaviour
     {
         // Updates the websocket once per frame
         tss.Update();
-
+        
     }
-
+    public TSSConnection getTSSObject()
+    {
+        return tss;
+    }
     public bool getIsTelemOn()
     {
         return isConnectedAtWelcomeCard;
@@ -89,8 +92,8 @@ public class ConnScript : MonoBehaviour
             IDInfo.text = "" + telemMsg.simulationStates.room_id;
             roomInfo.text = "";
 
-
-
+            print(telemMsg.roverMsg.goal_lat);
+            print(telemMsg.roverMsg.goal_lon);
 
         };
 

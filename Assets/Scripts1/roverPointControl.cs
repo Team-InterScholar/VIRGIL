@@ -112,9 +112,10 @@ public class roverPointControl : MonoBehaviour
 
     public void onRecallPress()
     {
+        FindObjectOfType<ConnScript>().getTSSObject().SendRoverRecallCommand();
 
-        displayEnterLong.text = "" + FindObjectOfType<MapOutput>().getUserVector().x;
-        displayEnterLat.text = "" + FindObjectOfType<MapOutput>().getUserVector().z;
+        //displayEnterLong.text = "" + FindObjectOfType<MapOutput>().getUserVector().x;
+        //displayEnterLat.text = "" + FindObjectOfType<MapOutput>().getUserVector().z;
 
 
         //roverOff.SetActive(isShowing);
@@ -125,15 +126,11 @@ public class roverPointControl : MonoBehaviour
     }
 
 
-    public void setRoverLatPos(float floatFromTelem)
+    public void setRoverPos(float latFromTelem, float longFromTelem)
     {
-        latitude = floatFromTelem;
+        latitude = latFromTelem;
         currentLat.text = "" + latitude;
-    }
-
-    public void setRoverLongPos(float floatFromTelem)
-    {
-        longitude = floatFromTelem;
+        longitude = longFromTelem;
         currentLong.text = "" + longitude;
     }
     
@@ -153,6 +150,19 @@ public class roverPointControl : MonoBehaviour
         }
     }
 
+    public float getGoalLat()
+    {
+        return goalLatitude;
+    }
+
+    public float getGoalLong()
+    {
+        return goalLongitude;
+    }
+    public void sendGoals()
+    {
+        FindObjectOfType<ConnScript>().getTSSObject().SendRoverNavigateCommand(goalLatitude, goalLongitude);
+    }
     IEnumerator coroutine()
     {
         yield return new WaitForSeconds(5f);
