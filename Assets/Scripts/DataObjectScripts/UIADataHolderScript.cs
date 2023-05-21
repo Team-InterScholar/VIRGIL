@@ -24,6 +24,7 @@ using TMPro;
 public class UIADataHolderScript : MonoBehaviour
 {
     public Dictionary<string, bool> UIABooleans;
+    public Dictionary<string, float> UIAFloat;
 
     public TMPro.TMP_Text EMU1PowerSwitchInfo;
     public TMPro.TMP_Text EV1SupplySwitchInfo;
@@ -57,6 +58,14 @@ public class UIADataHolderScript : MonoBehaviour
         UIABooleans.Add("EMU1_O2_Supply_Switch", false);
         UIABooleans.Add("O2_Vent_Switch", false);
         UIABooleans.Add("Depress_Pump", false);
+        UIABooleans.Add("EMU1IsBooted", false);
+        UIABooleans.Add("PumpFault", false);
+
+        UIAFloat = new Dictionary<string, float>();
+        UIAFloat.Add("SupplyPressure", 0.0f);
+        UIAFloat.Add("WaterLevel", 0.0f);
+        UIAFloat.Add("AirlockPressure", 0.0f);
+
 
         StartCoroutine(CoroutineUpdate());
     }
@@ -87,7 +96,7 @@ public class UIADataHolderScript : MonoBehaviour
         UIABooleans[str] = newStatus;
     }
 
-    public void SetUIABooleans(string telemLastUpdated,bool emu1Pwr, bool ev1Supl, bool ev1Watwste, bool emu1o2supl, bool o2vnt, bool dprspump)
+    public void SetUIABooleans(string telemLastUpdated,bool emu1Pwr, bool ev1Supl, bool ev1Watwste, bool emu1o2supl, bool o2vnt, bool dprspump, bool emu1booted, bool pumpfault, float supplyPressure, float waterLevel, float airlockPressure)
     {
         UIABooleans["EMU1_Power_Switch"] = emu1Pwr;
         UIABooleans["EV1_Supply_Switch"] = ev1Supl;
@@ -95,6 +104,8 @@ public class UIADataHolderScript : MonoBehaviour
         UIABooleans["EMU1_O2_Supply_Switch"] = emu1o2supl;
         UIABooleans["O2_Vent_Switch"] = o2vnt;
         UIABooleans["Depress_Pump"] = dprspump;
+        //UIABooleans["EMU1IsBooted"] = emu1booted;
+        //UIABooleans["PumpFault"] = pumpfault;
 
         LastUpdatedString = telemLastUpdated;
     }
@@ -107,6 +118,7 @@ public class UIADataHolderScript : MonoBehaviour
         EMU1O2SupplySwitchInfo.text = "" + UIABooleans["EMU1_O2_Supply_Switch"];
         O2VentSwitchInfo.text = "" + UIABooleans["O2_Vent_Switch"];
         DepressPumpSwitchInfo.text = "" + UIABooleans["Depress_Pump"];
+
 
         LastUpdatedInfo.text = LastUpdatedString;
 

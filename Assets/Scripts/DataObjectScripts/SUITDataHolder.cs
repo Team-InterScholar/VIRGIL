@@ -252,15 +252,15 @@ public class SUITDataHolder : MonoBehaviour
         SecondaryOxygenInfo.text = "" + SUITFloatData["S_O2Time"];
         SecondaryOxygenPressure.text = "" + SUITFloatData["S_O2Pressure"];
         SecondaryOxygenrate.text = "" + SUITFloatData["S_O2rate"];
-        OxygenTimeLeftInfo.text = "" + SUITFloatData["O2TimeLeft"];
+        OxygenTimeLeftInfo.text = "" + SUITTimeLeftData["O2TimeLeft"];
 
-        H2OTimeLeftInfo.text = "" + SUITFloatData["H2OTimeLeft"];
+        H2OTimeLeftInfo.text = "" + SUITTimeLeftData["H2OTimeLeft"];
         LiquidPressureInfo.text = "" + SUITFloatData["H2O_LiquidPressure"];
         GasPressureInfo.text = "" + SUITFloatData["H2O_GasPressure"];
         H2OCapacity.text = "" + SUITFloatData["H2O_Capacity"];
         HeartRateInfo.text = "" + SUITFloatData["Heart_Rate"];
 
-        BatteryTimeLeftInfo.text = "" + SUITFloatData["Battery_TimeLeft"];
+        BatteryTimeLeftInfo.text = "" + SUITTimeLeftData["Battery_TimeLeft"];
         BatteryCapacityInfo.text = "" + SUITFloatData["Battery_Capacity"];
         BatteryPercentageTimeLeftInfo.text = "" + SUITFloatData["Battery_Percentage"];
         OutputInfo.text = "" + SUITFloatData["Battery_Output"];
