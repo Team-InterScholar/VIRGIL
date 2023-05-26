@@ -39,6 +39,10 @@ public class ConnScript : MonoBehaviour
     float roverGoalLon;
     string navigationStatus;
 
+    float realBearing;
+    float userLat;
+    float userLon;
+    float userAlt;
 
     // Start is called before the first frame update
     async void Start()
@@ -105,6 +109,12 @@ public class ConnScript : MonoBehaviour
             roverGoalLat = telemMsg.roverMsg.goal_lat;
             roverGoalLon = telemMsg.roverMsg.goal_lon;
             navigationStatus = telemMsg.roverMsg.navigation_status;
+
+            userLat = telemMsg.gpsMsg.lat;
+            userLon = telemMsg.gpsMsg.lon;
+            realBearing = telemMsg.imuMsg.heading;
+            userAlt = telemMsg.gpsMsg.alt;
+            
         };
 
         statusLight.GetComponent<MeshRenderer>().material = yellow;
@@ -113,7 +123,6 @@ public class ConnScript : MonoBehaviour
         {
             connectionStatusInfo.text = "OPEN";
             Debug.Log("Websocket connection opened");
-            print("woop");
             statusLight.GetComponent<MeshRenderer>().material = green;
             isConnectedAtWelcomeCard = true;
 
@@ -138,6 +147,17 @@ public class ConnScript : MonoBehaviour
 
     }
 
+    public float getUserAlt()
+    {
+        return userAlt;
+    }
+
+    public float getUserLat()
+    {
+        return userLat;
+    }
+
+    public float getUserLon() { return userLon;}
 
     public async void Connect()
     {
@@ -170,6 +190,7 @@ public class ConnScript : MonoBehaviour
         tss.OnTSSTelemetryMsg += (telemMsg) =>
         {
             roverLat = telemMsg.roverMsg.lat;
+            print("roverlat:" +  roverLat);
             roverLon = telemMsg.roverMsg.lon;
             roverGoalLat = telemMsg.roverMsg.goal_lat;
             roverGoalLon = telemMsg.roverMsg.goal_lon;
@@ -197,6 +218,10 @@ public class ConnScript : MonoBehaviour
 
     }
 
+    public float getBearing()
+    {
+        return realBearing;
+    }
     public float getRoverLat()
     {
         return roverLat;

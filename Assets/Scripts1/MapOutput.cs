@@ -78,21 +78,23 @@ public class MapOutput : MonoBehaviour
     {
         if (FindObjectOfType<ConnScript>().getIsTelemOn())
         {
-            mapObject.GetComponent<MeshRenderer>().material = map;
+            mapObject.GetComponent<MeshRenderer>().material = none;
             while (FindObjectOfType<ConnScript>().getIsTelemOn())
             {
-                // put calculation functions here (1)
-                userXPos = user.transform.position.x; // delete these(2)
-                userZPos = user.transform.position.z;
+                //userXPos = user.transform.position.x; // delete these(2)
+                //userZPos = user.transform.position.z;
 
+                calculateUserLatLongDistanceFromOrigin(FindObjectOfType<ConnScript>().getUserLat(), FindObjectOfType<ConnScript>().getUserLon());
                 userRotationY = user.transform.rotation.eulerAngles.y; // replace this with set bearing (3)
 
 
-                userMarker.transform.position = new Vector3(userXPos, 86.0f, userZPos); // delete (4)
-                userMarker.transform.rotation = Quaternion.Euler(90.0f, userRotationY, 0.0f); // delete (5)
+                //userMarker.transform.position = new Vector3(userXPos, 86.0f, userZPos); // delete (4)
+                //userMarker.transform.rotation = Quaternion.Euler(90.0f, userRotationY, 0.0f); // delete (5)
 
-                latitude.text = "" + userXPos; // replace with virtual.x (6)
-                longitude.text = "" + userZPos;// replace with virtual.z (7)
+                latitude.text = "" + FindObjectOfType<ConnScript>().getUserLat();
+                longitude.text = "" + FindObjectOfType<ConnScript>().getUserLon();
+                altitude.text = "" + FindObjectOfType<ConnScript>().getUserAlt();
+
                 yield return null;
             }
         }
@@ -148,22 +150,15 @@ public class MapOutput : MonoBehaviour
         return userMarker.transform.position;
     }
 
-    public void setRealOriginPoint(float realOriginPointLat, float realOriginPointLon)
-    {
-        realOriginLat = realOriginPointLat;
-        realOriginLon = realOriginPointLon;
-        realOriginInfo.text = "Real origin lat: " + realOriginLat + " Real origin lon: " + realOriginLon;
-        realOriginVector = new(realOriginLat, 0f, realOriginLon);
-    }
-
     public void calculateUserLatLongDistanceFromOrigin(float userRealLat, float userRealLon)
     {
-
+        realOriginVector = new(29.564722f, 0f, -95.081389f);
         realUserPosVector = new(userRealLat, 0f, userRealLon);
 
         virtualUserPos = realUserPosVector - realOriginVector; // actual real life origin is 29deg33min53sec N, 095deg04min53sec W
+        print("x: " + virtualUserPos.x* 96732.471f + "z: " + virtualUserPos.z* 111230.388f);
 
-        userMarker.transform.position = new Vector3(virtualUserPos.x, 86.0f, virtualUserPos.y);
+        userMarker.transform.position = new Vector3(virtualUserPos.x * -96732.471f, 86.0f, virtualUserPos.z * -111230.388109f);
     }
 
     public void calculateRoverLatLongDistanceFromOrigin(float roverRealLat, float roverRealLon)
